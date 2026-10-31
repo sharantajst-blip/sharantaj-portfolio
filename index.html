@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+            <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -85,12 +86,14 @@
         .tab-content {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .tab-content.active {
             display: block;
             opacity: 1;
+            transform: translateY(0);
         }
 
         .post-card {
@@ -241,19 +244,16 @@
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
             
-            // সব ট্যাব কন্টেন্ট লুকিয়ে ফেলা
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
                 tabContent[i].classList.remove("active");
             }
             
-            // সব বাটন থেকে active ক্লাস সরিয়ে নেওয়া
             tabBtns = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tabBtns.length; i++) {
                 tabBtns[i].classList.remove("active");
             }
             
-            // নির্দিষ্ট ট্যাবে active ক্লাস যোগ করা এবং ফেড-ইন অ্যানিমেশন ট্রিগার করা
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
