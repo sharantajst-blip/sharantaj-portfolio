@@ -3,70 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amar Professional Portfolio</title>
+    <title>আমার ডাইনামিক আপডেট ও লেখা</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header ba navigation tab -->
+    <!-- ভিজিটর কাউন্টার বা সাইট স্ট্যাটস (এক কোণায় থাকবে) -->
+    <div class="visitor-counter">
+        <span>👁️ মোট ভিজিটর: <strong id="count">১৫০</strong></span>
+    </div>
+
     <header>
-        <nav>
-            <button class="tab-btn active" onclick="openTab(event, 'home')">Hom</button>
-            <button class="tab-btn" onclick="openTab(event, 'about')">Amar Somporke</button>
-            <button class="tab-btn" onclick="openTab(event, 'achievements')">Achievement</button>
-        </nav>
+        <h1>আমার চিন্তা ও লেখা</h1>
+        <p>এখানে আমার দৈনন্দিন ভাবনা ও আপডেট শেয়ার করা হয়।</p>
     </header>
 
-    <!-- Mukhkhu content area -->
+    <!-- পোস্ট সেকশন -->
     <main class="container">
         
-        <!-- ১. Hom tab -->
-        <section id="home" class="tab-content active">
-            <div class="card">
-                <h1>Swagotom! Ami Sharan Taj</h1>
-                <p>Eti amar baktigoto professional portfolio website.</p>
-            </div>
-        </section>
+        <!-- নতুন পোস্ট -->
+        <article class="post-card">
+            <h2>আজকের নতুন আপডেট</h2>
+            <span class="post-date">তারিখ: ৩১ অক্টোবর, ২০২৬</span>
+            <p class="post-text">
+                আমি মোবাইল থেকেই খুব সহজে এখন আমার ওয়েবসাইটের লেখা আপডেট করে নিচ্ছি। কোডিংয়ের ঝামেলা ছাড়াই এই চ্যাট থেকে কোড নিয়ে কাজ করাটা দারুণ একটা অভিজ্ঞতা!
+            </p>
+        </article>
 
-        <!-- ২. Amar somporke tab -->
-        <section id="about" class="tab-content">
-            <div class="card">
-                <h2>Amar Somporke</h2>
-                <p>Ekhane apni apnar nijer somporke bistarito likhte parben. Apni ke, ki koren ebong apnar lokkho ki ta ekhane sundor bhabe fute tulte parben.</p>
-            </div>
-        </section>
-
-        <!-- ৩. Achievement tab -->
-        <section id="achievements" class="tab-content">
-            <div class="card">
-                <h2>Amar Achievementsomuh</h2>
-                <ul class="achievement-list">
-                    <li>🏆 Prothom safol project GitHub e live korechi.</li>
-                    <li>🚀 Mobile phone babohar kore website design shikhechi.</li>
-                    <li>💡 Notun projukti niye kaj korar oviggota orjon korechi.</li>
-                </ul>
-            </div>
-        </section>
+        <!-- আগের পোস্ট -->
+        <article class="post-card">
+            <h2>কোডিং শেখার অভিজ্ঞতা</h2>
+            <span class="post-date">তারিখ: ৩০ অক্টোবর, ২০২৬</span>
+            <p class="post-text">
+                প্রোগ্রামিং শেখাটা শুরুতে একটু কঠিন মনে হলেও যখন নিজের হাতে একটা ওয়েবসাইট বানিয়ে ফেলা যায়, তখন যে আনন্দ পাওয়া যায় তা সত্যি অতুলনীয়।
+            </p>
+        </article>
 
     </main>
 
-    <!-- Tab poribortoner animation ebong JavaScript -->
-    <script>
-        function openTab(evt, tabName) {
-            let contents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
-            }
-
-            let buttons = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
+    <footer>
+        <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
 
 </body>
 </html>
