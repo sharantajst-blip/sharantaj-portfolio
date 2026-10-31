@@ -1,16 +1,15 @@
-
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>শরণ তাজ - আমার পরিচিতি ও ব্লগ</title>
     <style>
-        /* বেসিক ডিজাইন ও ডার্ক থিম */
+        /* বেসিক ডিজাইন ও কালারফুল ডার্ক থিম */
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #0d1117;
+            color: #c9d1d9;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -18,20 +17,22 @@
 
         header {
             text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
-            border-bottom: 2px solid #333;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #1f6feb, #8957e5);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
 
         header h1 {
             margin: 0;
-            font-size: 26px;
-            color: #ffffff;
+            font-size: 28px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         header p {
-            color: #b0b0b0;
+            color: #f0f6fc;
             font-size: 14px;
+            margin-top: 8px;
         }
 
         /* ভিজিটর কাউন্টার ডিজাইন */
@@ -39,87 +40,98 @@
             position: absolute;
             top: 10px;
             right: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 12px;
-            color: #fff;
+            color: #58a6ff;
+            border: 1px solid #30363d;
         }
 
-        /* ট্যাব বাটনগুলোর ডিজাইন */
+        /* ট্যাব বাটনগুলোর কালারফুল ডিজাইন */
         .tab-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #1a1a1a;
-            padding: 10px;
+            background-color: #161b22;
+            padding: 12px;
             gap: 8px;
-            border-bottom: 1px solid #333;
+            border-bottom: 2px solid #30363d;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .tab-btn {
-            background-color: #2a2a2a;
-            color: #bbb;
-            border: none;
-            padding: 8px 14px;
+            background-color: #21262d;
+            color: #8b949e;
+            border: 1px solid #30363d;
+            padding: 8px 16px;
             font-size: 13px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
             transition: all 0.3s ease;
         }
 
-        .tab-btn:hover, .tab-btn.active {
-            background-color: #4a90e2;
-            color: #fff;
+        .tab-btn:hover {
+            background-color: #30363d;
+            color: #c9d1d9;
         }
 
-        /* কন্টেন্ট সেকশন ও ফেড-ইন অ্যানিমেশন */
+        .tab-btn.active {
+            background-color: #1f6feb;
+            color: #ffffff;
+            border-color: #1f6feb;
+            box-shadow: 0 0 10px rgba(31, 111, 235, 0.5);
+        }
+
+        /* কন্টেন্ট সেকশন ও স্মুথ ফেড-ইন অ্যানিমেশন */
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 25px auto;
             padding: 0 15px;
         }
 
         .tab-content {
             display: none;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.97) translateY(10px);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1) translateY(0);
         }
 
         .post-card {
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #161b22;
+            padding: 22px;
+            border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            border-left: 4px solid #4a90e2;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            border-left: 5px solid #8957e5;
+            border: 1px solid #30363d;
         }
 
         .post-card h2 {
             margin-top: 0;
             font-size: 20px;
-            color: #ffffff;
+            color: #58a6ff;
         }
 
         .post-date {
             font-size: 12px;
-            color: #888;
+            color: #8b949e;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
 
         .post-text {
-            color: #d0d0d0;
+            color: #c9d1d9;
             font-size: 15px;
             text-align: justify;
         }
@@ -127,10 +139,10 @@
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #1a1a1a;
-            color: #777;
+            background-color: #161b22;
+            color: #8b949e;
             font-size: 13px;
-            border-top: 1px solid #333;
+            border-top: 1px solid #30363d;
         }
     </style>
 </head>
@@ -156,7 +168,7 @@
         <button class="tab-btn" onclick="openTab(event, 'city')">শহর ও স্থান</button>
     </div>
 
-    <!-- মূল কন্টেন্ট সেকশন (ট্যাব অনুযায়ী আলাদা করা) -->
+    <!-- মূল কন্টেন্ট সেকশন -->
     <main class="container">
         
         <!-- ১. পরিচিতি ট্যাব -->
@@ -239,7 +251,7 @@
         <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- ট্যাব পরিবর্তনের জন্য এবং ভিজিটর কাউন্টারের জাভাস্ক্রিপ্ট -->
+    <!-- ট্যাব পরিবর্তন ও ফেড-ইন অ্যানিমেশন স্ক্রিপ্ট -->
     <script>
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
