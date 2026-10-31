@@ -3,63 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শরণ তাজ - আমার পরিচিতি ও ব্লগ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>বাংলা লেখা ও ছবি পোস্ট করার পেজ</title>
+    <style>
+        body {
+            font-family: 'SolaimanLipi', 'Kalpurush', Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-family: 'SolaimanLipi', 'Kalpurush', Arial, sans-serif;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type="file"] {
+            margin: 15px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef2f3;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+        .output-box p {
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- আসল ভিজিটর কাউন্টার -->
-    <div class="visitor-counter">
-        <span>👁️ মোট ভিজিটর: 
-            <img src="https://counter8.optinmonster.com/wt/gif?id=1" alt="Visitor Counter" style="display:none;" />
-            <strong id="visitor-count">লোড হচ্ছে...</strong>
-        </span>
-    </div>
-
-    <!-- ওয়েলকাম বা পরিচিতি ট্যাব -->
-    <header>
-        <h1>স্বাগতম! আমি শরণ তাজ</h1>
-        <p>আমার ব্যক্তিগত তথ্য ও ভাবনা</p>
-    </header>
-
-    <!-- পোস্ট বা পরিচিতি সেকশন -->
-    <main class="container">
+    <div class="container">
+        <h2>বাংলা লেখা ও ছবি পোস্ট করার ফর্ম</h2>
         
-        <!-- আমার সম্পর্কে তথ্য -->
-        <article class="post-card">
-            <h2>আমার পরিচিতি</h2>
-            <span class="post-date">ব্যক্তিগত তথ্য</span>
-            <p class="post-text">
-                আমার নাম **শরণ তাজ**। আমার বাবার নাম **সোহেল মহসিন** এবং মায়ের নাম **ফাহমিদা তাজ**। আমার বয়স ১৫ বছর। আমি **মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়**-এ পড়াশোনা করি।
-            </p>
-        </article>
+        <!-- লেখা এবং ছবি দেওয়ার ফর্ম -->
+        <form>
+            <label for="postText">আপনার লেখা এখানে লিখুন (বাংলা হরফে):</label><br>
+            <textarea id="postText" placeholder="আপনার মনের কথা বাংলায় লিখুন..."></textarea><br>
 
-        <!-- আজকের নতুন আপডেট পোস্ট -->
-        <article class="post-card">
-            <h2>আজকের নতুন আপডেট</h2>
-            <span class="post-date">তারিখ: ৩১ অক্টোবর, ২০২৬</span>
-            <p class="post-text">
-                আমার এই ওয়েবসাইটের শুরুতে এখন আমার নিজের পরিচয়, বাবা-মায়ের নাম এবং স্কুলের নাম যুক্ত করা হয়েছে। এছাড়া রিয়েল-টাইম ভিজিটর কাউন্টার তো আগেই চালু করা হয়েছে!
-            </p>
-        </article>
+            <label for="postImage">ছবি আপলোড করুন:</label><br>
+            <input type="file" id="postImage" accept="image/*"><br>
 
-    </main>
+            <button type="button">পোস্ট করুন</button>
+        </form>
 
-    <footer>
-        <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
-    </footer>
+        <!-- আউটপুট দেখানোর জায়গা -->
+        <div class="output-box">
+            <p><strong>১. মূল ভাবনা:</strong><br>
+            একবার আছি খালি — এই সুন্দর জীবনটা উপভোগ করার মতো করেই কাটানো উচিত।</p>
 
-    <!-- রিয়েল ভিজিটর সংখ্যা দেখানোর ছোট জাভাস্ক্রিপ্ট কোড -->
-    <script>
-        fetch('https://api.countapi.xyz/hit/sharantaj-portfolio/visits')
-            .then(res => res.json())
-            .then(res => {
-                document.getElementById('visitor-count').innerText = res.value;
-            })
-            .catch(err => {
-                document.getElementById('visitor-count').innerText = '১';
-            });
-    </script>
+            <p><strong>২. সহপাঠী ও বন্ধুদের কথা:</strong><br>
+            আমার অনেক সহপাঠী আছে যেমন তাসিন, মহিদুর মিযান, আরাফাত হোসেন মৃধা, তারপরে হচ্ছে কাইওম, তারপরে আহনাফ বিন মনওয়ার ইত্যাদি।</p>
+
+            <p><strong>৩. শিক্ষক ও শিক্ষণীয় কথা:</strong><br>
+            আমার বিভিন্ন শ্রদ্ধেয় শিক্ষক আছে যেমন আমার ইংরেজি শিক্ষক আব্দুল্লাহ আল-আহসান, আমার স্কুলে অনেক শিক্ষক রয়েছে যেমন আমাদের ফরহাদ স্যার, সুমন স্যার, এনামুল স্যার সহ অনেকে। তাদের কাছ থেকে আমি অনেক কিছু শিখতে পেরেছি।</p>
+        </div>
+    </div>
 
 </body>
 </html>
