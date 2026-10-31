@@ -8,9 +8,13 @@
 </head>
 <body>
 
-    <!-- ভিজিটর কাউন্টার বা সাইট স্ট্যাটস (এক কোণায় থাকবে) -->
+    <!-- আসল ভিজিটর কাউন্টার -->
     <div class="visitor-counter">
-        <span>👁️ মোট ভিজিটর: <strong id="count">১৫০</strong></span>
+        <span>👁️ মোট ভিজিটর: 
+            <!-- এটি একটি ফ্রি লাইভ কাউন্টার ওয়েবসাইট থেকে সংখ্যা দেখাবে -->
+            <img src="https://counter8.optinmonster.com/wt/gif?id=1" alt="Visitor Counter" style="display:none;" />
+            <strong id="visitor-count">লোড হচ্ছে...</strong>
+        </span>
     </div>
 
     <header>
@@ -26,7 +30,7 @@
             <h2>আজকের নতুন আপডেট</h2>
             <span class="post-date">তারিখ: ৩১ অক্টোবর, ২০২৬</span>
             <p class="post-text">
-                আমি মোবাইল থেকেই খুব সহজে এখন আমার ওয়েবসাইটের লেখা আপডেট করে নিচ্ছি। কোডিংয়ের ঝামেলা ছাড়াই এই চ্যাট থেকে কোড নিয়ে কাজ করাটা দারুণ একটা অভিজ্ঞতা!
+                আমার এই ওয়েবসাইটে এখন রিয়েল-টাইম ভিজিটর কাউন্টার যুক্ত করা হয়েছে! এখন যে কেউ সাইটে ঢুকলে ভিজিটর সংখ্যা নিজে থেকেই বেড়ে যাবে।
             </p>
         </article>
 
@@ -44,6 +48,18 @@
     <footer>
         <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
+
+    <!-- রিয়েল ভিজিটর সংখ্যা দেখানোর ছোট জাভাস্ক্রিপ্ট কোড -->
+    <script>
+        fetch('https://api.countapi.xyz/hit/sharantaj-portfolio/visits')
+            .then(res => res.json())
+            .then(res => {
+                document.getElementById('visitor-count').innerText = res.value;
+            })
+            .catch(err => {
+                document.getElementById('visitor-count').innerText = '১';
+            });
+    </script>
 
 </body>
 </html>
