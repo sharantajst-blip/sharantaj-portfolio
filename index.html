@@ -80,7 +80,6 @@
             padding: 0 15px;
         }
 
-        /* অ্যানিমেশনের জন্য കീফ্রেম */
         @keyframes slideUpFade {
             from {
                 opacity: 0;
@@ -129,6 +128,17 @@
             color: #c9d1d9;
             font-size: 15px;
             text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* পোস্টের ভেতরে ছবি স্টাইল */
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            margin-top: 10px;
         }
 
         footer {
@@ -151,6 +161,7 @@
     <!-- ট্যাব মেনু বাটন -->
     <div class="tab-container">
         <button class="tab-btn active" onclick="openTab(event, 'about')">পরিচিতি</button>
+        <button class="tab-btn" onclick="openTab(event, 'posts')">আমার পোস্ট</button>
         <button class="tab-btn" onclick="openTab(event, 'friends')">বন্ধুরা</button>
         <button class="tab-btn" onclick="openTab(event, 'teachers')">শিক্ষকবৃন্দ</button>
         <button class="tab-btn" onclick="openTab(event, 'scout')">স্কাউটিং</button>
@@ -172,7 +183,30 @@
             </article>
         </div>
 
-        <!-- ২. বন্ধুরা ট্যাব -->
+        <!-- ২. ছবি ও টেক্সট পোস্ট ট্যাব (এখানে তুমি নতুন ছবি ও লেখা যুক্ত করতে পারবে) -->
+        <div id="posts" class="tab-content">
+            <article class="post-card">
+                <h2>আমার প্রথম ছবি ও লেখা পোস্ট</h2>
+                <span class="post-date">তারিখ: ২ নভেম্বর, ২০২৬</span>
+                <p class="post-text">
+                    এটি আমার ওয়েবসাইটের একটি ছবিসহ নতুন পোস্ট। এখানে আমি আমার পছন্দের ছবি এবং সাথে প্রয়োজনীয় লেখা বা টেক্সট যোগ করেছি। ভিজিটররা শুধু এই ছবি এবং লেখা দেখতে পাবে।
+                </p>
+                <!-- এখানে ছবির লিংক বসাতে হবে (ইন্টারনেটের যেকোনো ছবির লিংক বা তোমার আপলোড করা ছবির লিংক) -->
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="পোস্টের ছবি" class="post-image">
+            </article>
+
+            <!-- আরেকটি নতুন পোস্ট যুক্ত করতে চাইলে নিচের অংশটুকু কপি করে বসাতে পারো -->
+            <article class="post-card">
+                <h2>আরেকটি দারুন মুহূর্ত</h2>
+                <span class="post-date">তারিখ: ১ নভেম্বর, ২০২৬</span>
+                <p class="post-text">
+                    এখানে আরেকটি নতুন টেক্সট এবং ছবি পোস্টের উদাহরণ দেওয়া হলো। তুমি যখনই নতুন কিছু পোস্ট করতে চাইবে, ঠিক এভাবেই কোডে আরেকটি কার্ড বানিয়ে দিতে পারবে।
+                </p>
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="কোডিং ছবি" class="post-image">
+            </article>
+        </div>
+
+        <!-- ৩. বন্ধুরা ট্যাব -->
         <div id="friends" class="tab-content">
             <article class="post-card">
                 <h2>আমার সহপাঠী ও বন্ধুরা</h2>
@@ -183,7 +217,7 @@
             </article>
         </div>
 
-        <!-- ৩. শিক্ষকবৃন্দ ট্যাব -->
+        <!-- ৪. শিক্ষকবৃন্দ ট্যাব -->
         <div id="teachers" class="tab-content">
             <article class="post-card">
                 <h2>আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
@@ -194,7 +228,7 @@
             </article>
         </div>
 
-        <!-- ৪. স্কাউটিং ট্যাব -->
+        <!-- ৫. স্কাউটিং ট্যাব -->
         <div id="scout" class="tab-content">
             <article class="post-card">
                 <h2>বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
@@ -213,7 +247,7 @@
             </article>
         </div>
 
-        <!-- ৫. বিদ্যালয় ট্যাব -->
+        <!-- ৬. বিদ্যালয় ট্যাব -->
         <div id="school" class="tab-content">
             <article class="post-card">
                 <h2>আমার শিক্ষাপ্রতিষ্ঠান</h2>
@@ -224,7 +258,7 @@
             </article>
         </div>
 
-        <!-- ৬. শহর ও স্থান ট্যাব -->
+        <!-- ৭. শহর ও স্থান ট্যাব -->
         <div id="city" class="tab-content">
             <article class="post-card">
                 <h2>আমার শহর ও দর্শনীয় স্থান</h2>
@@ -241,7 +275,7 @@
         <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- ট্যাব পরিবর্তন ও নিখুঁত অ্যানিমেশন স্ক্রিপ্ট -->
+    <!-- ট্যাব পরিবর্তন ও অ্যানিমেশন স্ক্রিপ্ট -->
     <script>
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
