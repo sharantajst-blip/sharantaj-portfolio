@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শরণ তাজ - আমার পরিচিতি ও ব্লগ</title>
+    <title>Shoran Taj - Amar Parichiti O Blog</title>
     <style>
-        /* বেসিক ডিজাইন ও কালারফুল ডার্ক থিম */
+        /* Basic design and colorful dark theme */
         body {
             font-family: 'SolaimanLipi', Arial, sans-serif;
             background-color: #0d1117;
@@ -35,7 +36,7 @@
             margin-top: 8px;
         }
 
-        /* ট্যাব বাটনগুলোর কালারফুল ডিজাইন */
+        /* Tab button colorful design */
         .tab-container {
             display: flex;
             flex-wrap: wrap;
@@ -73,7 +74,7 @@
             box-shadow: 0 0 10px rgba(31, 111, 235, 0.5);
         }
 
-        /* কন্টেন্ট সেকশন ও শক্তিশালী অ্যানিমেশন */
+        /* Content section and strong animation */
         .container {
             max-width: 800px;
             margin: 25px auto;
@@ -131,7 +132,7 @@
             margin-bottom: 15px;
         }
 
-        /* পোস্টের ভেতরে ছবি ও ভিডিও স্টাইল */
+        /* Post image and video style */
         .post-image, .post-video {
             width: 100%;
             max-height: 450px;
@@ -154,131 +155,139 @@
 <body>
 
     <header>
-        <h1>স্বাগতম! আমি শরণ তাজ</h1>
-        <p>আমার জীবন, স্কুল, স্কাউটিং, মির্জাপুর ও টাঙ্গাইল শহর</p>
+        <h1>Shagotom! Ami Shoran Taj</h1>
+        <p>Amar Jibon, School, Scouting, Mirzapur O Tangail Shohor</p>
     </header>
 
-    <!-- ট্যাব মেনু বাটন -->
+    <!-- Tab menu button -->
     <div class="tab-container">
-        <button class="tab-btn active" onclick="openTab(event, 'about')">পরিচিতি</button>
-        <button class="tab-btn" onclick="openTab(event, 'posts')">আমার পোস্ট</button>
-        <button class="tab-btn" onclick="openTab(event, 'friends')">বন্ধুরা</button>
-        <button class="tab-btn" onclick="openTab(event, 'teachers')">শিক্ষকবৃন্দ</button>
-        <button class="tab-btn" onclick="openTab(event, 'scout')">স্কাউটিং</button>
-        <button class="tab-btn" onclick="openTab(event, 'school')">বিদ্যালয়</button>
-        <button class="tab-btn" onclick="openTab(event, 'city')">শহর ও স্থান</button>
+        <button class="tab-btn active" onclick="openTab(event, 'about')">Porichiti</button>
+        <button class="tab-btn" onclick="openTab(event, 'posts')">Amar Post</button>
+        <button class="tab-btn" onclick="openTab(event, 'friends')">Bondhura</button>
+        <button class="tab-btn" onclick="openTab(event, 'teachers')">Shikkhokbrindo</button>
+        <button class="tab-btn" onclick="openTab(event, 'scout')">Scouting</button>
+        <button class="tab-btn" onclick="openTab(event, 'school')">Biddaloy</button>
+        <button class="tab-btn" onclick="openTab(event, 'city')">Shohor O Sthan</button>
     </div>
 
-    <!-- মূল কন্টেন্ট সেকশন -->
+    <!-- Main content section -->
     <main class="container">
         
-        <!-- ১. পরিচিতি ট্যাব -->
+        <!-- 1. Porichiti Tab -->
         <div id="about" class="tab-content active">
             <article class="post-card">
-                <h2>আমার পরিচিতি</h2>
-                <span class="post-date">ব্যক্তিগত তথ্য</span>
+                <h2>Amar Porichiti</h2>
+                <span class="post-date">Bokti-goto Tottho</span>
                 <p class="post-text">
-                    আমার নাম <strong>শরণ তাজ</strong>। আমার বাবার নাম <strong>সোহেল মহসিন</strong> এবং মায়ের নাম <strong>ফাহমিদা তাজ</strong>। আমার বয়স ১৫ বছর। আমি <strong>মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়</strong>-এ পড়াশোনা করি। পড়ালেখার পাশাপাশি প্রযুক্তি, কোডিং এবং সমাজসেবামূলক বিভিন্ন কার্যক্রমে অংশ নিতে আমার ভীষণ ভালো লাগে। নিজের মেধা ও দক্ষতাকে কাজে লাগিয়ে সামনে আরও অনেক দূর এগিয়ে যাওয়ার স্বপ্ন দেখি।
+                    Amar nam <strong>Shoran Taj</strong>. Amar babar nam <strong>Sohel Mohsin</strong> ebong mayer nam <strong>Fahmida Taj</strong>. Amar boyosh 15 bochor. Ami <strong>Mirzapur Govt. S. K. Pilot Model High School</strong>-e porashona kori. Porashonar pasapashi projukti, coding ebong shomajsebamulok bibhinno karjokrome ongsho nite amar bhison bhalo lage. Nijer medha o dokhotake kaj lagiye shamne aro onek dur egiye jawar shopno dekhi.
                 </p>
             </article>
         </div>
 
-        <!-- ২. ছবি, ভিডিও ও টেক্সট পোস্ট ট্যাব -->
+        <!-- 2. Posts Tab (With detailed description for photos & video) -->
         <div id="posts" class="tab-content">
             
-            <!-- ভিডিও পোস্ট -->
+            <!-- Vido Post -->
             <article class="post-card">
-                <h2>স্টাডি ভ্লগ: This is My Life</h2>
-                <span class="post-date">ভিডিও ব্লগ ০১</span>
-                <p class="post-text">আমার দৈনন্দিন পড়াশোনা, কোডিং এবং ব্যস্ততার মাঝে কাটানো চমৎকার একটি পড়ার মুহূর্তের ভিডিও ক্লিপ। নিজের লক্ষ্য পূরণে এভাবেই প্রতিদিন নতুন কিছু শেখার চেষ্টা চালিয়ে যাচ্ছি।</p>
+                <h2>Study Vlog: This is My Life</h2>
+                <span class="post-date">Video Blog 01</span>
+                <p class="post-text">
+                    Amar diner porashona, coding ebong byostotar majhe katano chomotkar ekti porar muhurter video clip. Nijer lokkho puron ebebe protidin notun kichu shikar cheshta chalie jacchi. Ei vlogger matra amar porashonar dharake aro shundor kore tuleche ebong amake protidin notun utshaho jogay.
+                </p>
                 <video src="video_20261028_120801.mp4" controls class="post-video"></video>
             </article>
 
-            <!-- ছবি পোস্ট ১ -->
+            <!-- Bokti-goto Photo Post -->
             <article class="post-card">
-                <h2>বিশেষ একটি মুহূর্ত</h2>
-                <span class="post-date">ব্যক্তিগত স্মৃতির পাতা থেকে</span>
-                <p class="post-text">ক্যামেরাবন্দী করা আমার জীবনের সুন্দর ও স্মরণীয় একটি মুহূর্ত। এই ছবিটি আমার ভীষণ প্রিয়, যা অতীতের সুন্দর দিনগুলোর কথা মনে করিয়ে দেয়।</p>
-                <img src="IMG_20261101_213922.jpg" alt="ছবি ১" class="post-image">
+                <h2>Bokti-goto Smriti O Muhurto</h2>
+                <span class="post-date">Personal Memory (IMG_20261101_213922.jpg)</span>
+                <p class="post-text">
+                    Ei chobi-ti amar ekta khub e guruttopurno o shundor bokti-goto muhurter shakkhi. Jiboner cholar pothe ghothe jawa bibhinno shritike dhore rakhar jonno chobigulor bhumika oporishima. Ei muhurti amake amar otiter shundor din gulo mone koriye dey ebong bhabishshot er jonno pretona jogay.
+                </p>
+                <img src="IMG_20261101_213922.jpg" alt="Bokti-goto Chobi" class="post-image">
             </article>
 
-            <!-- ছবি পোস্ট ২ -->
+            <!-- Rabbit Piko Photo Post -->
             <article class="post-card">
-                <h2>স্মরণীয় একটি দিন</h2>
-                <span class="post-date">দৈনন্দিন জীবন</span>
-                <p class="post-text">জীবনের চলার পথে ঘটে যাওয়া সুন্দর কিছু ঘটনার একটি চমৎকার দৃশ্য। এই মুহূর্তটি আমার মনে দারুণ আনন্দের ছাপ ফেলে গেছে।</p>
-                <img src="IMG_20261030_141853.jpg" alt="ছবি ২" class="post-image">
+                <h2>Amar Priyo Pet Rabbit: Piko</h2>
+                <span class="post-date">Pet Animal Story (IMG_20261030_141853.jpg)</span>
+                <p class="post-text">
+                    Eti amar palito khub-i shundor ebong adorer pet rabbit, tar nam <strong>Piko</strong>! Piko khub chanchole o shundor shvaber ekti animal. Tar sathe shomoy katate amar eto bhalo lage je ta shobdo kore bujhano jabe na. Tar khabar dewa, tar chola-fera ebong tar abdar amar mon-ke shob shomoy anonde voriye rakhe. Piko amar poribarer ekjon sothik sodoshyo hate dariyeche.
+                </p>
+                <img src="IMG_20261030_141853.jpg" alt="Rabbit Piko" class="post-image">
             </article>
 
-            <!-- ছবি পোস্ট ৩ -->
+            <!-- Prokriti & Onnanno Chobi Post -->
             <article class="post-card">
-                <h2>প্রকৃতি ও পরিবেশের ছোঁয়া</h2>
-                <span class="post-date">বিশেষ মুহূর্ত</span>
-                <p class="post-text">চারপাশের চমৎকার পরিবেশের মাঝে কাটানো শান্ত ও স্নিগ্ধ সময়ের একটি দারুণ ছবি। প্রকৃতির সাথে সময় কাটাতে আমার সবসময়ই খুব ভালো লাগে।</p>
-                <img src="IMG_20260829_WA0036.jpg" alt="ছবি ৩" class="post-image">
+                <h2>Prokriti O Jiboner Chawa-Pawa</h2>
+                <span class="post-date">Nature & Special Moment (IMG_20260829_WA0036.jpg)</span>
+                <p class="post-text">
+                    Charpasher chomotkar poribesh o shanto porinoti niye ei chobi-ti tula hoyeche. Prokritir shathe somoy katate o tar shundorjo upovog korte amar khub bhalo lage. Ei chobi-ti dekhlei mon-pran juriye jay ebong ekta alada shanti anubhav hoy.
+                </p>
+                <img src="IMG_20260829_WA0036.jpg" alt="Prokriti Chobi" class="post-image">
             </article>
 
         </div>
 
-        <!-- ৩. বন্ধুরা ট্যাব -->
+        <!-- 3. Bondhura Tab -->
         <div id="friends" class="tab-content">
             <article class="post-card">
-                <h2>আমার সহপাঠী ও বন্ধুরা</h2>
-                <span class="post-date">স্কুলের বন্ধুরা</span>
+                <h2>Amar Sohopati O Bondhura</h2>
+                <span class="post-date">School Friends</span>
                 <p class="post-text">
-                    আমার অনেক সহপাঠী রয়েছে যাদের সাথে আমার স্কুল জীবন দারুণ ও আনন্দময় কাটছে। প্রতিদিন ক্লাসে যাওয়া, একসাথে পড়াশোনা করা, টিফিনের সময় আড্ডা দেওয়া এবং খেলাধুলা করার মাধ্যমে আমাদের বন্ধুত্ব দিন দিন আরও গভীর হচ্ছে। তাদের মধ্যে আমার বিশেষ সহপাঠী বন্ধুরা হলো—তাসিন, মহিদুর, মিজান, আরাফাত হোসেন মৃধা, আরাফ, কাইয়ুম, আহনাফ বিন মনওয়ার ইত্যাদি। সুখে-দুঃখে সবসময় পাশে থাকা এই বন্ধুদের সাথে কাটানো প্রতিটি মুহূর্ত আমার জীবনের অন্যতম সেরা প্রাপ্তি ও অমূল্য সম্পদ।
+                    Amar onek sohopati royeche jader sathe amar school jibon darun o anondomoy katchhe. Protidin clas-e jawa, ekshathe porashona kora, tifin-er shomoy adda dewa ebong kheladhula korar maddhome amader bondhutto din din aro govhir hocche. Tader moddhe amar bishesh sohopati bondhura holo—Tasin, Mohidur, Mizan, Arafat Hossain Mridha, Araf, Kaiyum, Ahnaf Bin Monowar itadi. Sukhe-dukkhe shob shomoy pashe thaka ei bondhuder sathe katano protiti muhurto amar jiboner onnyotomo shera prapti.
                 </p>
             </article>
         </div>
 
-        <!-- ৪. শিক্ষকবৃন্দ ট্যাব -->
+        <!-- 4. Shikkhokbrindo Tab -->
         <div id="teachers" class="tab-content">
             <article class="post-card">
-                <h2>আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
-                <span class="post-date">শিক্ষক ও শিক্ষা জীবন</span>
+                <h2>Amar Sroddheyo Shikkhokbrindo</h2>
+                <span class="post-date">Teachers & Education Life</span>
                 <p class="post-text">
-                    আমার বিভিন্ন শ্রদ্ধেয় শিক্ষক আছেন যাঁদের কাছ থেকে আমি নিয়মিত অনেক কিছু শিখতে পেরেছি এবং জীবনকে সঠিক পথে পরিচালনা করার প্রবল অনুপ্রেরণা পেয়েছি। আমাদের ইংরেজি শিক্ষক আব্দুল্লাহ আল-আহসান স্যারের অসাধারণ পাঠদান আমাকে ইংরেজি ভাষা শিখতে এবং এর ভিত মজবুত করতে দারুণভাবে সাহায্য করেছে। এছাড়া আমাদের স্কুলে আরও অনেক প্রথিতযশা শিক্ষক রয়েছেন যেমন—আমাদের ফরহাদ স্যার, সুমন স্যার, এনামুল স্যার সহ অনেকে। তাঁদের সবার আন্তরিক শিক্ষা, ধৈর্য এবং সঠিক দিকনির্দেশনা আমার ছাত্রজীবনকে সুন্দর ও সমৃদ্ধ করে তুলেছে।
+                    Amar bibhinno sroddheyo shikkhok achen jader kach theke ami niyomito onek kichu shikte perechi ebong jibonke sothik pothe porichalona korar provol onuponera peyechi. Amader english teacher Abdullah Al-Ahsan sir-er sadharon pathdan amake english vasha shikte ebong tar vit mojbut korte darun vabe sahajjo koreche. Echaro amader school-e aro onek protithojosha shikkhok royeche jemon—Farhad sir, Suman sir, Enamul sir shoho oneke. Tader shobar antorik shikkha, dhorjo o sothik diknirdeshona amar chatrojibonke shundor o somriddho kore tuleche.
                 </p>
             </article>
         </div>
 
-        <!-- ৫. স্কাউটিং ট্যাব -->
+        <!-- 5. Scouting Tab -->
         <div id="scout" class="tab-content">
             <article class="post-card">
-                <h2>বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
-                <span class="post-date">শৃঙ্খলা, সেবা ও নেতৃত্ব</span>
+                <h2>Bangladesh Scouts O Amar Ovigota</h2>
+                <span class="post-date">Discipline, Service & Leadership</span>
                 <p class="post-text">
-                    আমি গর্বের সাথে বাংলাদেশ স্কাউটস-এর একজন সদস্য হিসেবে যুক্ত আছি এবং আমাদের স্কুলের স্কাউট ইউনিটে সফলভাবে <strong>উপদল নেতা (Patrol Leader)</strong> এর দায়িত্ব পালন করেছি। স্কাউটিং কেবল একটি সহশিক্ষা কার্যক্রম নয়, এটি মানুষের মাঝে শৃঙ্খলা, সততা, আত্মনির্ভরশীলতা এবং দেশপ্রেম গড়ে তোলার এক দুর্দান্ত মাধ্যম। উপদল নেতা হিসেবে কাজ করার সুবাদে আমার মধ্যে নেতৃত্ব দেওয়ার ক্ষমতা, দলগতভাবে কাজ করার মানসিকতা এবং যেকোনো কঠিন পরিস্থিতিতে দ্রুত সঠিক সিদ্ধান্ত নেওয়ার দক্ষতা তৈরি হয়েছে। বিভিন্ন ক্যাম্পিং, হাইকিং, সমাজসেবামূলক কাজ এবং দুর্যোগ মোকাবিলায় স্কাউট দলের সাথে কাজ করার অভিজ্ঞতা আমার মানসিক গঠনে অত্যন্ত গুরুত্বপূর্ণ ভূমিকা রেখেছে।
+                    Ami gorber shathe Bangladesh Scouts-er ekjon sodoshyo hishebe jukto achi ebong amader school-er scout unit-e shofolvabe <strong>Patrol Leader</strong> er dayitto palon korechi. Scouting kebol ekti sohiksha karjokrom noy, eti manuser majhe shikkhon, shotota, atmanirvorশীলota o deshprem gore tolar ek durdonto maddhom. Patrol leader hishebe kaj korar subade amar moddhe notritwo dewar khomota, dolgoth vabe kaj korar manoshikota o je kono kothin poristhitite druto sothik siddhanto dewar dokhota toiri hoyeche.
                 </p>
             </article>
 
             <article class="post-card">
-                <h2>আমার শ্রদ্ধেয় স্কাউট লিডার</h2>
-                <span class="post-date">মোহাম্মদ আজহারুল ইসলাম স্যার</span>
+                <h2>Amar Sroddheyo Scout Leader</h2>
+                <span class="post-date">Mohammad Azharul Islam Sir</span>
                 <p class="post-text">
-                    আমাদের স্কাউট ইউনিটের মূল চালিকাশক্তি ও প্রাণপুরুষ হলেন আমাদের শ্রদ্ধেয় ইউনিট লিডার <strong>মোহাম্মদ আজহারুল ইসলাম</strong> স্যার। তিনি বর্তমানে সরকারি চাকরি থেকে অবসরে থাকলেও তাঁর ক্লান্তিহীন পরিশ্রম এবং স্কাউট আন্দোলনের প্রতি ভালোবাসা একটুও কমে যায়নি। অবসরে যাওয়ার পরও তিনি আমাদের মতো তরুণ স্কাউটদের উৎসাহ ও দিকনির্দেশনা দিয়ে যাচ্ছেন এবং সবসময় বিদ্যালয়ের স্কাউট কার্যক্রমকে এগিয়ে নিতে নিরলসভাবে কাজ করে যাচ্ছেন। একই সাথে তিনি অত্যন্ত দক্ষতার সাথে <strong>মির্জাপুর উপজেলা স্কাউটস-এর সম্পাদক</strong> হিসেবে দায়িত্ব পালন করে পুরো এলাকার স্কাউটিং অঙ্গনকে দারুণভাবে নেতৃত্ব দিয়ে চলেছেন।
+                    Amader scout unit-er mul chalkashokti o pranpurush holen amader sroddheyo unit leader <strong>Mohammad Azharul Islam</strong> sir. Tini bortomane govt. job theke oboshere thakao tar klantihin porishrom o scout andoloner proti valobasha ektu-o kome nai. Obosher-e jawar poreo tini amader moto torun scout-der utshaho o diknirdeshona diye jacchen ebong shob shomoy biddaloyer scout karjokromke egiye nite nirolosh vabe kaj kore jacchen.
                 </p>
             </article>
         </div>
 
-        <!-- ৬. বিদ্যালয় ট্যাব -->
+        <!-- 6. Biddaloy Tab -->
         <div id="school" class="tab-content">
             <article class="post-card">
-                <h2>আমার শিক্ষাপ্রতিষ্ঠান</h2>
-                <span class="post-date">মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়</span>
+                <h2>Amar Shikkhaprotisthan</h2>
+                <span class="post-date">Mirzapur Govt. S. K. Pilot Model High School</span>
                 <p class="post-text">
-                    আমার শিক্ষাপ্রতিষ্ঠান <strong>মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়</strong> টাঙ্গাইল জেলার একটি অত্যন্ত ঐতিহ্যবাহী ও সুনামধন্য বিদ্যাপীঠ। এই স্কুলের বিশাল সবুজ ক্যাম্পাস, সুশৃঙ্খল পরিবেশ এবং চমৎকার পঠন-পাঠনের ব্যবস্থা শিক্ষার্থীদের মেধা ও মনন বিকাশে অত্যন্ত গুরুত্বপূর্ণ ভূমিকা পালন করে আসছে। ঐতিহ্য ও আধুনিকতার এক অপূর্ব সমন্বয়ে গড়ে ওঠা এই স্কুলে পড়াশোনা করতে পেরে এবং এর গর্বিত অংশ হতে পেরে আমি সত্যি ভীষণ আনন্দিত ও গর্বিত। এখানকার শিক্ষকমণ্ডলী ও মনোরম পরিবেশ আমাদের শুধু ভালো ছাত্র নয়, বরং একজন আদর্শ মানুষ হিসেবে গড়ে ওঠার পথ দেখায়।
+                    Amar shikkhaprotisthan <strong>Mirzapur Govt. S. K. Pilot Model High School</strong> Tangail jelar ekti ottonto oitihashik o sunamdhonno biddapith. Ei school-er bishal sobuj campus, sushringhol poribesh o chomotkar pathan-pathaner bebostha shikkharthider medha o monon bikashe ottonto guruttopurno vumika palon kore asche. Oitihjo o adhunikotar ek opurbo shomonnoye gore otha ei school-e porashona korte pere ebong er gorvito ongsho hote pere ami sotti bhison anondito o gorvito.
                 </p>
             </article>
         </div>
 
-        <!-- ৭. শহর ও স্থান ট্যাব -->
+        <!-- 7. Shohor O Sthan Tab -->
         <div id="city" class="tab-content">
             <article class="post-card">
-                <h2>আমার শহর ও দর্শনীয় স্থান</h2>
-                <span class="post-date">মির্জাপুর ও টাঙ্গাইল পরিচিতি</span>
+                <h2>Amar Shohor O Dorshoniyo Sthan</h2>
+                <span class="post-date">Mirzapur O Tangail Porichiti</span>
                 <p class="post-text">
-                    আমি মূলত টাঙ্গাইল জেলার ঐতিহাসিক ও সুন্দর জনপদ <strong>মির্জাপুর</strong>-এ বসবাস করি। আমাদের মির্জাপুর শহরটি যেমন সুন্দর, তেমনি এর আশেপাশে রয়েছে বেশ কিছু বিখ্যাত দর্শনীয় স্থান ও ঐতিহাসিক স্থাপনা। এর মধ্যে দানবীর রণদাপ্রসাদ সাহার প্রতিষ্ঠিত বিখ্যাত ও জনকল্যাণমুখী <strong>কুমুদিনী কমপ্লেক্স</strong>, এবং মোঘল আমলের দৃষ্টিনন্দন স্থাপত্যের জন্য পরিচিত ঐতিহাসিক <strong>মহেড়া জমিদার বাড়ি</strong> অন্যতম, যা দেখতে প্রতিদিন দেশের বিভিন্ন প্রান্ত থেকে হাজার হাজার পর্যটক ও দর্শনার্থী আসেন। এছাড়া সমগ্র <strong>টাঙ্গাইল জেলা</strong> তার সমৃদ্ধ সংস্কৃতি, ঐতিহ্যবাহী তাঁতের শাড়ি, পোড়াবাড়ির চমচম এবং আটিয়া জামে মসজিদের জন্য দেশজুড়ে সমাদৃত।
+                    Ami muloto Tangail jelar oitihashik o shundor jonopod <strong>Mirzapur</strong>-e bosobas kori. Amader Mirzapur shohor-ti jemoni shundor, temni er ashepashe royeche kheyal korar moto bibhinno dorshoniyo sthan o oitihashik sthapona. Er moddhe Danbir Ranadaprosad Saha-r protishthito vikhyato <strong>Kumudini Complex</strong>, ebong Moghul amoler drishontonin sthapotter jonno porichito oitihashik <strong>Mohera Zamindar Bari</strong> onnyotomo, ja dekhte protidin desher bibhinno pranto theke hazar hazar porjoton ashen.
                 </p>
             </article>
         </div>
@@ -286,10 +295,10 @@
     </main>
 
     <footer>
-        <p>&copy; ২০২৬ শরণ তাজ। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>&copy; 2026 Shoran Taj. Shorvoshotto shongrokhito.</p>
     </footer>
 
-    <!-- ট্যাব পরিবর্তন ও অ্যানিমেশন স্ক্রিপ্ট -->
+    <!-- Tab change and animation script -->
     <script>
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
@@ -310,4 +319,4 @@
     </script>
 
 </body>
-</html>
+</html>   
