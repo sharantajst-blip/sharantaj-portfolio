@@ -77,12 +77,13 @@
 
         /* Individual Colorful Buttons */
         .tab-btn:nth-child(1) { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
-        .tab-btn:nth-child(2) { background: linear-gradient(45deg, #f7b733, #fc4a1a); }
-        .tab-btn:nth-child(3) { background: linear-gradient(45deg, #11998e, #38ef7d); }
-        .tab-btn:nth-child(4) { background: linear-gradient(45deg, #00b4db, #0083b0); }
-        .tab-btn:nth-child(5) { background: linear-gradient(45deg, #8e2de2, #4a00e0); }
-        .tab-btn:nth-child(6) { background: linear-gradient(45deg, #f80759, #bc4e9c); }
-        .tab-btn:nth-child(7) { background: linear-gradient(45deg, #ff8008, #ffc837); }
+        .tab-btn:nth-child(2) { background: linear-gradient(45deg, #ff007f, #7928ca); }
+        .tab-btn:nth-child(3) { background: linear-gradient(45deg, #f7b733, #fc4a1a); }
+        .tab-btn:nth-child(4) { background: linear-gradient(45deg, #11998e, #38ef7d); }
+        .tab-btn:nth-child(5) { background: linear-gradient(45deg, #00b4db, #0083b0); }
+        .tab-btn:nth-child(6) { background: linear-gradient(45deg, #8e2de2, #4a00e0); }
+        .tab-btn:nth-child(7) { background: linear-gradient(45deg, #f80759, #bc4e9c); }
+        .tab-btn:nth-child(8) { background: linear-gradient(45deg, #ff8008, #ffc837); }
 
         .tab-btn:hover {
             transform: translateY(-2px);
@@ -115,7 +116,7 @@
             animation: fadeIn 0.4s ease-out forwards;
         }
 
-        /* Colorful Content Cards */
+        /* Content Cards */
         .post-card {
             background: #ffffff;
             padding: 25px;
@@ -123,7 +124,6 @@
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             border-top: 6px solid #ff416c;
-            position: relative;
         }
 
         .post-card h2 {
@@ -144,6 +144,30 @@
             font-size: 16px;
             color: #4a5568;
             text-align: justify;
+        }
+
+        /* Fast Loading Pure Media Gallery */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
         }
 
         /* Welcome Page Hero Design */
@@ -186,6 +210,7 @@
     <!-- Navigation Ribbon Bar -->
     <div class="tab-container">
         <button class="tab-btn active" onclick="openTab(event, 'welcome')">ওয়েলকাম</button>
+        <button class="tab-btn" onclick="openTab(event, 'gallery')">গ্যালারি</button>
         <button class="tab-btn" onclick="openTab(event, 'about')">পরিচিতি</button>
         <button class="tab-btn" onclick="openTab(event, 'friends')">বন্ধুরা</button>
         <button class="tab-btn" onclick="openTab(event, 'teachers')">শিক্ষকবৃন্দ</button>
@@ -196,7 +221,7 @@
 
     <main class="container">
         
-        <!-- Welcome Page Tab -->
+        <!-- Welcome Tab -->
         <div id="welcome" class="tab-content active">
             <article class="post-card welcome-hero">
                 <h2>আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
@@ -205,6 +230,24 @@
                     নমস্কার ও শুভেচ্ছা! আমার এই নিজস্ব রঙিন ওয়েবসাইটে আপনাকে স্বাগতম। এই ওয়েবসাইটের মাধ্যমে আপনি আমার ব্যক্তিগত জীবনের টুকরো গল্প, আমার প্রিয় স্কুল, আমার স্কাউটিং জীবনের নানা অভিজ্ঞতা, সহপাঠী বন্ধু ও সম্মানিত শিক্ষকদের সম্পর্কে জানতে পারবেন। এছাড়া আমার প্রিয় শহর মির্জাপুর ও টাঙ্গাইলের সুন্দর তথ্যগুলো এখানে সুন্দর করে সাজানো রয়েছে। ওপরের রঙিন ট্যাবগুলো থেকে আপনার পছন্দের বিষয়টিতে ক্লিক করে সবকিছু দেখে নিন!
                 </p>
             </article>
+        </div>
+
+        <!-- Pure Image & Video Gallery Tab (Fast Loading, No Text) -->
+        <div id="gallery" class="tab-content">
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="IMG-20260829-WA0036.jpg" alt="Gallery Image 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_20261030_141853.jpg" alt="Gallery Image 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_20261101_213922.jpg" alt="Gallery Image 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <video src="video_20261028_120801.mp4" controls preload="metadata"></video>
+                </div>
+            </div>
         </div>
 
         <!-- 1. Porichiti Tab -->
