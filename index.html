@@ -3,89 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শরণ তাজ - আমার পরিচিতি ও ব্লগ</title>
+    <title>শরণ তাজ - আমার পরিচিতি ও ওয়েবসাইট</title>
     <style>
-        body {
-            font-family: 'SolaimanLipi', Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'SolaimanLipi', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3748;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        header {
+        /* Rainbow Ribbon Header */
+        .ribbon-header {
+            background: linear-gradient(90deg, #ff4e50, #f9d423, #e1eec3, #f05053, #e1eec3);
+            background-size: 300% 300%;
+            animation: ribbonMove 8s ease infinite;
+            padding: 30px 20px;
             text-align: center;
-            padding: 35px 20px;
-            background: linear-gradient(135deg, #1f6feb, #8957e5);
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-bottom: 5px solid #ffffff;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        @keyframes ribbonMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        header p {
-            color: #f0f6fc;
-            font-size: 14px;
-            margin-top: 8px;
+        .ribbon-header h1 {
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
         }
 
+        .ribbon-header p {
+            font-size: 16px;
+            margin-top: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Colorful Tab Ribbon */
         .tab-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #161b22;
+            background: #ffffff;
             padding: 12px;
-            gap: 8px;
-            border-bottom: 2px solid #30363d;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .tab-btn {
-            background-color: #21262d;
-            color: #8b949e;
-            border: 1px solid #30363d;
-            padding: 8px 16px;
-            font-size: 13px;
-            border-radius: 6px;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
+            color: #ffffff;
             transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
+        /* Individual Colorful Buttons */
+        .tab-btn:nth-child(1) { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+        .tab-btn:nth-child(2) { background: linear-gradient(45deg, #f7b733, #fc4a1a); }
+        .tab-btn:nth-child(3) { background: linear-gradient(45deg, #11998e, #38ef7d); }
+        .tab-btn:nth-child(4) { background: linear-gradient(45deg, #00b4db, #0083b0); }
+        .tab-btn:nth-child(5) { background: linear-gradient(45deg, #8e2de2, #4a00e0); }
+        .tab-btn:nth-child(6) { background: linear-gradient(45deg, #f80759, #bc4e9c); }
+        .tab-btn:nth-child(7) { background: linear-gradient(45deg, #ff8008, #ffc837); }
+
         .tab-btn:hover {
-            background-color: #30363d;
-            color: #c9d1d9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
         .tab-btn.active {
-            background-color: #1f6feb;
-            color: #ffffff;
-            border-color: #1f6feb;
-            box-shadow: 0 0 10px rgba(31, 111, 235, 0.5);
+            transform: scale(1.05);
+            outline: 3px solid #ffffff;
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
         }
 
         .container {
-            max-width: 800px;
-            margin: 25px auto;
+            max-width: 850px;
+            margin: 30px auto;
             padding: 0 15px;
         }
 
-        @keyframes slideUpFade {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .tab-content {
@@ -94,69 +112,81 @@
 
         .tab-content.active {
             display: block;
-            animation: slideUpFade 0.5s ease-in-out forwards;
+            animation: fadeIn 0.4s ease-out forwards;
         }
 
+        /* Colorful Content Cards */
         .post-card {
-            background-color: #161b22;
-            padding: 22px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-            border-left: 5px solid #8957e5;
-            border: 1px solid #30363d;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 6px solid #ff416c;
+            position: relative;
         }
 
         .post-card h2 {
-            margin-top: 0;
-            font-size: 20px;
-            color: #58a6ff;
+            font-size: 22px;
+            color: #2b6cb0;
+            margin-bottom: 5px;
         }
 
         .post-date {
-            font-size: 12px;
-            color: #8b949e;
-            display: block;
-            margin-bottom: 12px;
+            font-size: 13px;
+            color: #718096;
             font-weight: bold;
-        }
-
-        .post-text {
-            color: #c9d1d9;
-            font-size: 15px;
-            text-align: justify;
+            display: block;
             margin-bottom: 15px;
         }
 
-        .post-image, .post-video {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-            margin-top: 10px;
+        .post-text {
+            font-size: 16px;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        /* Welcome Page Hero Design */
+        .welcome-hero {
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border-top: 6px solid #38ef7d;
+        }
+
+        .welcome-hero h2 {
+            font-size: 26px;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .welcome-hero p {
+            font-size: 17px;
+            line-height: 1.8;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #161b22;
-            color: #8b949e;
-            font-size: 13px;
-            border-top: 1px solid #30363d;
+            background: #ffffff;
+            color: #718096;
+            font-size: 14px;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>স্বাগতম! আমি শরণ তাজ</h1>
-        <p>আমার জীবন, স্কুল, স্কাউটিং, মির্জাপুর ও টাঙ্গাইল শহর</p>
+    <!-- Ribbon Header -->
+    <header class="ribbon-header">
+        <h1>🌈 স্বাগতম আমার রঙিন ওয়েবসাইটে!</h1>
+        <p>শরণ তাজ | আমার জীবন, স্কুল, স্কাউটিং, মির্জাপুর ও টাঙ্গাইল শহর</p>
     </header>
 
+    <!-- Navigation Ribbon Bar -->
     <div class="tab-container">
-        <button class="tab-btn active" onclick="openTab(event, 'about')">পরিচিতি</button>
-        <button class="tab-btn" onclick="openTab(event, 'posts')">আমার পোস্ট</button>
+        <button class="tab-btn active" onclick="openTab(event, 'welcome')">ওয়েলকাম</button>
+        <button class="tab-btn" onclick="openTab(event, 'about')">পরিচিতি</button>
         <button class="tab-btn" onclick="openTab(event, 'friends')">বন্ধুরা</button>
         <button class="tab-btn" onclick="openTab(event, 'teachers')">শিক্ষকবৃন্দ</button>
         <button class="tab-btn" onclick="openTab(event, 'scout')">স্কাউটিং</button>
@@ -166,8 +196,20 @@
 
     <main class="container">
         
-        <div id="about" class="tab-content active">
-            <article class="post-card">
+        <!-- Welcome Page Tab -->
+        <div id="welcome" class="tab-content active">
+            <article class="post-card welcome-hero">
+                <h2>আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
+                <span class="post-date">শরণ তাজের অফিসিয়াল পোর্টফোলিও</span>
+                <p class="post-text">
+                    নমস্কার ও শুভেচ্ছা! আমার এই নিজস্ব রঙিন ওয়েবসাইটে আপনাকে স্বাগতম। এই ওয়েবসাইটের মাধ্যমে আপনি আমার ব্যক্তিগত জীবনের টুকরো গল্প, আমার প্রিয় স্কুল, আমার স্কাউটিং জীবনের নানা অভিজ্ঞতা, সহপাঠী বন্ধু ও সম্মানিত শিক্ষকদের সম্পর্কে জানতে পারবেন। এছাড়া আমার প্রিয় শহর মির্জাপুর ও টাঙ্গাইলের সুন্দর তথ্যগুলো এখানে সুন্দর করে সাজানো রয়েছে। ওপরের রঙিন ট্যাবগুলো থেকে আপনার পছন্দের বিষয়টিতে ক্লিক করে সবকিছু দেখে নিন!
+                </p>
+            </article>
+        </div>
+
+        <!-- 1. Porichiti Tab -->
+        <div id="about" class="tab-content">
+            <article class="post-card" style="border-top-color: #ff416c;">
                 <h2>আমার পরিচিতি</h2>
                 <span class="post-date">ব্যক্তিগত তথ্য</span>
                 <p class="post-text">
@@ -176,52 +218,9 @@
             </article>
         </div>
 
-        <div id="posts" class="tab-content">
-            
-            <!-- ১. প্রথম পোস্ট: ব্যক্তিগত ছবি/সেলফি (IMG_20260829_WA0036.jpg) -->
-            <article class="post-card">
-                <h2>ব্যক্তিগত স্মৃতি ও মুহূর্ত</h2>
-                <span class="post-date">ব্যক্তিগত ছবি</span>
-                <p class="post-text">
-                    এই ছবিটি আমার একটা খুব-ই গুরুত্বপূর্ণ ও সুন্দর ব্যক্তিগত মুহূর্তের সাক্ষী। জীবনের চলার পথে ঘটে যাওয়া বিভিন্ন স্মৃতিকে ধরে রাখার জন্য ছবিগুলোর ভূমিকা অপরিসীম। এই মুহূর্ত আমাকে আমার অতীতের দিনগুলো মনে করিয়ে দেয় এবং ভবিষ্যতের জন্য প্রেরণা জোগায়।
-                </p>
-                <img src="IMG_20260829_WA0036.jpg" alt="ব্যক্তিগত ছবি" class="post-image">
-            </article>
-
-            <!-- ২. দ্বিতীয় পোস্ট: পোষা খরগোশ পিকো (IMG_20261030_141853.jpg) -->
-            <article class="post-card">
-                <h2>আমার প্রিয় পোষা খরগোশ: পিকো</h2>
-                <span class="post-date">পোষা প্রাণী (পিকো)</span>
-                <p class="post-text">
-                    এটি আমার পালিলে অত্যন্ত সুন্দর ও আদরের পোষা খরগোশ, যার নাম পিকো! পিকো খুব চঞ্চল ও সুন্দর স্বভাবের একটি প্রাণী। তার সাথে সময় কাটাতে আমার এত ভালো লাগে যা শব্দ করে বোঝানো যাবে না। তার খাবার দেওয়া, তার চলাফেরা এবং তার আবদার আমার মনকে সব সময় আনন্দে ভরিয়ে রাখে। পিকো আমার পরিবারের একজন সঠিক সদস্য হয়ে দাঁড়িয়েছে।
-                </p>
-                <img src="IMG_20261030_141853.jpg" alt="খরগোশ পিকো" class="post-image">
-            </article>
-
-            <!-- ৩. তৃতীয় পোস্ট: স্টাডি ভ্লগ ভিডিও (video_20261028_120801.mp4) -->
-            <article class="post-card">
-                <h2>স্টাডি ভ্লগ: দিস ইজ মাই লাইফ</h2>
-                <span class="post-date">ভিডিও ব্লগ ০১</span>
-                <p class="post-text">
-                    আমার দৈনন্দিন পড়াশোনা, কোডিং এবং ব্যস্ততার মাঝে কাটানো চমৎকার একটি পড়ার মুহূর্তের ভিডিও ক্লিপ। নিজের লক্ষ্য পূরণ করতে এভাবে প্রতিদিন নতুন কিছু শেখার চেষ্টা চালিয়ে যাচ্ছি। এই ভিডিওটি আমার পড়াশোনার ধারাকে আরও সুন্দর করে তুলেছে এবং আমাকে প্রতিদিন নতুন উৎসাহ জোগায়।
-                </p>
-                <video src="video_20261028_120801.mp4" controls class="post-video"></video>
-            </article>
-
-            <!-- ৪. চতুর্থ পোস্ট: সার্টিফিকেট (IMG_20261101_213922.jpg) -->
-            <article class="post-card">
-                <h2>বিশেষ অর্জন ও সার্টিফিকেট</h2>
-                <span class="post-date">অর্জনের স্মৃতি ও সার্টিফিকেট</span>
-                <p class="post-text">
-                    বিজ্ঞান ক্যাম্প বা বিশেষ কোনো প্রতিযোগিতায় অংশগ্রহণের এই সার্টিফিকেট ও অর্জনের স্মৃতি আমার কাজের স্বীকৃতিস্বরূপ। এই ধরনের অর্জন আমাকে সামনে আরও বড় কিছু করার উৎসাহ ও অনুপ্রেরণা জোগায়।
-                </p>
-                <img src="IMG_20261101_213922.jpg" alt="সার্টিফিকেট ছবি" class="post-image">
-            </article>
-
-        </div>
-
+        <!-- 2. Bondhura Tab -->
         <div id="friends" class="tab-content">
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #fc4a1a;">
                 <h2>আমার সহপাঠী ও বন্ধুরা</h2>
                 <span class="post-date">স্কুলের বন্ধুরা</span>
                 <p class="post-text">
@@ -230,8 +229,9 @@
             </article>
         </div>
 
+        <!-- 3. Teachers Tab -->
         <div id="teachers" class="tab-content">
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #11998e;">
                 <h2>আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
                 <span class="post-date">শিক্ষক ও শিক্ষা জীবন</span>
                 <p class="post-text">
@@ -240,8 +240,9 @@
             </article>
         </div>
 
+        <!-- 4. Scout Tab -->
         <div id="scout" class="tab-content">
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #0083b0;">
                 <h2>বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
                 <span class="post-date">শৃঙ্খলা, সেবা ও নেতৃত্ব</span>
                 <p class="post-text">
@@ -249,7 +250,7 @@
                 </p>
             </article>
 
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #0083b0;">
                 <h2>আমার শ্রদ্ধেয় স্কাউট লিডার</h2>
                 <span class="post-date">মোহাম্মদ আজহারুল ইসলাম স্যার</span>
                 <p class="post-text">
@@ -258,8 +259,9 @@
             </article>
         </div>
 
+        <!-- 5. Biddaloy Tab -->
         <div id="school" class="tab-content">
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #8e2de2;">
                 <h2>আমার শিক্ষাপ্রতিষ্ঠান</h2>
                 <span class="post-date">মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়</span>
                 <p class="post-text">
@@ -268,8 +270,9 @@
             </article>
         </div>
 
+        <!-- 6. City Tab -->
         <div id="city" class="tab-content">
-            <article class="post-card">
+            <article class="post-card" style="border-top-color: #f80759;">
                 <h2>আমার শহর ও দর্শনীয় স্থান</h2>
                 <span class="post-date">মির্জাপুর ও টাঙ্গাইল পরিচিতি</span>
                 <p class="post-text">
