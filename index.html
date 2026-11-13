@@ -17,25 +17,78 @@
             color: #102a43;
             line-height: 1.8;
             min-height: 100vh;
-            animation: pageBackgroundShift 15s ease infinite alternate;
+            overflow-x: hidden;
+            position: relative;
+            animation: pageBackgroundShift 12s ease infinite alternate;
         }
 
         @keyframes pageBackgroundShift {
-            0% { background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); }
-            50% { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
-            100% { background: linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 100%); }
+            0% { background: linear-gradient(135deg, #f0f4f8 0%, #e0e7ff 100%); }
+            33% { background: linear-gradient(135deg, #e0f2fe 0%, #fae8ff 100%); }
+            66% { background: linear-gradient(135deg, #dcfce7 0%, #e0f2fe 100%); }
+            100% { background: linear-gradient(135deg, #fef3c7 0%, #ede9fe 100%); }
         }
 
-        /* Professional Header with Dynamic Ribbon Animation */
+        /* Floating Ambient Orbs in Background */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-shapes span {
+            position: absolute;
+            display: block;
+            border-radius: 50%;
+            filter: blur(45px);
+            opacity: 0.45;
+            animation: floatOrb 18s infinite ease-in-out alternate;
+        }
+
+        .bg-shapes span:nth-child(1) {
+            width: 300px; height: 300px;
+            background: #ff4e50;
+            top: -50px; left: -50px;
+            animation-duration: 14s;
+        }
+
+        .bg-shapes span:nth-child(2) {
+            width: 350px; height: 350px;
+            background: #3494e6;
+            bottom: 10%; right: -80px;
+            animation-duration: 18s;
+            animation-delay: 2s;
+        }
+
+        .bg-shapes span:nth-child(3) {
+            width: 250px; height: 250px;
+            background: #24fe41;
+            top: 40%; left: 15%;
+            animation-duration: 16s;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -60px) scale(1.15); }
+            100% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        /* Professional Header with Dynamic Ribbon & Floating Particles */
         .ribbon-header {
-            background: linear-gradient(270deg, #ff4e50, #f9d423, #24fe41, #3494e6, #ec38bc);
-            background-size: 500% 500%;
-            animation: headerRibbonAnim 10s ease infinite;
-            padding: 40px 20px;
+            background: linear-gradient(270deg, #ff4e50, #f9d423, #24fe41, #3494e6, #ec38bc, #8e2de2);
+            background-size: 600% 600%;
+            animation: headerRibbonAnim 8s ease infinite;
+            padding: 48px 20px;
             text-align: center;
             color: #ffffff;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            border-bottom: 6px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border-bottom: 6px solid rgba(255, 255, 255, 0.85);
             position: relative;
             overflow: hidden;
         }
@@ -46,24 +99,60 @@
             100% { background-position: 0% 50%; }
         }
 
-        .ribbon-header h1 {
-            font-size: 36px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            font-weight: bold;
-            letter-spacing: 1px;
-            animation: titleBounce 2s ease-in-out infinite alternate;
+        /* Animated Sparkles inside Header */
+        .header-particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
         }
 
-        @keyframes titleBounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-4px); }
+        .header-particles i {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: riseUp 6s infinite linear;
+        }
+
+        .header-particles i:nth-child(1) { width: 12px; height: 12px; left: 10%; bottom: -20px; animation-duration: 5s; }
+        .header-particles i:nth-child(2) { width: 18px; height: 18px; left: 25%; bottom: -20px; animation-duration: 7s; animation-delay: 1s; }
+        .header-particles i:nth-child(3) { width: 10px; height: 10px; left: 45%; bottom: -20px; animation-duration: 4.5s; animation-delay: 2s; }
+        .header-particles i:nth-child(4) { width: 22px; height: 22px; left: 65%; bottom: -20px; animation-duration: 8s; animation-delay: 0.5s; }
+        .header-particles i:nth-child(5) { width: 14px; height: 14px; left: 85%; bottom: -20px; animation-duration: 6s; animation-delay: 1.5s; }
+
+        @keyframes riseUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-160px) scale(1.3); opacity: 0; }
+        }
+
+        .ribbon-header h1 {
+            font-size: 38px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            animation: titleFloatGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleFloatGlow {
+            0% { transform: translateY(0) scale(1); text-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+            100% { transform: translateY(-6px) scale(1.03); text-shadow: 0 8px 20px rgba(255,255,255,0.6); }
         }
 
         .ribbon-header p {
-            font-size: 17px;
-            margin-top: 8px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-size: 18px;
+            margin-top: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.35);
             font-weight: 500;
+            position: relative;
+            z-index: 2;
+            animation: subtitleFadeIn 1.2s ease-out;
+        }
+
+        @keyframes subtitleFadeIn {
+            from { opacity: 0; letter-spacing: 3px; }
+            to { opacity: 1; letter-spacing: 0.5px; }
         }
 
         /* Colorful Sticky Tab Ribbon */
@@ -71,11 +160,11 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             padding: 15px;
             gap: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -85,14 +174,32 @@
             border: none;
             padding: 11px 22px;
             font-size: 14px;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
             color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
             position: relative;
             overflow: hidden;
+        }
+
+        /* Light Sweep Effect on Buttons */
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+            transform: skewX(-25deg);
+            animation: btnShine 4s infinite;
+        }
+
+        @keyframes btnShine {
+            0%, 70% { left: -100%; }
+            100% { left: 150%; }
         }
 
         /* Unique Vibrant Gradients for Buttons */
@@ -106,32 +213,26 @@
         .tab-btn:nth-child(8) { background: linear-gradient(135deg, #3a7bd5, #3a6073); }
 
         .tab-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.28);
         }
 
         .tab-btn.active {
-            transform: scale(1.08);
-            outline: 4px solid #102a43;
-            box-shadow: 0 0 20px rgba(0,0,0,0.35);
+            transform: scale(1.1);
+            outline: 3px solid #102a43;
+            animation: activePulse 1.8s infinite;
+        }
+
+        @keyframes activePulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 42, 67, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 42, 67, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 42, 67, 0); }
         }
 
         .container {
-            max-width: 850px;
+            max-width: 860px;
             margin: 35px auto;
             padding: 0 20px;
-        }
-
-        /* Professional Smooth Page Entry Animation */
-        @keyframes proSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.98);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
         }
 
         .tab-content {
@@ -140,22 +241,66 @@
 
         .tab-content.active {
             display: block;
-            animation: proSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Content Cards */
+        /* Staggered Card Reveal Animation */
+        @keyframes cardPopIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.94);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .tab-content.active .post-card,
+        .tab-content.active .gallery-item {
+            opacity: 0;
+            animation: cardPopIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .tab-content.active .post-card:nth-child(1),
+        .tab-content.active .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+        .tab-content.active .post-card:nth-child(2),
+        .tab-content.active .gallery-item:nth-child(2) { animation-delay: 0.18s; }
+        .tab-content.active .post-card:nth-child(3),
+        .tab-content.active .gallery-item:nth-child(3) { animation-delay: 0.31s; }
+        .tab-content.active .post-card:nth-child(4),
+        .tab-content.active .gallery-item:nth-child(4) { animation-delay: 0.44s; }
+        .tab-content.active .post-card:nth-child(5) { animation-delay: 0.57s; }
+
+        /* Animated Rainbow Top Border & 3D Hover on Content Cards */
         .post-card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border-top: 8px solid #ff416c;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 32px;
+            border-radius: 22px;
+            margin-bottom: 28px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .post-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 7px;
+            background: linear-gradient(90deg, #ff416c, #f9d423, #24fe41, #00b4db, #8e2de2, #ff416c);
+            background-size: 300% 100%;
+            animation: borderFlow 5s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
         }
 
         .post-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .post-card h2 {
@@ -163,15 +308,22 @@
             color: #0284c7;
             margin-bottom: 8px;
             font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .post-card:hover h2 {
+            color: #ec38bc;
         }
 
         .post-date {
             font-size: 13px;
             color: #64748b;
             font-weight: bold;
-            display: block;
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 12px;
             margin-bottom: 18px;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
@@ -182,25 +334,26 @@
             margin-bottom: 15px;
         }
 
-        /* Gallery Layout */
+        /* Gallery Layout with Smooth Zoom Animation */
         .gallery-container {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 28px;
         }
 
         .gallery-item {
             background: #ffffff;
-            padding: 12px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 14px;
+            border-radius: 22px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .gallery-item:hover {
-            transform: scale(1.01);
+            transform: translateY(-6px) scale(1.015);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
         }
 
         .gallery-item img, .gallery-item video {
@@ -208,15 +361,19 @@
             height: auto;
             max-height: 550px;
             object-fit: cover;
-            border-radius: 14px;
+            border-radius: 16px;
             display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
         }
 
         /* Welcome Page Hero Styling */
         .welcome-hero {
             text-align: center;
             background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-            border-top: 8px solid #22c55e;
         }
 
         .welcome-hero h2 {
@@ -234,19 +391,29 @@
         footer {
             text-align: center;
             padding: 25px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
             color: #64748b;
             font-size: 14px;
             margin-top: 50px;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
             font-weight: 500;
         }
     </style>
 </head>
 <body>
 
+    <!-- Floating Background Orbs -->
+    <div class="bg-shapes">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <!-- Professional Ribbon Header -->
     <header class="ribbon-header">
+        <div class="header-particles">
+            <i></i><i></i><i></i><i></i><i></i>
+        </div>
         <h1>✨ শরণ তাজের পোর্টফোলিও</h1>
         <p>আমার জীবন, স্কুল, স্কাউটিং, মির্জাপুর ও টাঙ্গাইল শহর</p>
     </header>
@@ -284,7 +451,7 @@
 
         <!-- 1. Porichiti Tab -->
         <div id="about" class="tab-content">
-            <article class="post-card" style="border-top-color: #ff416c;">
+            <article class="post-card">
                 <h2>আমার পরিচিতি</h2>
                 <span class="post-date">ব্যক্তিগত তথ্য ও জীবনদর্শন</span>
                 <p class="post-text">
@@ -301,7 +468,7 @@
 
         <!-- 2. Bondhura Tab -->
         <div id="friends" class="tab-content">
-            <article class="post-card" style="border-top-color: #f4c430;">
+            <article class="post-card">
                 <h2>আমার সহপাঠী ও বন্ধুরা</h2>
                 <span class="post-date">স্কুলের আনন্দময় মুহূর্ত ও বন্ধুত্বের বন্ধন</span>
                 <p class="post-text">
@@ -318,7 +485,7 @@
 
         <!-- 3. Teachers Tab -->
         <div id="teachers" class="tab-content">
-            <article class="post-card" style="border-top-color: #11998e;">
+            <article class="post-card">
                 <h2>আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
                 <span class="post-date">শিক্ষক ও শিক্ষা জীবনের আলো</span>
                 <p class="post-text">
@@ -335,21 +502,21 @@
 
         <!-- 4. Scout Tab -->
         <div id="scout" class="tab-content">
-            <article class="post-card" style="border-top-color: #00b4db;">
+            <article class="post-card">
                 <h2>বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
                 <span class="post-date">শৃঙ্খলা, সেবা ও প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ডের লড়াই</span>
                 <p class="post-text">
                     আমি অত্যন্ত গর্ব ও আনন্দের সাথে বাংলাদেশ স্কাউটস-এর একজন সক্রিয় সদস্য হিসেবে যুক্ত আছি। আমাদের স্কুলের স্কাউট ইউনিটে অত্যন্ত নিষ্ঠার সাথে কাজ করে আমি সফলভাবে পেট্রোল লিডার (Patrol Leader) এর দায়িত্ব পালন করেছি। স্কাউটিং কেবল একটি সহশিক্ষা কার্যক্রম বা সাধারণ কোনো ব্যাজ অর্জনের মাধ্যম নয়; এটি মানুষের মাঝে সততা, আত্মনির্ভরশীলতা, দেশপ্রেম এবং মানবসেবার মানসিকতা গড়ে তোলার এক দুর্দান্ত এবং প্রদীপ্ত মাধ্যম। পেট্রোল লিডার হিসেবে কাজ করার সুবাদে আমার মধ্যে দলগতভাবে কাজ করার মানসিকতা, নেতৃত্ব দেওয়ার ক্ষমতা এবং যেকোনো কঠিন পরিস্থিতিতে মাথা ঠান্ডা রেখে সঠিক সিদ্ধান্ত নেওয়ার দারুণ দক্ষতা তৈরি হয়েছে।
                 </p>
                 <p class="post-text">
-                    আমার স্কাউটিং জীবনের সবচেয়ে বড় এবং রোমাঞ্চকর একটি Part হলো বাংলাদেশ স্কাউটসের সর্বোচ্চ ও prestigious স্বীকৃতি **'প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড' (President's Scout Award)** অর্জনের জন্য লড়াই করা। এই অর্জনের জন্য আমাকে উপজেলা ও জেলা পর্যায় পেরিয়ে অত্যন্ত কঠিন ও প্রতিযোগিতাপূর্ণ **জাতীয় পর্যায়ের পরীক্ষায়** অংশগ্রহণ করতে হয়েছিল। জাতীয় পর্যায়ে লিখিত পরীক্ষা, প্র্যাকটিক্যাল স্কাউট স্কিল, ট্র্যাকিং, হাইকিং এবং ভাইভার মতো কঠিন সব ধাপ পার করার জন্য আমাকে মাসের পর মাস কঠোর পরিশ্রম ও সাধনা করতে হয়েছে। যদিও শেষ পর্যন্ত চূড়ান্ত সফলতা অর্জন করা সম্ভব হয়নি এবং এটি আমার জীবনের প্রেসিডেন্টস স্কাউট পরীক্ষার শেষ ধাপ বা শেষ পর্যায় ছিল, তবুও এই পুরো যাত্রায় আমি যা শিখেছি তা আমার জীবনের সবচেয়ে বড় অর্জন।
+                    আমার স্কাউটিং জীবনের সবচেয়ে বড় এবং রোমাঞ্চকর একটি অধ্যায় হলো বাংলাদেশ স্কাউটসের সর্বোচ্চ ও মর্যাদাপূর্ণ স্বীকৃতি <strong>'প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড' (President's Scout Award)</strong> অর্জনের জন্য লড়াই করা। এই অর্জনের জন্য আমাকে উপজেলা ও জেলা পর্যায় পেরিয়ে অত্যন্ত কঠিন ও প্রতিযোগিতাপূর্ণ <strong>জাতীয় পর্যায়ের পরীক্ষায়</strong> অংশগ্রহণ করতে হয়েছিল। জাতীয় পর্যায়ে লিখিত পরীক্ষা, প্র্যাকটিক্যাল স্কাউট স্কিল, ট্র্যাকিং, হাইকিং এবং ভাইভার মতো কঠিন সব ধাপ পার করার জন্য আমাকে মাসের পর মাস কঠোর পরিশ্রম ও সাধনা করতে হয়েছে। যদিও শেষ পর্যন্ত চূড়ান্ত সফলতা অর্জন করা সম্ভব হয়নি এবং এটি আমার জীবনের প্রেসিডেন্টস স্কাউট পরীক্ষার শেষ ধাপ বা শেষ পর্যায় ছিল, তবুও এই পুরো যাত্রায় আমি যা শিখেছি তা আমার জীবনের সবচেয়ে বড় অর্জন।
                 </p>
                 <p class="post-text">
                     চূড়ান্ত পুরস্কার না পেলেও, এই জাতীয় পর্যায়ের লড়াই ও প্রস্তুতি আমার আত্মবিশ্বাসকে এক অনন্য উচ্চতায় নিয়ে গেছে। আমি বুঝতে পেরেছি যে জয়-পরাজয়ের চেয়েও বড় কথা হলো নিজের শতভাগ দিয়ে চেষ্টা করা এবং প্রক্রিয়ার মধ্য দিয়ে একজন পরিপক্ক মানুষ হিসেবে গড়ে ওঠা। স্কাউটিং আমাকে শিখিয়েছে কীভাবে ব্যর্থতাকে মেনে নিয়ে আবার নতুন উদ্যমে ঘুরে দাঁড়াতে হয়। এই অভিজ্ঞতা আমার চরিত্র গঠন, মানসিক দৃঢ়তা এবং দেশসেবার ব্রতকে চিরদিনের মতো শাণিত করেছে, যা আমার ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে আমাকে সবসময় পথ দেখাবে।
                 </p>
             </article>
 
-            <article class="post-card" style="border-top-color: #00b4db;">
+            <article class="post-card">
                 <h2>আমার শ্রদ্ধেয় স্কাউট লিডার</h2>
                 <span class="post-date">মোহাম্মদ আজহারুল ইসলাম স্যার</span>
                 <p class="post-text">
@@ -364,7 +531,7 @@
         <!-- 5. Biddaloy Tab -->
         <div id="school" class="tab-content">
             
-            <article class="post-card" style="border-top-color: #8e2de2;">
+            <article class="post-card">
                 <h2>ঐতিহ্যবাহী মির্জাপুর সরকারি এস. কে. পাইলট মডেল উচ্চ বিদ্যালয়</h2>
                 <span class="post-date">প্রতিষ্ঠা ও ঐতিহাসিক প্রেক্ষাপট</span>
                 <p class="post-text">
@@ -375,7 +542,7 @@
                 </p>
             </article>
 
-            <article class="post-card" style="border-top-color: #8e2de2;">
+            <article class="post-card">
                 <h2>জাতীয়করণ ও আধুনিকায়ন</h2>
                 <span class="post-date">মডেল রূপান্তর ও সরকারি স্বীকৃতি</span>
                 <p class="post-text">
@@ -386,29 +553,29 @@
                 </p>
             </article>
 
-            <article class="post-card" style="border-top-color: #8e2de2;">
+            <article class="post-card">
                 <h2>প্রশাসন, প্রধান শিক্ষক ও শিক্ষকবৃন্দ</h2>
                 <span class="post-date">দক্ষ প্রশাসন ও শিক্ষকমণ্ডলী</span>
                 <p class="post-text">
-                    আমাদের বিদ্যালয়ের প্রশাসনিক পরিচালনা এবং শিক্ষার পরিবেশ সুসংহত রাখতে অভিজ্ঞ ও সম্মানিত শিক্ষকবৃন্দ নিরলস পরিশ্রম করে যাচ্ছেন। পূর্বে সম্মানিত প্রধান শিক্ষক হিসেবে মো. রফিকুল ইসলাম খান স্যার অত্যন্ত দক্ষতার সাথে দায়িত্ব পালন করলেও তিনি অবসরে যাওয়ার পর, **২০২৫ সাল থেকে সহকারী প্রধান শিক্ষক প্রফুল্ল কুমার সরকার স্যার প্রধান শিক্ষকের (ভারপ্রাপ্ত/দায়িত্বপ্রাপ্ত) গুরুত্বপূর্ণ দায়িত্ব অত্যন্ত সুনামের সাথে পালন করে আসছেন**। তাঁর সুচারু প্রশাসনিক দক্ষতায় বিদ্যালয়ের সামগ্রিক শৃঙ্খলা ও শিক্ষার মান দিন দিন আরও উন্নত হচ্ছে।
+                    আমাদের বিদ্যালয়ের প্রশাসনিক পরিচালনা এবং শিক্ষার পরিবেশ সুসংহত রাখতে অভিজ্ঞ ও সম্মানিত শিক্ষকবৃন্দ নিরলস পরিশ্রম করে যাচ্ছেন। পূর্বে সম্মানিত প্রধান শিক্ষক হিসেবে মো. রফিকুল ইসলাম খান স্যার অত্যন্ত দক্ষতার সাথে দায়িত্ব পালন করলেও তিনি অবসরে যাওয়ার পর, <strong>২০২৫ সাল থেকে সহকারী প্রধান শিক্ষক প্রফুল্ল কুমার সরকার স্যার প্রধান শিক্ষকের (ভারপ্রাপ্ত/দায়িত্বপ্রাপ্ত) গুরুত্বপূর্ণ দায়িত্ব অত্যন্ত সুনামের সাথে পালন করে আসছেন</strong>। তাঁর সুচারু প্রশাসনিক দক্ষতায় বিদ্যালয়ের সামগ্রিক শৃঙ্খলা ও শিক্ষার মান দিন দিন আরও উন্নত হচ্ছে।
                 </p>
                 <p class="post-text">
                     এছাড়া আমাদের স্কুলে আরও একঝাঁক মেধাবী ও নিবেদিতপ্রাণ শিক্ষক কর্মরত রয়েছেন, যেমন—সহকারী শিক্ষক চন্দন কুমার ভৌমিক, সবিতা সরকার এবং আমাদের প্রিয় ফরহাদ স্যার, সুমন স্যার, এনামুল স্যার সহ অনেকে। তাঁরা প্রত্যেকেই নিজ নিজ বিষয়ে অত্যন্ত দক্ষ এবং পাঠদানের ক্ষেত্রে পরম আন্তরিক। ক্লাসের ভেতরে জটিল বিষয়গুলো সহজ করে বোঝানোর পাশাপাশি শিক্ষার্থীদের নৈতিক চরিত্র গঠনেও তাঁরা সর্বদা সচেষ্ট থাকেন। শিক্ষকদের এই সম্মিলিত প্রয়াসই আমাদের বিদ্যালয়টিকে জেলার অন্যতম সেরা শিক্ষাপ্রতিষ্ঠানে পরিণত করেছে।
                 </p>
             </article>
 
-            <article class="post-card" style="border-top-color: #8e2de2;">
+            <article class="post-card">
                 <h2>ক্যাম্পাস, অবকাঠামো ও বিশেষ অর্জন</h2>
                 <span class="post-date">মনোরম পরিবেশ ও প্রেসিডেন্টস স্কাউট অর্জন</span>
                 <p class="post-text">
                     বিদ্যালয়টি মির্জাপুর পৌরসভার বাইমহাটী এলাকায় প্রায় ৫১৫ শতাংশ বিশাল ও স্নিগ্ধ সবুজ পরিসরের ওপর অত্যন্ত মনোরম পরিবেশে অবস্থিত। বিদ্যালয়ের চারপাশে রয়েছে সুপ্রশস্ত খেলার মাঠ, নান্দনিক ভবন, সুসজ্জিত শ্রেণিকক্ষ, অত্যাধুনিক বিজ্ঞান ল্যাব এবং একটি সমৃদ্ধ লাইব্রেরি, যা শিক্ষার্থীদের মনন বিকাশে চমৎকার অনুকূল পরিবেশ তৈরি করে দেয়। খেলাধুলা ও সাংস্কৃতিক চর্চার জন্য এই সুবিশাল ক্যাম্পাস ছাত্রছাত্রীদের কাছে একটি প্রাণের জায়গা।
                 </p>
                 <p class="post-text">
-                    আমাদের এই ঐতিহ্যবাহী বিদ্যালয় থেকে স্কাউটিংয়ের ক্ষেত্রে এক অনন্য ইতিহাস রয়েছে। এ পর্যন্ত আমাদের বিদ্যালয় থেকে কৃতিত্বের সাথে **৭ জন** কৃতি শিক্ষার্থী অত্যন্ত মর্যাদাপূর্ণ **'প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড' (President's Scout Award)** অর্জন করেছে। জাতীয় পর্যায়ে প্রতিযোগিতার মাধ্যমে অর্জিত এই বিশাল সাফল্য আমাদের বিদ্যালয়ের স্কাউট ইউনিট এবং সমগ্র মির্জাপুরবাসীর জন্য অত্যন্ত গৌরবের ও আনন্দের একটি ঐতিহাসিক মাইলফলক।
+                    আমাদের এই ঐতিহ্যবাহী বিদ্যালয় থেকে স্কাউটিংয়ের ক্ষেত্রে এক অনন্য ইতিহাস রয়েছে। এ পর্যন্ত আমাদের বিদ্যালয় থেকে কৃতিত্বের সাথে <strong>৭ জন</strong> কৃতি শিক্ষার্থী অত্যন্ত মর্যাদাপূর্ণ <strong>'প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড' (President's Scout Award)</strong> অর্জন করেছে। জাতীয় পর্যায়ে প্রতিযোগিতার মাধ্যমে অর্জিত এই বিশাল সাফল্য আমাদের বিদ্যালয়ের স্কাউট ইউনিট এবং সমগ্র মির্জাপুরবাসীর জন্য অত্যন্ত গৌরবের ও আনন্দের একটি ঐতিহাসিক মাইলফলক।
                 </p>
             </article>
 
-            <article class="post-card" style="border-top-color: #8e2de2;">
+            <article class="post-card">
                 <h2>সহশিক্ষা কার্যক্রম ও স্কাউটিং ঐতিহ্য</h2>
                 <span class="post-date">মেধা বিকাশ ও নেতৃত্ব গঠন</span>
                 <p class="post-text">
@@ -423,17 +590,17 @@
 
         <!-- 6. City Tab -->
         <div id="city" class="tab-content">
-            <article class="post-card" style="border-top-color: #f80759;">
+            <article class="post-card">
                 <h2>আমার শহর ও দর্শনীয় স্থান</h2>
                 <span class="post-date">মির্জাপুর ও টাঙ্গাইল পরিচিতি</span>
                 <p class="post-text">
                     আমি মূলত টাঙ্গাইল জেলার একটি ঐতিহাসিক ও প্রাকৃতিকভাবে সুন্দর জনপদ মির্জাপুর-এ বসবাস করি। আমাদের মির্জাপুর শহরটি ঢাকা-টাঙ্গাইল মহাসড়কের পাশে অবস্থিত একটি অত্যন্ত গুরুত্বপূর্ণ ও বর্ধিষ্ণু জনপদ, যার চারপাশের পরিবেশ শান্ত ও স্নিগ্ধ। বংশী নদীর তীরে গড়ে ওঠা এই জনপদের মানুষের আন্তরিকতা, সংস্কৃতি এবং সামাজিক সম্প্রীতি সত্যিই মুগ্ধ করার মতো। আধুনিক শহরের সুযোগ-সুবিধার পাশাপাশি এখানে গ্রামীণ সংস্কৃতির এক অপূর্ব ও চমৎকার মেলবন্ধন দেখতে পাওয়া যায়, যা এই শহরকে অনন্য রূপ দিয়েছে।
                 </p>
                 <p class="post-text">
-                    আমাদের মির্জাপুর শহর এবং এর আশেপাশের এলাকায় বেশ কিছু বিশ্বমানের দর্শনীয় ও ঐতিহাসিক স্থান রয়েছে, যা দেখতে প্রতিদিন দেশের বিভিন্ন প্রান্ত থেকে হাজার হাজার পর্যটক ও দর্শনার্থী এখানে আসেন। এর মধ্যে অন্যতম হলো দানবীর রণদাপ্রসাদ সাহার প্রতিষ্ঠিত বিখ্যাত **কুমুদিনী কমপ্লেক্স** এবং কুমুদিনী হাসপাতাল, যা মানবসেবা ও সমাজকল্যাণের এক অনন্য নিদর্শন। এছাড়া একটু দূরেই রয়েছে মোঘল আমলের দৃষ্টিনন্দন স্থাপত্যশিল্পের জন্য বিশ্বজুড়ে পরিচিত ঐতিহাসিক **মহেড়া জমিদার বাড়ি**, যার অপরূপ সৌন্দর্য যেকোনো মানুষের মন কেড়ে নেয়।
+                    আমাদের মির্জাপুর শহর এবং এর আশেপাশের এলাকায় বেশ কিছু বিশ্বমানের দর্শনীয় ও ঐতিহাসিক স্থান রয়েছে, যা দেখতে প্রতিদিন দেশের বিভিন্ন প্রান্ত থেকে হাজার হাজার পর্যটক ও দর্শনার্থী এখানে আসেন। এর মধ্যে অন্যতম হলো দানবীর রণদাপ্রসাদ সাহার প্রতিষ্ঠিত বিখ্যাত <strong>কুমুদিনী কমপ্লেক্স</strong> এবং কুমুদিনী হাসপাতাল, যা মানবসেবা ও সমাজকল্যাণের এক অনন্য নিদর্শন। এছাড়া একটু দূরেই রয়েছে মোঘল আমলের দৃষ্টিনন্দন স্থাপত্যশিল্পের জন্য বিশ্বজুড়ে পরিচিত ঐতিহাসিক <strong>মহেড়া জমিদার বাড়ি</strong>, যার অপরূপ সৌন্দর্য যেকোনো মানুষের মন কেড়ে নেয়।
                 </p>
                 <p class="post-text">
-                    ঐতিহাসিক স্থাপনা, সবুজ প্রকৃতি এবং মানুষের ভালোবাসায় পরিবেষ্টিত আমাদের এই মির্জাপুর শহরটি আমার কাছে পৃথিবীর সবচেয়ে সুন্দর একটি স্থান। এই শহরের আলো-বাতাসে বড় হয়ে ওঠা, এখানকার স্কوল ও মাঠগুলোতে ছুটে বেড়ানো আমার জীবনের অন্যতম সেরা সৌভাগ্য। নিজের শহর ও এর ঐতিহ্যকে হৃদয়ে ধারণ করে আমি বড় হচ্ছি, এবং ভবিষ্যতে এই শহরের নাম আরও উজ্জ্বল করার স্বপ্ন আমার সবসময় চোখের সামনে ভাস্বর হয়ে থাকে।
+                    ঐতিহাসিক স্থাপনা, সবুজ প্রকৃতি এবং মানুষের ভালোবাসায় পরিবেষ্টিত আমাদের এই মির্জাপুর শহরটি আমার কাছে পৃথিবীর সবচেয়ে সুন্দর একটি স্থান। এই শহরের আলো-বাতাসে বড় হয়ে ওঠা, এখানকার স্কুল ও মাঠগুলোতে ছুটে বেড়ানো আমার জীবনের অন্যতম সেরা সৌভাগ্য। নিজের শহর ও এর ঐতিহ্যকে হৃদয়ে ধারণ করে আমি বড় হচ্ছি, এবং ভবিষ্যতে এই শহরের নাম আরও উজ্জ্বল করার স্বপ্ন আমার সবসময় চোখের সামনে ভাস্বর হয়ে থাকে।
                 </p>
             </article>
         </div>
