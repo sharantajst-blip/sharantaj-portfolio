@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শরণ তাজ - প্রফেশনাল পোর্টফোলিও</title>
+    <title>শরণ তাজ - প্রিমিয়াম পোর্টফোলিও</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4f46e5;
             --secondary: #ec4899;
-            --accent: #06b6d4;
-            --glass-bg: rgba(255, 255, 255, 0.92);
-            --glass-border: rgba(255, 255, 255, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.88);
+            --glass-border: rgba(255, 255, 255, 0.9);
             --text-dark: #0f172a;
             --text-muted: #475569;
         }
@@ -28,56 +27,55 @@
             line-height: 1.8;
             min-height: 100vh;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #c7d2fe 0%, #fbcfe8 50%, #bae6fd 100%);
+            background: linear-gradient(135deg, #e0e7ff 0%, #fae8ff 50%, #e0f2fe 100%);
             background-size: 200% 200%;
-            animation: bgGradientMove 12s ease infinite alternate;
+            animation: bgMove 15s ease infinite alternate;
             position: relative;
         }
 
-        @keyframes bgGradientMove {
+        @keyframes bgMove {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
 
-        /* Floating Animated Geometric Blobs */
-        .floating-blobs span {
+        /* Floating Blobs Background */
+        .blobs span {
             position: fixed;
             border-radius: 50%;
-            filter: blur(50px);
+            filter: blur(60px);
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.5;
             pointer-events: none;
-            animation: blobFloat 15s infinite ease-in-out alternate;
+            animation: floatBlob 16s infinite ease-in-out alternate;
         }
 
-        .floating-blobs span:nth-child(1) {
-            width: 320px; height: 320px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            top: -60px; left: -60px;
+        .blobs span:nth-child(1) {
+            width: 350px; height: 350px;
+            background: linear-gradient(135deg, #ff7675, #fab1a0);
+            top: -50px; left: -50px;
         }
 
-        .floating-blobs span:nth-child(2) {
-            width: 360px; height: 360px;
-            background: linear-gradient(135deg, #5f27cd, #48dbfb);
-            bottom: -80px; right: -80px;
-            animation-delay: 2s;
+        .blobs span:nth-child(2) {
+            width: 400px; height: 400px;
+            background: linear-gradient(135deg, #a29bfe, #74b9ff);
+            bottom: -50px; right: -50px;
+            animation-delay: 3s;
         }
 
-        @keyframes blobFloat {
+        @keyframes floatBlob {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -40px) scale(1.12); }
+            100% { transform: translate(50px, -50px) scale(1.15); }
         }
 
-        /* Modern Hero Header */
+        /* Hero Banner */
         .hero-banner {
             background: linear-gradient(125deg, #4f46e5, #9333ea, #ec4899, #06b6d4);
             background-size: 300% 300%;
             animation: gradientFlow 8s ease infinite;
-            padding: 55px 20px 68px;
+            padding: 60px 20px 75px;
             text-align: center;
             color: #ffffff;
             position: relative;
-            overflow: hidden;
             clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
             box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);
         }
@@ -92,7 +90,7 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 5px 16px;
+            padding: 5px 18px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
@@ -100,7 +98,7 @@
         }
 
         .hero-banner h1 {
-            font-size: 40px;
+            font-size: 42px;
             font-weight: 700;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
         }
@@ -111,13 +109,13 @@
             font-weight: 500;
         }
 
-        /* Floating Glass Navigation Pill Bar */
+        /* Floating Navigation Pill Bar */
         .nav-wrapper {
             position: sticky;
             top: 12px;
             z-index: 1000;
             padding: 0 15px;
-            margin-top: -30px;
+            margin-top: -32px;
         }
 
         .tab-container {
@@ -127,7 +125,7 @@
             flex-wrap: wrap;
             justify-content: center;
             background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
+            backdrop-filter: blur(16px);
             padding: 10px;
             gap: 8px;
             border-radius: 24px;
@@ -167,7 +165,7 @@
         /* Main Container */
         .container {
             max-width: 900px;
-            margin: 35px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -179,50 +177,35 @@
             display: block;
         }
 
-        /* Staggered Entrance Animation */
-        @keyframes cardReveal {
-            0% {
-                opacity: 0;
-                transform: translateY(35px) scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .tab-content.active .glass-card,
-        .tab-content.active .gallery-card {
+        /* Scroll Reveal Animation Classes */
+        .reveal-card {
             opacity: 0;
-            animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .tab-content.active .glass-card:nth-child(1),
-        .tab-content.active .gallery-card:nth-child(1) { animation-delay: 0.05s; }
-        .tab-content.active .glass-card:nth-child(2),
-        .tab-content.active .gallery-card:nth-child(2) { animation-delay: 0.15s; }
-        .tab-content.active .glass-card:nth-child(3),
-        .tab-content.active .gallery-card:nth-child(3) { animation-delay: 0.25s; }
-        .tab-content.active .glass-card:nth-child(4),
-        .tab-content.active .gallery-card:nth-child(4) { animation-delay: 0.35s; }
-        .tab-content.active .glass-card:nth-child(5) { animation-delay: 0.45s; }
+        .reveal-card.active-reveal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
-        /* Content Card */
+        /* Glass Content Card */
         .glass-card {
             background: var(--glass-bg);
-            padding: 34px;
-            border-radius: 26px;
-            margin-bottom: 26px;
+            backdrop-filter: blur(16px);
+            padding: 36px;
+            border-radius: 28px;
+            margin-bottom: 30px;
             border: 2px solid var(--glass-border);
-            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.09);
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
             position: relative;
             overflow: hidden;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 45px rgba(79, 70, 229, 0.16);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 50px rgba(79, 70, 229, 0.16);
         }
 
         .card-header {
@@ -235,9 +218,9 @@
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 15px;
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
             background: linear-gradient(135deg, #4f46e5, #ec4899);
             color: #ffffff;
             display: flex;
@@ -249,10 +232,9 @@
         }
 
         .card-title-group h2 {
-            font-size: 23px;
+            font-size: 24px;
             color: var(--text-dark);
             font-weight: 700;
-            line-height: 1.3;
         }
 
         .card-subtitle {
@@ -284,8 +266,8 @@
         }
 
         .avatar-ring {
-            width: 120px;
-            height: 120px;
+            width: 125px;
+            height: 125px;
             border-radius: 50%;
             padding: 4px;
             background: linear-gradient(135deg, #4f46e5, #ec4899, #06b6d4);
@@ -303,12 +285,8 @@
             animation: counterSpin 8s linear infinite;
         }
 
-        @keyframes spinRing {
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes counterSpin {
-            100% { transform: rotate(-360deg); }
-        }
+        @keyframes spinRing { 100% { transform: rotate(360deg); } }
+        @keyframes counterSpin { 100% { transform: rotate(-360deg); } }
 
         .info-pills {
             display: flex;
@@ -321,18 +299,18 @@
         .pill {
             background: rgba(99, 102, 241, 0.12);
             color: #4338ca;
-            padding: 6px 15px;
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 13.5px;
             font-weight: 600;
             border: 1px solid rgba(99, 102, 241, 0.25);
         }
 
-        /* Modern Bento Gallery Grid */
+        /* Gallery Grid with Scroll Reveal */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
+            gap: 24px;
         }
 
         .gallery-card {
@@ -340,10 +318,17 @@
             padding: 12px;
             border-radius: 22px;
             border: 2px solid var(--glass-border);
-            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+        }
+
+        .gallery-card.active-reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .gallery-card:hover {
@@ -373,7 +358,7 @@
             max-height: 500px;
         }
 
-        /* Lightbox Modal for Fullscreen Photo View */
+        /* Lightbox Modal */
         .lightbox {
             display: none;
             position: fixed;
@@ -385,9 +370,7 @@
             padding: 20px;
         }
 
-        .lightbox.open {
-            display: flex;
-        }
+        .lightbox.open { display: flex; }
 
         .lightbox img {
             max-width: 95%;
@@ -404,14 +387,13 @@
             font-size: 36px;
             cursor: pointer;
             font-weight: bold;
-            line-height: 1;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 28px 20px;
-            background: rgba(255, 255, 255, 0.88);
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.85);
             color: var(--text-muted);
             font-size: 14px;
             margin-top: 60px;
@@ -420,16 +402,15 @@
         }
 
         @media (max-width: 600px) {
-            .hero-banner h1 { font-size: 30px; }
-            .glass-card { padding: 24px 20px; }
-            .card-title-group h2 { font-size: 20px; }
+            .hero-banner h1 { font-size: 32px; }
+            .glass-card { padding: 24px 18px; }
             .tab-btn { padding: 8px 14px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="floating-blobs">
+    <div class="blobs">
         <span></span>
         <span></span>
     </div>
@@ -441,7 +422,7 @@
         <p>শিক্ষার্থী • স্কাউট লিডার • প্রযুক্তিপ্রেমী | মির্জাপুর, টাঙ্গাইল</p>
     </header>
 
-    <!-- Floating Glass Navigation -->
+    <!-- Navigation -->
     <div class="nav-wrapper">
         <nav class="tab-container">
             <button class="tab-btn active" onclick="openTab(event, 'welcome')">🏠 ওয়েলকাম</button>
@@ -459,7 +440,7 @@
         
         <!-- Welcome Tab -->
         <div id="welcome" class="tab-content active">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="profile-showcase">
                     <div class="avatar-ring">
                         <img src="IMG-20260829-WA0036.jpg" alt="শরণ তাজ">
@@ -487,7 +468,7 @@
 
         <!-- 1. Porichiti Tab -->
         <div id="about" class="tab-content">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">👤</div>
                     <div class="card-title-group">
@@ -509,7 +490,7 @@
 
         <!-- 2. Bondhura Tab -->
         <div id="friends" class="tab-content">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🤝</div>
                     <div class="card-title-group">
@@ -531,7 +512,7 @@
 
         <!-- 3. Teachers Tab -->
         <div id="teachers" class="tab-content">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">👨‍🏫</div>
                     <div class="card-title-group">
@@ -553,7 +534,7 @@
 
         <!-- 4. Scout Tab -->
         <div id="scout" class="tab-content">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">⚜️</div>
                     <div class="card-title-group">
@@ -572,7 +553,7 @@
                 </p>
             </article>
 
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🎖️</div>
                     <div class="card-title-group">
@@ -592,7 +573,7 @@
         <!-- 5. Biddaloy Tab -->
         <div id="school" class="tab-content">
             
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🏛️</div>
                     <div class="card-title-group">
@@ -608,7 +589,7 @@
                 </p>
             </article>
 
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🌟</div>
                     <div class="card-title-group">
@@ -624,7 +605,7 @@
                 </p>
             </article>
 
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🎓</div>
                     <div class="card-title-group">
@@ -640,7 +621,7 @@
                 </p>
             </article>
 
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🏆</div>
                     <div class="card-title-group">
@@ -656,7 +637,7 @@
                 </p>
             </article>
 
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🎯</div>
                     <div class="card-title-group">
@@ -676,7 +657,7 @@
 
         <!-- 6. City Tab -->
         <div id="city" class="tab-content">
-            <article class="glass-card">
+            <article class="glass-card reveal-card">
                 <div class="card-header">
                     <div class="card-icon">🏙️</div>
                     <div class="card-title-group">
@@ -696,17 +677,17 @@
             </article>
         </div>
 
-        <!-- 7. Pure Media Gallery Tab -->
+        <!-- 7. Gallery Tab -->
         <div id="gallery" class="tab-content">
             <div class="gallery-grid">
                 <div class="gallery-card" onclick="openLightbox('IMG-20260829-WA0036.jpg')">
-                    <img src="IMG-20260829-WA0036.jpg" alt="Gallery Image 1" loading="lazy">
+                    <img src="IMG-20260829-WA0036.jpg" alt="Gallery 1" loading="lazy">
                 </div>
                 <div class="gallery-card" onclick="openLightbox('IMG_20261030_141853.jpg')">
-                    <img src="IMG_20261030_141853.jpg" alt="Gallery Image 2" loading="lazy">
+                    <img src="IMG_20261030_141853.jpg" alt="Gallery 2" loading="lazy">
                 </div>
                 <div class="gallery-card" onclick="openLightbox('IMG_20261101_213922.jpg')">
-                    <img src="IMG_20261101_213922.jpg" alt="Gallery Image 3" loading="lazy">
+                    <img src="IMG_20261101_213922.jpg" alt="Gallery 3" loading="lazy">
                 </div>
                 <div class="gallery-card video-wide">
                     <video src="video_20261028_120801.mp4" controls preload="metadata"></video>
@@ -716,10 +697,10 @@
 
     </main>
 
-    <!-- Fullscreen Image Lightbox -->
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="" alt="Full View">
+        <img id="lightbox-img" src="" alt="Zoom">
     </div>
 
     <footer>
@@ -727,23 +708,39 @@
     </footer>
 
     <script>
-        function openTab(evt, tabName) {
-            let i, tabContent, tabBtns;
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.tab-content.active .reveal-card, .tab-content.active .gallery-card');
             
-            tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) {
+            reveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active-reveal');
+                }, index * 120);
+            });
+        }
+
+        function openTab(evt, tabName) {
+            let tabContent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContent.length; i++) {
                 tabContent[i].classList.remove("active");
             }
             
-            tabBtns = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tabBtns.length; i++) {
+            let tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
                 tabBtns[i].classList.remove("active");
             }
             
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger animations on tab change
+            setTimeout(initScrollReveal, 50);
         }
+
+        // Trigger on initial page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+        });
 
         function openLightbox(imgSrc) {
             document.getElementById('lightbox-img').src = imgSrc;
