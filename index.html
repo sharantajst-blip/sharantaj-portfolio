@@ -38,6 +38,37 @@
             100% { background-position: 100% 50%; }
         }
 
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --primary: #818cf8;
+            --secondary: #f472b6;
+            --glass-bg: rgba(15, 23, 42, 0.88);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-dark: #f8fafc;
+            --text-muted: #94a3b8;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+        }
+
+        body.dark-mode .hero-banner {
+            background: linear-gradient(125deg, #312e81, #581c87, #831843, #155e75);
+        }
+
+        body.dark-mode .tab-container {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .pill {
+            background: rgba(129, 140, 248, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(129, 140, 248, 0.3);
+        }
+
+        /* Smooth Dissolve (Cross-fade) Transition Effect for Whole Body */
+        body, .glass-card, .tab-container, .hero-banner, footer, .gallery-card, .theme-switch-wrapper {
+            transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
+        }
+
         /* Floating Blobs Background */
         .blobs span {
             position: fixed;
@@ -256,8 +287,12 @@
 
         .post-text {
             font-size: 16.5px;
-            color: #334155;
+            color: var(--text-muted);
             text-align: justify;
+        }
+
+        body.dark-mode .post-text {
+            color: #cbd5e1;
         }
 
         /* Welcome Profile Showcase */
@@ -371,6 +406,42 @@
             font-weight: bold;
         }
 
+        /* Theme Switcher Button Styling */
+        .theme-switch-wrapper {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            padding: 8px 14px;
+            border-radius: 50px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn.active-theme {
+            background: linear-gradient(135deg, #4f46e5, #ec4899);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -427,7 +498,7 @@
                     <div class="avatar-ring">
                         <img src="IMG-20260829-WA0036.jpg" alt="শরণ তাজ">
                     </div>
-                    <h2 style="font-size: 28px; color: #0f172a;">আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
+                    <h2 style="font-size: 28px; color: var(--text-dark);">আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
                     <div class="info-pills">
                         <span class="pill">🎂 বয়স: ১৫ বছর</span>
                         <span class="pill">📚 নবম শ্রেণী (বিজ্ঞান)</span>
@@ -439,7 +510,7 @@
 
             <article class="glass-card scroll-item">
                 <p class="post-text">
-                    আসসালামু আলাইকুম! আমার এই নিজস্ব প্রফেশনাল ওয়েবসাইটে আপনাকে অত্যন্ত আন্তরিকভাবে স্বাগতম জানাই। প্রযুক্তিপ্রেমী একজন শিক্ষার্থী হিসেবে কোডিং ও ওয়েব ডেভেলপমেন্টের প্রতি আমাদের আজীবন গভীর অনুরাগ রয়েছে, যা আমাকে এই চমৎকার প্ল্যাটফর্মটি তৈরি করতে উদ্বুদ্ধ করেছে। এই ওয়েবসাইটের প্রতিটি কোণায় আমার চিন্তাভাবনা, সৃজনশীলতা এবং ভালোবাসার ছাপ রাখার চেষ্টা করেছি। একটি সুন্দর পোর্টফোলিও কেবল নিজের পরিচয় বহন করে না, বরং এটি নিজের স্বপ্ন ও লক্ষ্যগুলোকে সবার সামনে ফুটিয়ে তোলার একটি দারুণ মাধ্যম।
+                    আসসালামু আলাইকুম! আমার এই নিজস্ব প্রফেশনাল ওয়েবসাইটে আপনাকে অত্যন্ত আন্তরিকভাবে স্বাগতম জানাই। প্রযুক্তিপ্রেমী একজন শিক্ষার্থী হিসেবে কোডিং ও ওয়েব ডেভেলপমেন্টের প্রতি আমার আজীবন গভীর অনুরাগ রয়েছে, যা আমাকে এই চমৎকার প্ল্যাটফর্মটি তৈরি করতে উদ্বুদ্ধ করেছে। এই ওয়েবসাইটের প্রতিটি কোণায় আমার চিন্তাভাবনা, সৃজনশীলতা এবং ভালোবাসার ছাপ রাখার চেষ্টা করেছি। একটি সুন্দর পোর্টফোলিও কেবল নিজের পরিচয় বহন করে না, বরং এটি নিজের স্বপ্ন ও লক্ষ্যগুলোকে সবার সামনে ফুটিয়ে তোলার একটি দারুণ মাধ্যম।
                 </p>
             </article>
 
@@ -697,6 +768,12 @@
 
     </main>
 
+    <!-- Floating Theme Switcher -->
+    <div class="theme-switch-wrapper">
+        <button id="light-btn" class="theme-btn active-theme" onclick="setTheme('light')">☀️ Light</button>
+        <button id="dark-btn" class="theme-btn" onclick="setTheme('dark')">🌙 Dark</button>
+    </div>
+
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
@@ -708,7 +785,7 @@
     </footer>
 
     <script>
-        // Bi-directional Scroll Reveal (Works seamlessly both scrolling down and up)
+        // Bi-directional Scroll Reveal
         const observerOptions = {
             root: null,
             rootMargin: '0px 0px -50px 0px',
@@ -720,8 +797,6 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 } else {
-                    // স্ক্রিন থেকে পুরোপুরি ওপরে বা নিচে চলে গেলে ক্লাস রিমুভ হবে, 
-                    // ফলে ওপর থেকে নিচে বা নিচ থেকে ওপরে আসার সময় একই রকম অ্যানিমেশন হবে।
                     entry.target.classList.remove('visible');
                 }
             });
@@ -748,16 +823,34 @@
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
             
-            // ইনস্ট্যান্ট স্ক্রিন একদম উপরে পাঠিয়ে দেওয়া
             window.scrollTo(0, 0);
 
-            // নতুন ট্যাবের এলিমেন্টগুলোর অ্যানিমেশন রিসেট করে অবজার্ভ করা
             setTimeout(() => {
                 observeActiveTab();
             }, 50);
         }
 
+        function setTheme(mode) {
+            const body = document.body;
+            const lightBtn = document.getElementById('light-btn');
+            const darkBtn = document.getElementById('dark-btn');
+
+            if (mode === 'dark') {
+                body.classList.add('dark-mode');
+                darkBtn.classList.add('active-theme');
+                lightBtn.classList.remove('active-theme');
+                localStorage.setItem('portfolio-theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                lightBtn.classList.add('active-theme');
+                darkBtn.classList.remove('active-theme');
+                localStorage.setItem('portfolio-theme', 'light');
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+            setTheme(savedTheme);
             observeActiveTab();
         });
 
