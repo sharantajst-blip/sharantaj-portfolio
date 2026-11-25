@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +7,38 @@
     <meta name="description" content="Saran Taj Official Portfolio - Student and Scout Leader from Mirzapur, Tangail.">
     <meta name="keywords" content="Saran Taj, Sharan Taj Portfolio, Mirzapur, Tangail">
     <title>শরণ তাজ - প্রফেশনাল পোর্টফোলিও</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4f46e5;
             --secondary: #ec4899;
-            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.92);
             --glass-border: rgba(255, 255, 255, 0.95);
             --text-dark: #0f172a;
             --text-muted: #475569;
+            --modal-bg: rgba(248, 250, 252, 0.92);
+        }
+
+        body.dark-mode {
+            --primary: #818cf8;
+            --secondary: #f472b6;
+            --glass-bg: rgba(15, 23, 42, 0.88);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-dark: #f8fafc;
+            --text-muted: #94a3b8;
+            --modal-bg: rgba(11, 15, 25, 0.92);
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%) !important;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
         }
 
         body {
-            font-family: 'Hind Siliguri', 'SolaimanLipi', Arial, sans-serif;
             color: var(--text-dark);
             line-height: 1.85;
             min-height: 100vh;
@@ -41,40 +54,75 @@
             100% { background-position: 100% 50%; }
         }
 
-        /* Dark Mode Variables */
-        body.dark-mode {
-            --primary: #818cf8;
-            --secondary: #f472b6;
-            --glass-bg: rgba(15, 23, 42, 0.88);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --text-dark: #f8fafc;
-            --text-muted: #94a3b8;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+        /* Animated Language Modal */
+        #langModal {
+            position: fixed;
+            inset: 0;
+            background: var(--modal-bg);
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            animation: fadeIn 0.4s ease forwards;
         }
 
-        body.dark-mode .hero-banner {
-            background: linear-gradient(125deg, #312e81, #581c87, #831843, #155e75);
+        .modal-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            max-width: 540px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            transform: scale(0.85);
+            animation: popUp 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        body.dark-mode .tab-container {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(255, 255, 255, 0.1);
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes popUp { to { transform: scale(1); } }
+
+        .modal-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
 
-        body.dark-mode .pill {
-            background: rgba(129, 140, 248, 0.15);
-            color: #a5b4fc;
-            border-color: rgba(129, 140, 248, 0.3);
+        .modal-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
         }
 
-        body.dark-mode footer {
-            background: rgba(15, 23, 42, 0.9);
-            border-top-color: rgba(255, 255, 255, 0.1);
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
-        /* Smooth Dissolve Transition */
-        body, .glass-card, .tab-container, .hero-banner, footer, .gallery-card, .theme-switch-wrapper {
-            transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
+        .lang-btn {
+            background: var(--glass-bg);
+            color: var(--text-dark);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
         }
 
         /* Floating Blobs Background */
@@ -111,7 +159,7 @@
             background: linear-gradient(125deg, #4f46e5, #9333ea, #ec4899, #06b6d4);
             background-size: 300% 300%;
             animation: gradientFlow 8s ease infinite;
-            padding: 60px 20px 75px;
+            padding: 50px 20px 75px;
             text-align: center;
             color: #ffffff;
             position: relative;
@@ -148,6 +196,34 @@
             font-weight: 500;
         }
 
+        /* Top Settings Bar for Language & Theme Toggle */
+        .top-settings-bar {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .settings-icon-btn {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .settings-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
         /* Floating Navigation Pill Bar */
         .nav-wrapper {
             position: sticky;
@@ -158,24 +234,24 @@
         }
 
         .tab-container {
-            max-width: 920px;
+            max-width: 950px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.92);
+            background: var(--glass-bg);
             backdrop-filter: blur(16px);
             padding: 10px;
             gap: 8px;
             border-radius: 24px;
-            border: 1px solid #ffffff;
+            border: 1px solid var(--glass-border);
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
         }
 
         .tab-btn {
             border: none;
             background: transparent;
-            padding: 9px 18px;
+            padding: 9px 16px;
             font-size: 14px;
             font-family: inherit;
             border-radius: 16px;
@@ -195,7 +271,7 @@
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #4f46e5, #ec4899);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #ffffff;
             box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
             transform: scale(1.04);
@@ -216,11 +292,11 @@
             display: block;
         }
 
-        /* Bi-directional Scroll Animation */
+        /* Scroll Animation */
         .scroll-item {
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px) scale(0.96);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .scroll-item.visible {
@@ -269,7 +345,7 @@
             width: 50px;
             height: 50px;
             border-radius: 16px;
-            background: linear-gradient(135deg, #4f46e5, #ec4899);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -344,7 +420,7 @@
 
         .pill {
             background: rgba(99, 102, 241, 0.12);
-            color: #4338ca;
+            color: var(--primary);
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 13.5px;
@@ -352,7 +428,7 @@
             border: 1px solid rgba(99, 102, 241, 0.25);
         }
 
-        /* Gallery Stream Optimized */
+        /* Gallery Stream */
         .gallery-stream {
             display: flex;
             flex-direction: column;
@@ -379,86 +455,33 @@
             transition: transform 0.6s ease;
         }
 
-        .gallery-card:hover img {
-            transform: scale(1.03);
-        }
+        .gallery-card:hover img { transform: scale(1.03); }
 
-        /* Lightbox Modal */
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
             inset: 0;
             background: rgba(15, 23, 42, 0.92);
-            z-index: 2000;
+            z-index: 20000;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
         .lightbox.open { display: flex; }
-
-        .lightbox img {
-            max-width: 95%;
-            max-height: 90vh;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            color: #ffffff;
-            font-size: 36px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Theme Switcher Button Styling */
-        .theme-switch-wrapper {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 9999;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            padding: 8px 14px;
-            border-radius: 50px;
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .theme-btn {
-            border: none;
-            background: transparent;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            font-family: inherit;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-        }
-
-        .theme-btn.active-theme {
-            background: linear-gradient(135deg, #4f46e5, #ec4899);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-        }
+        .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 16px; }
+        .lightbox-close { position: absolute; top: 25px; right: 30px; color: #fff; font-size: 36px; cursor: pointer; }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.85);
+            background: var(--glass-bg);
             color: var(--text-muted);
             font-size: 14px;
             margin-top: 60px;
-            border-top: 1px solid #ffffff;
+            border-top: 1px solid var(--glass-border);
             font-weight: 500;
         }
 
@@ -466,11 +489,30 @@
             .hero-banner h1 { font-size: 30px; }
             .glass-card { padding: 22px 16px; }
             .tab-btn { padding: 8px 12px; font-size: 12.5px; }
-            .post-text { font-size: 15.5px; line-height: 1.75; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Animated Language Selection Modal -->
+    <div id="langModal">
+        <div class="modal-box">
+            <h2>Select Your Language / ভাষা নির্বাচন করুন</h2>
+            <p>Choose your preferred language to explore</p>
+            <div class="lang-grid">
+                <button class="lang-btn" onclick="setLanguage('bn')">🇧🇩 বাংলা (Bangla)</button>
+                <button class="lang-btn" onclick="setLanguage('en')">🇺🇸 English</button>
+                <button class="lang-btn" onclick="setLanguage('ar')">🇸🇦 العربية (Arabic)</button>
+                <button class="lang-btn" onclick="setLanguage('zh')">🇨🇳 中文 (Chinese)</button>
+                <button class="lang-btn" onclick="setLanguage('es')">🇪🇸 Español (Spanish)</button>
+                <button class="lang-btn" onclick="setLanguage('hi')">🇮🇳 हिन्दी (Hindi)</button>
+                <button class="lang-btn" onclick="setLanguage('fr')">🇫🇷 Français (French)</button>
+                <button class="lang-btn" onclick="setLanguage('de')">🇩🇪 Deutsch (German)</button>
+                <button class="lang-btn" onclick="setLanguage('ja')">🇯🇵 日本語 (Japanese)</button>
+                <button class="lang-btn" onclick="setLanguage('ru')">🇷🇺 Русский (Russian)</button>
+            </div>
+        </div>
+    </div>
 
     <div class="blobs">
         <span></span>
@@ -479,22 +521,26 @@
 
     <!-- Hero Banner -->
     <header class="hero-banner">
-        <div class="hero-badge">✨ অফিশিয়াল পোর্টফোলিও</div>
-        <h1>শরণ তাজ</h1>
-        <p>শিক্ষার্থী • স্কাউট লিডার • প্রযুক্তিপ্রেমী | মির্জাপুর, টাঙ্গাইল</p>
+        <div class="top-settings-bar">
+            <button class="settings-icon-btn" onclick="openLangModal()">🌐 Language</button>
+            <button class="settings-icon-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark</button>
+        </div>
+        <div class="hero-badge" id="lblBadge">✨ অফিশিয়াল পোর্টফোলিও</div>
+        <h1 id="lblHeroName">শরণ তাজ</h1>
+        <p id="lblHeroDesc">শিক্ষার্থী • স্কাউট লিডার • প্রযুক্তিপ্রেমী | মির্জাপুর, টাঙ্গাইল</p>
     </header>
 
     <!-- Navigation -->
     <div class="nav-wrapper">
         <nav class="tab-container">
-            <button class="tab-btn active" onclick="openTab(event, 'welcome')">🏠 ওয়েলকাম</button>
-            <button class="tab-btn" onclick="openTab(event, 'about')">👤 পরিচিতি</button>
-            <button class="tab-btn" onclick="openTab(event, 'friends')">🤝 বন্ধুরা</button>
-            <button class="tab-btn" onclick="openTab(event, 'teachers')">👨‍🏫 শিক্ষকবৃন্দ</button>
-            <button class="tab-btn" onclick="openTab(event, 'scout')">⚜️ স্কাউটিং</button>
-            <button class="tab-btn" onclick="openTab(event, 'school')">🏫 বিদ্যালয়</button>
-            <button class="tab-btn" onclick="openTab(event, 'city')">🏙️ শহর ও স্থান</button>
-            <button class="tab-btn" onclick="openTab(event, 'gallery')">🖼️ গ্যালারি</button>
+            <button class="tab-btn active" onclick="openTab(event, 'welcome')" id="navWelcome">🏠 ওয়েলকাম</button>
+            <button class="tab-btn" onclick="openTab(event, 'about')" id="navAbout">👤 পরিচিতি</button>
+            <button class="tab-btn" onclick="openTab(event, 'friends')" id="navFriends">🤝 বন্ধুরা</button>
+            <button class="tab-btn" onclick="openTab(event, 'teachers')" id="navTeachers">👨‍🏫 শিক্ষকবৃন্দ</button>
+            <button class="tab-btn" onclick="openTab(event, 'scout')" id="navScout">⚜️ স্কাউটিং</button>
+            <button class="tab-btn" onclick="openTab(event, 'school')" id="navSchool">🏫 বিদ্যালয়</button>
+            <button class="tab-btn" onclick="openTab(event, 'city')" id="navCity">🏙️ শহর ও স্থান</button>
+            <button class="tab-btn" onclick="openTab(event, 'gallery')" id="navGallery">🖼️ গ্যালারি</button>
         </nav>
     </div>
 
@@ -507,59 +553,47 @@
                     <div class="avatar-ring">
                         <img src="IMG-20260829-WA0036.jpg" alt="শরণ তাজ" loading="lazy">
                     </div>
-                    <h2 style="font-size: 28px; color: var(--text-dark);">আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
+                    <h2 style="font-size: 28px; color: var(--text-dark);" id="wWelcomeTitle">আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨</h2>
                     <div class="info-pills">
-                        <span class="pill">🎂 বয়স: ১৫ বছর</span>
-                        <span class="pill">📚 নবম শ্রেণী (বিজ্ঞান)</span>
-                        <span class="pill">⚜️ পেট্রোল লিডার</span>
-                        <span class="pill">📍 মির্জাপুর, টাঙ্গাইল</span>
+                        <span class="pill" id="pill1">🎂 বয়স: ১৫ বছর</span>
+                        <span class="pill" id="pill2">📚 নবম শ্রেণী (বিজ্ঞান)</span>
+                        <span class="pill" id="pill3">⚜️ পেট্রোল লিডার</span>
+                        <span class="pill" id="pill4">📍 মির্জাপুর, টাঙ্গাইল</span>
                     </div>
                 </div>
             </article>
 
             <article class="glass-card scroll-item">
-                <p class="post-text">
-                    আসসালামু আলাইকুম! আমার এই নিজস্ব প্রফেশনাল ওয়েবসাইটে আপনাকে অত্যন্ত আন্তরিকভাবে স্বাগতম জানাই। প্রযুক্তিপ্রেমী একজন শিক্ষার্থী হিসেবে কোডিং ও ওয়েব ডেভেলপমেন্টের প্রতি আমার আজীবন গভীর অনুরাগ রয়েছে, যা আমাকে এই চমৎকার প্ল্যাটফর্মটি তৈরি করতে উদ্বুদ্ধ করেছে। এই ওয়েবসাইটের প্রতিটি কোণায় আমার চিন্তাভাবনা, সৃজনশীলতা এবং ভালোবাসার ছাপ রাখার চেষ্টা করেছি। একটি সুন্দর পোর্টফোলিও কেবল নিজের পরিচয় বহন করে না, বরং এটি নিজের স্বপ্ন ও লক্ষ্যগুলোকে সবার সামনে ফুটিয়ে তোলার একটি দারুণ মাধ্যম।
+                <p class="post-text" id="wText1">
+                    আসসালামু আলাইকুম! আমার এই নিজস্ব প্রফেশনাল ওয়েবসাইটে আপনাকে অত্যন্ত আন্তরিকভাবে স্বাগতম জানাই। প্রযুক্তিপ্রেমী একজন শিক্ষার্থী হিসেবে কোডিং ও ওয়েব ডেভেলপমেন্টের প্রতি আমার আজীবন গভীর অনুরাগ রয়েছে, যা আমাকে এই চমৎকার প্ল্যাটফর্মটি তৈরি করতে উদ্বুদ্ধ করেছে।
                 </p>
             </article>
 
             <article class="glass-card scroll-item">
-                <p class="post-text">
-                    এই ওয়েবসাইটের মূল উদ্দেশ্য হলো আমার ব্যক্তিগত জীবনযাত্রার নানা সুন্দর মুহূর্ত, আমার পাঠশালা ও শিক্ষাজীবনের সাথে জড়িত গুরুত্বপূর্ণ স্মৃতিগুলো এবং আমার সহপাঠী ও শিক্ষকদের প্রতি শ্রদ্ধা ও ভালোবাসার কথাগুলো সুন্দরভাবে তুলে ধরা। এছাড়া আমি যে শহরে বসবাস করি অর্থাৎ মির্জাপুর ও এর আশেপাশের ঐতিহাসিক স্থানগুলোর পরিচিতিও এখানে যুক্ত করা হয়েছে। আশা করি আমার এই ছোট্ট প্রয়াস আপনাদের ভালো লাগবে এবং আপনারা আনন্দের সাথে ওয়েবসাইটটি ব্রাউজ করবেন।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    ওয়েবসাইটের ওপরে থাকা আকর্ষণীয় ট্যাবগুলোর মাধ্যমে আপনি খুব সহজেই আমার জীবনের বিভিন্ন অধ্যায়ে প্রবেশ করতে পারবেন। 'পরিচিতি' ট্যাবে আমার ব্যক্তিগত তথ্য, 'বন্ধুরা' ট্যাবে আমার সহপাঠীদের সাথে কাটানো স্মৃতির কথা, 'শিক্ষকবৃন্দ' ট্যাবে আমার শ্রদ্ধেয় শিক্ষকদের অবদান এবং 'স্কাউটিং' ট্যাবে আমার শৃঙ্খলা ও নেতৃত্বের নানা অভিজ্ঞতা জানতে পারবেন। এছাড়া বিদ্যালয়ের দীর্ঘ ইতিহাস এবং ছবি ও ভিডিওর আকর্ষণীয় গ্যালারি তো রয়েছেই। আপনাদের সকলের সুস্বাস্থ্য ও মঙ্গল কামনা করে আমার পোর্টফোলিও হোমপেজের এই শুভেচ্ছা বার্তা এখানেই শেষ করছি।
+                <p class="post-text" id="wText2">
+                    এই ওয়েবসাইটের মূল উদ্দেশ্য হলো আমার ব্যক্তিগত জীবনযাত্রার নানা সুন্দর মুহূর্ত, আমার পাঠশালা ও শিক্ষাজীবনের সাথে জড়িত গুরুত্বপূর্ণ স্মৃতিগুলো এবং আমার সহপাঠী ও শিক্ষকদের প্রতি শ্রদ্ধা ও ভালোবাসার কথাগুলো সুন্দরভাবে তুলে ধরা।
                 </p>
             </article>
         </div>
 
-        <!-- 1. Porichiti Tab -->
+        <!-- Porichiti Tab -->
         <div id="about" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">👤</div>
                     <div class="card-title-group">
-                        <h2>আমার পরিচিতি</h2>
-                        <span class="card-subtitle">ব্যক্তিগত তথ্য, পরিবার ও জীবনদর্শন</span>
+                        <h2 id="aboutHead">আমার পরিচিতি</h2>
+                        <span class="card-subtitle" id="aboutSub">ব্যক্তিগত তথ্য, পরিবার ও জীবনদর্শন</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    আমার নাম শরণ তাজ। আমার বাবার নাম সোহেল মহসিন এবং মায়ের নাম ফাহমিদা তাজ। আমার ছোট ভাইয়ের নাম শয়ণ তাজ। আমার বয়স ১৫ বছর এবং বর্তমানে আমি অত্যন্ত আনন্দের সাথে নবম শ্রেণীতে বিজ্ঞান বিভাগে পড়াশোনা করছি। বিজ্ঞান বিভাগের একজন কৌতূহলী শিক্ষার্থী হিসেবে মহাবিশ্বের রহস্য, পদার্থবিজ্ঞান, রসায়ন এবং আধুনিক প্রযুক্তির নানা দিক নিয়ে পড়াশোনা করতে আমার ভীষণ ভালো লাগে। পড়াশোনার পাশাপাশি কোডিং, প্রোগ্রামিং এবং বিভিন্ন ক্রিয়েটিভ ডিজিটাল কাজ শেখার প্রতি আমার প্রবল আগ্রহ রয়েছে।
+                <p class="post-text" id="aboutText1">
+                    আমার নাম শরণ তাজ। আমার বাবার নাম সোহেল মহসিন এবং মায়ের নাম ফাহমিদা তাজ। আমার ছোট ভাইয়ের নাম শয়ণ তাজ। আমার বয়স ১৫ বছর এবং বর্তমানে আমি অত্যন্ত আনন্দের সাথে নবম শ্রেণীতে বিজ্ঞান বিভাগে পড়াশোনা করছি।
                 </p>
             </article>
 
             <article class="glass-card scroll-item">
-                <p class="post-text">
-                    ছোটবেলা থেকেই আমার স্বভাব হচ্ছে নতুন কিছু শেখার এবং নিজের দক্ষতাগুলোকে আরও শাণিত করার চেষ্টা করা। আমার বাবা-মা সবসময় আমাকে পড়ালেখার পাশাপাশি সৃজনশীল কাজে উৎসাহ জুগিয়েছেন, যার ফলে আমি আজ প্রযুক্তির ছোঁয়ায় নিজের এই ওয়েবসাইটটি তৈরি করতে সক্ষম হয়েছি। জীবনের প্রতিটি পদক্ষেপে সততা, একাগ্রতা এবং কঠোর পরিশ্রমকে আমি আমাদের মূল মন্ত্র হিসেবে মেনে চলি। আমার বিশ্বাস, সঠিক মেধা ও পরিশ্রমের সঠিক প্রয়োগ ঘটলে আগামী দিনে দেশের একজন দক্ষ ও সুযোগ্য নাগরিক হিসেবে নিজেকে গড়ে তোলা সম্ভব।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    ভবিষ্যতে উচ্চশিক্ষা গ্রহণ করে বিজ্ঞান ও প্রযুক্তির উন্নত শাখায় ক্যারিয়ার গড়ার তীব্র স্বপ্ন আমার রয়েছে। বিশেষ করে কম্পিউটার সায়েন্স কিংবা সফটওয়্যার ইঞ্জিনিয়ারিং নিয়ে পড়াশোনা করে দেশের প্রযুক্তি খাতকে সামনের দিকে এগিয়ে নিতে চাই। এছাড়াও সমাজসেবামূলক বিভিন্ন কাজে যুক্ত থেকে মানুষের উপকারে আসার সুপ্ত বাসনা আমার মনে সবসময় কাজ করে। আমার এই পরিচয় ও স্বপ্নগুলোকে পাথেয় করে আমি প্রতিদিন সামনের দিকে এগিয়ে যাওয়ার অবিরাম চেষ্টা চালিয়ে যাচ্ছি।
+                <p class="post-text" id="aboutText2">
+                    ভবিষ্যতে উচ্চশিক্ষা গ্রহণ করে বিজ্ঞান ও প্রযুক্তির উন্নত শাখায় ক্যারিয়ার গড়ার তীব্র স্বপ্ন আমার রয়েছে। বিশেষ করে কম্পিউটার সায়েন্স কিংবা সফটওয়্যার ইঞ্জিনিয়ারিং নিয়ে পড়াশোনা করে দেশের প্রযুক্তি খাতকে সামনের দিকে এগিয়ে নিতে চাই।
                 </p>
             </article>
 
@@ -567,214 +601,118 @@
                 <div class="card-header">
                     <div class="card-icon">✉️</div>
                     <div class="card-title-group">
-                        <h2>যোগাযোগ করুন</h2>
-                        <span class="card-subtitle">ইমেইলের মাধ্যমে সরাসরি যোগাযোগ</span>
+                        <h2 id="contactHead">যোগাযোগ করুন</h2>
+                        <span class="card-subtitle" id="contactSub">সরাসরি ইমেইল</span>
                     </div>
                 </div>
-                <p class="post-text" style="margin-bottom: 16px;">
-                    যেকোনো প্রয়োজন বা মতামতের জন্য আমাকে সরাসরি ইমেইল করতে পারেন: <strong>sharantajst@gmail.com</strong>
+                <p class="post-text" style="margin-bottom: 16px;" id="contactDesc">
+                    যেকোনো প্রয়োজনে বা মতামতের জন্য আমাকে সরাসরি ইমেইল করতে পারেন: <strong>sharantajst@gmail.com</strong>
                 </p>
-                <a href="mailto:sharantajst@gmail.com" style="display: inline-block; background: linear-gradient(135deg, #4f46e5, #ec4899); color: #fff; padding: 10px 24px; border-radius: 14px; text-decoration: none; font-weight: 600; box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);">✉️ ইমেইল পাঠান</a>
+                <a href="mailto:sharantajst@gmail.com" style="display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 10px 24px; border-radius: 14px; text-decoration: none; font-weight: 600;" id="emailBtn">✉️ ইমেইল পাঠান</a>
             </article>
         </div>
 
-        <!-- 2. Bondhura Tab -->
+        <!-- Friends Tab -->
         <div id="friends" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">🤝</div>
                     <div class="card-title-group">
-                        <h2>আমার সহপাঠী ও বন্ধুরা</h2>
-                        <span class="card-subtitle">স্কুলের আনন্দময় মুহূর্ত ও বন্ধুত্বের বন্ধন</span>
+                        <h2 id="friendsHead">আমার সহপাঠী ও বন্ধুরা</h2>
+                        <span class="card-subtitle" id="friendsSub">স্কুলের আনন্দময় মুহূর্ত ও বন্ধুত্বের বন্ধন</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    মানবজীবনে বন্ধুত্বের গুরুত্ব অপরিসীম, আর স্কুল জীবনের বন্ধুরা তো সারাজীবনের জন্য হৃদয়ে গেঁথে থাকে। আমার এই স্কুল জীবনের প্রতিটি দিন রঙিন হয়ে ওঠে আমাদের কিছু অসাধারণ ও আন্তরিক সহপাঠী বন্ধুদের সান্নিধ্যে। প্রতিদিন সকালে ক্লাসে যাওয়া, একসাথে বসে স্যারদের লেকচার শোনা, টিফিনের সময় একসাথে বসে আড্ডা দেওয়া এবং স্কুল ছুটির পর মাঠে একসাথে খেলাধুলা করার স্মৃতিগুলো আমার জীবনের অন্যতম সেরা সম্পদ। বন্ধুদের সাথে শেয়ার করা ছোট ছোট হাসি-কান্না ও সুখ-দুঃখে পাশে থাকার অনুভূতি আমাদের বন্ধুত্বকে দিন দিন আরও গভীর ও মজবুত করে তুলছে।
+                <p class="post-text" id="friendsText1">
+                    মানবজীবনে বন্ধুত্বের গুরুত্ব অপরিসীম, আর স্কুল জীবনের বন্ধুরা তো সারাজীবনের জন্য হৃদয়ে গেঁথে থাকে। আমার এই স্কুল জীবনের প্রতিটি দিন রঙিন হয়ে ওঠে আমাদের কিছু অসাধারণ ও আন্তরিক সহপাঠী বন্ধুদের সান্নিধ্যে।
                 </p>
             </article>
-
             <article class="glass-card scroll-item">
-                <p class="post-text">
-                    আমার এই প্রিয় বন্ধুদের তালিকায় রয়েছে—তাসিন, মহিদুর, মিজান, আরাফাত হোসেন মৃধা, আরাফ, কাইয়ুম, আহনাফ বিন মনওয়ার এবং আরও অনেকে। পড়ালেখার পাশাপাশি বিভিন্ন প্রতিযোগিতায় একে অপরকে উৎসাহ দেওয়া, কঠিন কোনো পড়া বুঝতে একে অপরের সাহায্য নেওয়া এবং স্কুল জীবনের প্রতিটি চড়াই-উতরাইয়ে একে অপরের পাশে থাকা আমাদের বন্ধুত্বের আসল সৌন্দর্য। পরীক্ষার আগে একসাথে বসে গ্রুপ স্টাডি করা কিংবা স্কুল প্রাঙ্গণে দাঁড়িয়ে ভবিষ্যৎ নিয়ে স্বপ্ন দেখার মুহূর্তগুলো আজও আমার চোখের সামনে ভাসমান।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    শিক্ষাজীবনের এই সোনালী সময়গুলো পেরিয়ে একদিন আমরা হয়তো জীবনের নানা প্রান্তে ছড়িয়ে পড়ব, কিন্তু আমাদের এই মধুর বন্ধুত্বের স্মৃতিগুলো চিরকাল অমলিন হয়ে থাকবে। বিপদে-আপদে এবং সুখে-দুঃখে একে অপরের হাত শক্ত করে ধরে রাখার এই বন্ধন আমাদের জীবনের সবচেয়ে বড় পাওয়া। আমার এই বন্ধুদের নিঃস্বার্থ ভালোবাসা ও অনুপ্রেরণা আমাকে জীবনের প্রতিটি পদক্ষেপে সামনে এগিয়ে যাওয়ার অবিরাম সাহস ও শক্তি জুগিয়ে চলেছে।
+                <p class="post-text" id="friendsText2">
+                    আমার এই প্রিয় বন্ধুদের তালিকায় রয়েছে—তাসিন, মহিদুর, মিজান, আরাফাত হোসেন মৃধা, আরাফ, কাইয়ুম, আহনাফ বিন মনওয়ার এবং আরও অনেকে।
                 </p>
             </article>
         </div>
 
-        <!-- 3. Teachers Tab -->
+        <!-- Teachers Tab -->
         <div id="teachers" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">👨‍🏫</div>
                     <div class="card-title-group">
-                        <h2>আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
-                        <span class="card-subtitle">শিক্ষক ও শিক্ষা জীবনের আলো</span>
+                        <h2 id="teachHead">আমার শ্রদ্ধেয় শিক্ষকবৃন্দ</h2>
+                        <span class="card-subtitle" id="teachSub">শিক্ষক ও শিক্ষা জীবনের আলো</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    অন্ধকার থেকে আলোর পথে যাত্রার পথপ্রদর্শক হলেন আমাদের শ্রদ্ধেয় শিক্ষকবৃন্দ। পাঠশালার চার দেওয়ালের মাঝে তাঁরা কেবল আমাদের পাঠ্যবইয়ের পড়া বোঝান না, বরং জীবনের আসল পাঠ ও নৈতিকতার শিক্ষা দিয়ে আমাদের একজন আদর্শ মানুষ হিসেবে গড়ে তোলেন। আমার ছাত্রজীবনে এমন কিছু বরেণ্য শিক্ষক রয়েছেন যাঁদের স্নেহ, ধৈর্য এবং অসাধারণ পাঠদান পদ্ধতি আমার জীবনদৃষ্টিকে পুরোপুরি বদলে দিয়েছে। তাঁদের প্রতি শ্রদ্ধা ও কৃতজ্ঞতা প্রকাশের ভাষা আমার জানা নেই, কারণ তাঁদের দিকনির্দেশনা ছাড়া আজকের এই অবস্থানে পৌঁছানো আমার পক্ষে কখনোই সম্ভব হতো না।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    আমাদের বিদ্যালয়ে আরও অনেক প্রথিতযশা শিক্ষক রয়েছেন যাঁরা অত্যন্ত নিষ্ঠার সাথে তাঁদের দায়িত্ব পালন করে যাচ্ছেন। আমাদের প্রিয় শিক্ষক ফরহাদ স্যার, সুমন স্যার, এনামুল স্যার সহ অন্যান্য সম্মানিত শিক্ষকমণ্ডলী অত্যন্ত আন্তরিকতার সাথে আমাদের প্রতিটি বিষয়ে খুঁটিনাটি বুঝিয়ে দেন। ক্লাসের বাইরেও তাঁদের অমূল্য পরামর্শ, শাসন ও ভালোবাসা আমাদের সঠিক পথে চলার শক্তি জোগায়। কোনো শিক্ষার্থী পড়া বুঝতে অপারগ হলে তাঁরা পরম ধৈর্যের সাথে তাকে বারবার বুঝিয়ে দেন, যা আমাদের মধ্যে পড়াশোনার প্রতি ভালোবাসা তৈরি করে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    শিক্ষকদের দেওয়া শিক্ষা কেবল পরীক্ষার খাতায় নম্বর তোলার জন্য নয়, বরং তা বাস্তব জীবনে চলার পথে এক অবিনাশী ঢালস্বরূপ। তাঁদের সততা, সময়ানুবর্তিতা এবং জ্ঞানের গভীরতা আমাদের মনে গভীর রেখাপাত করে। আমি পরম শ্রদ্ধার সাথে আমার সকল শিক্ষকের দীর্ঘায়ু ও সুস্বাস্থ্য কামনা করি। তাঁদের এই ঋণ কখনো শোধ করার নয়, কেবল তাঁদের আদর্শ বুকে ধারণ করে জীবনে সফল হওয়াই হতে পারে তাঁদের প্রতি আমাদের শ্রেষ্ঠ শ্রদ্ধাঞ্জলি।
+                <p class="post-text" id="teachText1">
+                    অন্ধকার থেকে আলোর পথে যাত্রার পথপ্রদর্শক হলেন আমাদের শ্রদ্ধেয় শিক্ষকবৃন্দ। পাঠশালার চার দেওয়ালের মাঝে তাঁরা কেবল আমাদের পাঠ্যবইয়ের পড়া বোঝান না, বরং জীবনের আসল পাঠ ও নৈতিকতার শিক্ষা দেন।
                 </p>
             </article>
         </div>
 
-        <!-- 4. Scout Tab -->
+        <!-- Scout Tab -->
         <div id="scout" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">⚜️</div>
                     <div class="card-title-group">
-                        <h2>বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
-                        <span class="card-subtitle">শৃঙ্খলা, সেবা ও প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ডের লড়াই</span>
+                        <h2 id="scoutHead">বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা</h2>
+                        <span class="card-subtitle" id="scoutSub">শৃঙ্খলা, সেবা ও প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    আমি অত্যন্ত গর্ব ও আনন্দের সাথে বাংলাদেশ স্কাউটস-এর একজন সক্রিয় সদস্য হিসেবে যুক্ত আছি। আমাদের স্কুলের স্কাউট ইউনিটে অত্যন্ত নিষ্ঠার সাথে কাজ করে আমি সফলভাবে পেট্রোল লিডার (Patrol Leader) এর দায়িত্ব পালন করেছি। স্কাউটিং কেবল একটি সহশিক্ষা কার্যক্রম বা সাধারণ কোনো ব্যাজ অর্জনের মাধ্যম নয়; এটি মানুষের মাঝে সততা, আত্মনির্ভরশীলতা, দেশপ্রেম এবং মানবসেবার মানসিকতা গড়ে তোলার এক দুর্দান্ত এবং প্রদীপ্ত মাধ্যম। পেট্রোল লিডার হিসেবে কাজ করার সুবাদে আমার মধ্যে দলগতভাবে কাজ করার মানসিকতা, নেতৃত্ব দেওয়ার ক্ষমতা এবং যেকোনো কঠিন পরিস্থিতিতে মাথা ঠান্ডা রেখে সঠিক সিদ্ধান্ত নেওয়ার দারুণ দক্ষতা তৈরি হয়েছে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    আমার স্কাউটিং জীবনের সবচেয়ে বড় এবং রোমাঞ্চকর একটি অধ্যায় হলো বাংলাদেশ স্কাউটসের সর্বোচ্চ ও মর্যাদাপূর্ণ স্বীকৃতি <strong>'প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড' (President's Scout Award)</strong> অর্জনের জন্য লড়াই করা। এই অর্জনের জন্য আমাকে উপজেলা ও জেলা পর্যায় পেরিয়ে অত্যন্ত কঠিন ও প্রতিযোগিতাপূর্ণ <strong>জাতীয় পর্যায়ের পরীক্ষায়</strong> অংশগ্রহণ করতে হয়েছিল। জাতীয় পর্যায়ে লিখিত পরীক্ষা, প্র্যাকটিক্যাল স্কাউট স্কিল, ট্র্যাকিং, হাইকিং এবং ভাইভার মতো কঠিন সব ধাপ পার করার জন্য আমাকে মাসের পর মাস কঠোর পরিশ্রম ও সাধনা করতে হয়েছে। যদিও শেষ পর্যন্ত চূড়ান্ত সফলতা অর্জন করা সম্ভব হয়নি এবং এটি আমার জীবনের প্রেসিডেন্টস স্কাউট পরীক্ষার শেষ ধাপ বা শেষ পর্যায় ছিল, তবুও এই পুরো যাত্রায় আমি যা শিখেছি তা আমার জীবনের সবচেয়ে বড় অর্জন।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <p class="post-text">
-                    চূড়ান্ত পুরস্কার না পেলেও, এই জাতীয় পর্যায়ের লড়াই ও প্রস্তুতি আমার আত্মবিশ্বাসকে এক অনন্য উচ্চতায় নিয়ে গেছে। আমি বুঝতে পেরেছি যে জয়-পরাজয়ের চেয়েও বড় কথা হলো নিজের শতভাগ দিয়ে চেষ্টা করা এবং প্রক্রিয়ার মধ্য দিয়ে একজন পরিপক্ক মানুষ হিসেবে গড়ে ওঠা। স্কাউটিং আমাকে শিখিয়েছে কীভাবে ব্যর্থতাকে মেনে নিয়ে আবার নতুন উদ্যমে ঘুরে দাঁড়াতে হয়। এই অভিজ্ঞতা আমার চরিত্র গঠন, মানসিক দৃঢ়তা এবং দেশসেবার ব্রতকে চিরদিনের মতো শাণিত করেছে, যা আমার ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে আমাকে সবসময় পথ দেখাবে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <div class="card-header">
-                    <div class="card-icon">🎖️</div>
-                    <div class="card-title-group">
-                        <h2>আমার শ্রদ্ধেয় স্কাউট লিডার</h2>
-                        <span class="card-subtitle">মোহাম্মদ আজহারুল ইসলাম স্যার</span>
-                    </div>
-                </div>
-                <p class="post-text">
-                    আমাদের স্কাউট ইউনিটের মূল চালিকাশক্তি, প্রাণপুরুষ এবং আমাদের জীবনের অন্যতম সেরা মেন্টর হলেন আমাদের শ্রদ্ধেয় ইউনিট লিডার মোহাম্মদ আজহারুল ইসলাম স্যার। তিনি বর্তমানে সরকারি চাকরি থেকে অবসরে থাকলেও স্কাউট আন্দোলনের প্রতি তাঁর ভালোবাসা, নিষ্ঠা এবং তরুণ প্রজন্মকে গড়ে তোলার স্পৃহা একটুও কমে যায়নি। অবসরের যাওয়ার পরেও তিনি এক মুহূর্তের জন্যও আমাদের ছেড়ে যাননি; বরং আগের মতোই পরম মায়ায় আমাদের স্কাউট ক্যাম্পে সময় দেন এবং আমাদের প্রতিটি কার্যক্রমে সরাসরি দিকনির্দেশনা দিয়ে যাচ্ছেন। আজহারুল ইসলাম স্যারের সান্নিধ্য না পেলে স্কাউটিংয়ের আসল অর্থ ও শৃঙ্খলা হয়তো আমাদের কাছে অধরা থেকে যেত।
+                <p class="post-text" id="scoutText1">
+                    আমি অত্যন্ত গর্ব ও আনন্দের সাথে বাংলাদেশ স্কাউটস-এর একজন সক্রিয় সদস্য। স্কুলের স্কাউট ইউনিটে পেট্রোল লিডার (Patrol Leader) হিসেবে সফলভাবে দায়িত্ব পালন করেছি।
                 </p>
             </article>
         </div>
 
-        <!-- 5. Biddaloy Tab -->
+        <!-- School Tab -->
         <div id="school" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">🏛️</div>
                     <div class="card-title-group">
-                        <h2>ঐতিহ্যবাহী মির্জাপুর সরকারি এস. কে. পাইলট মডেল উচ্চ বিদ্যালয়</h2>
-                        <span class="card-subtitle">প্রতিষ্ঠা ও ঐতিহাসিক প্রেক্ষাপট</span>
+                        <h2 id="schoolHead">মির্জাপুর সরকারি এস. কে. পাইলট মডেল উচ্চ বিদ্যালয়</h2>
+                        <span class="card-subtitle" id="schoolSub">প্রতিষ্ঠা ও ঐতিহাসিক প্রেক্ষাপট</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    আমার শিক্ষাপ্রতিষ্ঠান <strong>মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয়</strong> টাঙ্গাইল জেলার মির্জাপুর উপজেলার অন্যতম একটি শতবর্ষী ঐতিহ্যবাহী ও সুনামধন্য বিদ্যাপীঠ। ১৯১৫ সালের ১৮ জানুয়ারি দানশীল জমিদার <strong>সদয় কৃষ্ণ পোদ্দার</strong> এই অঞ্চলের সাধারণ শিক্ষার্থীদের মাঝে শিক্ষার আলো ছড়ানোর মহৎ উদ্দেশ্যে বিদ্যালয়টি প্রতিষ্ঠা করেন। পরবর্তীতে ১৯১৭ সালের ১২ সেপ্টেম্বর এটি নিম্নমাধ্যমিক এবং ১৯১৯ সালের ১ জানুয়ারি পূর্ণাঙ্গ মাধ্যমিক বিদ্যালয় হিসেবে সরকারি স্বীকৃতি লাভ করে। শতাব্দীর দীর্ঘ যাত্রায় এই বিদ্যালয় হাজার হাজার গুণী ব্যক্তি ও সুনাগরিক গড়ে তুলেছে, যারা দেশের ভেতরে ও আন্তর্জাতিক অঙ্গনে নিজেদের মেধার স্বাক্ষর রেখে চলেছেন।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <div class="card-header">
-                    <div class="card-icon">🌟</div>
-                    <div class="card-title-group">
-                        <h2>জাতীয়করণ ও আধুনিকায়ন</h2>
-                        <span class="card-subtitle">মডেল রূপান্তর ও সরকারি স্বীকৃতি</span>
-                    </div>
-                </div>
-                <p class="post-text">
-                    বিদ্যালয়টি প্রতিষ্ঠার পর থেকেই শিক্ষার গুণগত মান ও শৃঙ্খলার দিক দিয়ে টাঙ্গাইল জেলার সেরা শিক্ষাপ্রতিষ্ঠানগুলোর একটি হিসেবে অবিসংবাদিত স্থান দখল করে আছে। ১৯৯৭ সালের ১ জানুয়ারি এটি প্রথম এমপিওভুক্ত হয় এবং পরবর্তীতে শিক্ষার সার্বিক কাঠামোগত উন্নতির ফলে বিদ্যালয়টিকে অত্যন্ত সুনামের সাথে "মডেল উচ্চ বিদ্যালয়"-এ উন্নীত করা হয়। বাংলাদেশ সরকারের শিক্ষা মন্ত্রণালয়ের উদ্যোগে ২০১৮ সালের ২৪ সেপ্টেম্বর এই ঐতিহ্যবাহী প্রতিষ্ঠানটিকে পূর্ণাঙ্গভাবে <strong>জাতীয়করণ (সরকারি)</strong> করা হয়, যা বিদ্যালয়ের গৌরবোজ্জ্বল ইতিহাসে একটি নতুন দিগন্তের উন্মোচন করে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <div class="card-header">
-                    <div class="card-icon">🎓</div>
-                    <div class="card-title-group">
-                        <h2>প্রশাসন, প্রধান শিক্ষক ও শিক্ষকবৃন্দ</h2>
-                        <span class="card-subtitle">দক্ষ প্রশাসন ও শিক্ষকমণ্ডলী</span>
-                    </div>
-                </div>
-                <p class="post-text">
-                    আমাদের বিদ্যালয়ের প্রশাসনিক পরিচালনা এবং শিক্ষার পরিবেশ সুসংহত রাখতে অভিজ্ঞ ও সম্মানিত শিক্ষকবৃন্দ নিরলস পরিশ্রম করে যাচ্ছেন। পূর্বে সম্মানিত প্রধান শিক্ষক হিসেবে মো. রফিকুল ইসলাম খান স্যার অত্যন্ত দক্ষতার সাথে দায়িত্ব পালন করলেও তিনি অবসরে যাওয়ার পর, <strong>২০২৫ সাল থেকে সহকারী প্রধান শিক্ষক প্রফুল্ল কুমার সরকার স্যার প্রধান শিক্ষকের (ভারপ্রাপ্ত/দায়িত্বপ্রাপ্ত) গুরুত্বপূর্ণ দায়িত্ব অত্যন্ত সুনামের সাথে পালন করে আসছেন</strong> অত্যন্ত নিষ্ঠা ও বিচক্ষণতার সাথে। তাঁর দূরদর্শী নেতৃত্ব এবং সম্মানিত অন্যান্য শিক্ষকগণের ঐকান্তিক প্রচেষ্টায় বিদ্যালয়ের শিক্ষার মান আজ অনন্য উচ্চতায় পৌঁছাতে সক্ষম হয়েছে।
+                <p class="post-text" id="schoolText1">
+                    আমার শিক্ষাপ্রতিষ্ঠান মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয় টাঙ্গাইল জেলার মির্জাপুর উপজেলার অন্যতম শতবর্ষী ঐতিহ্যবাহী বিদ্যাপীঠ। ১৯১৫ সালের ১৮ জানুয়ারি এটি প্রতিষ্ঠিত হয়।
                 </p>
             </article>
         </div>
 
-        <!-- 6. City Tab -->
+        <!-- City Tab -->
         <div id="city" class="tab-content">
             <article class="glass-card scroll-item">
                 <div class="card-header">
                     <div class="card-icon">🏙️</div>
                     <div class="card-title-group">
-                        <h2>আমাদের মির্জাপুর শহর ও ঐতিহাসিক স্থানসমূহ</h2>
-                        <span class="card-subtitle">ঐতিহ্য, সংস্কৃতি ও দর্শনীয় স্থান</span>
+                        <h2 id="cityHead">আমাদের মির্জাপুর শহর ও ঐতিহাসিক স্থানসমূহ</h2>
+                        <span class="card-subtitle" id="citySub">ঐতিহ্য, সংস্কৃতি ও কুমুদিনী কমপ্লেক্স</span>
                     </div>
                 </div>
-                <p class="post-text">
-                    আমাদের জন্মভূমি ও বসবাসের শহর <strong>মির্জাপুর</strong> টাঙ্গাইল জেলার একটি অত্যন্ত গুরুত্বপূর্ণ, সমৃদ্ধ ও ঐতিহাসিক উপজেলা। ঢাকা-টাঙ্গাইল মহাসড়কের কোল ঘেঁষে গড়ে ওঠা এই জনপদের পাশ দিয়ে বয়ে গেছে প্রমত্তা বংশী নদী, যা এই অঞ্চলের প্রকৃতি ও অর্থনীতিকে করেছে সমৃদ্ধ। নদীমাতৃক এই জনপদের মানুষের সহজ-সরল জীবনযাত্রা, আবহমান বাংলার গ্রামীণ সংস্কৃতি এবং আধুনিকতার ছোঁয়া মির্জাপুরকে একটি অনন্য রূপ দিয়েছে। শিক্ষা, সংস্কৃতি ও ব্যবসা-বাণিজ্যে এই শহরটি টাঙ্গাইল জেলা তথা পুরো দেশের মধ্যে নিজস্ব এক আলাদা পরিচিতি ও গৌরব বহন করে আসছে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <div class="card-header">
-                    <div class="card-icon">🏛️</div>
-                    <div class="card-title-group">
-                        <h2>দানবীর রণদা প্রসাদ সাহা ও কুমুদিনী কমপ্লেক্স</h2>
-                        <span class="card-subtitle">মানবতার আলোকবর্তিকা</span>
-                    </div>
-                </div>
-                <p class="post-text">
-                    মির্জাপুরের মাটি ও মানুষের হৃদয়ে যে নামটি সবচেয়ে গভীরভাবে খোদাই করা রয়েছে, তিনি হলেন মানবতাবাদের মূর্ত প্রতীক, দানবীর <strong>রণদা প্রসাদ সাহা (আর. পি. সাহা)</strong>। তাঁর অসামান্য অবদান ও দূরদর্শিতায় মির্জাপুরে প্রতিষ্ঠিত হয়েছে বিখ্যাত <strong>কুমুদিনী কমপ্লেক্স</strong>। এই কমপ্লেক্সের অধীনে পরিচালিত কুমুদিনী হাসপাতাল আজও এ দেশের সাধারণ ও দরিদ্র মানুষের জন্য বিনামূল্যে এবং অত্যন্ত কম খরচে বিশ্বমানের চিকিৎসাসেবা প্রদান করে আসছে। এছাড়া নারীশিক্ষার প্রসারে প্রতিষ্ঠিত কুমুদিনী সরকারি কলেজ এবং ভারতেশ্বরী হোমস এই অঞ্চলের শিক্ষা ব্যবস্থাকে অনন্য উচ্চতায় পৌঁছে দিয়েছে।
-                </p>
-            </article>
-
-            <article class="glass-card scroll-item">
-                <div class="card-header">
-                    <div class="card-icon">🏫</div>
-                    <div class="card-title-group">
-                        <h2>ভারতেশ্বরী হোমস ও অন্যান্য প্রতিষ্ঠান</h2>
-                        <span class="card-subtitle">নারী শিক্ষার অনন্য গৌরব</span>
-                    </div>
-                </div>
-                <p class="post-text">
-                    মির্জাপুরের অন্যতম ঐতিহাসিক ও গৌরবোজ্জ্বল প্রতিষ্ঠান হলো দানবীর রণদা প্রসাদ সাহার প্রতিষ্ঠিত <strong>ভারতেশ্বরী হোমস</strong>। এখানকার ছাত্রীদের সুশৃঙ্খল জীবনযাপন, অসাধারণ কুচকাওয়াজ, পিটি ডিসপ্লে এবং সাংস্কৃতিক পরিবেশনা পুরো উপমহাদেশজুড়ে ব্যাপক খ্যাতি অর্জন করেছে। দেশ-বিদেশের বহু বিশিষ্ট ব্যক্তিবর্গ ও রাষ্ট্রনায়ক এই ঐতিহ্যবাহী হোমস পরিদর্শনে এসে এর সুনাম ও শৃঙ্খলার ভূয়সী প্রশংসা করেছেন। শিক্ষা, চিকিৎসা এবং সমাজসেবার এই ত্রিবেণী সঙ্গমে মির্জাপুর শহরটি আজ শুধু টাঙ্গাইল নয়, বরং সারা বাংলাদেশের মানুষের কাছে একটি গর্বের ও শ্রদ্ধার স্থান হিসেবে পরিচিত।
+                <p class="post-text" id="cityText1">
+                    আমাদের জন্মভূমি মির্জাপুর টাঙ্গাইল জেলার একটি সমৃদ্ধ উপজেলা। দানবীর রণদা প্রসাদ সাহার প্রতিষ্ঠিত কুমুদিনী কমপ্লেক্স ও কুমুদিনী হাসপাতাল এই অঞ্চলকে বিশ্ববাসীর কাছে পরিচিত করেছে।
                 </p>
             </article>
         </div>
 
-        <!-- 7. Gallery Tab -->
+        <!-- Gallery Tab -->
         <div id="gallery" class="tab-content">
             <div class="gallery-stream">
                 <article class="gallery-card scroll-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG-20260829-WA0036.jpg" alt="শরণ তাজ পোর্টফোলিও ছবি" loading="lazy">
+                    <img src="IMG-20260829-WA0036.jpg" alt="Gallery 1" loading="lazy">
                 </article>
                 <article class="gallery-card scroll-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_20261030_141853.jpg" alt="স্মৃতিবিজড়িত মুহূর্ত ১" loading="lazy">
+                    <img src="IMG_20261030_141853.jpg" alt="Gallery 2" loading="lazy">
                 </article>
                 <article class="gallery-card scroll-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_20261101_213922.jpg" alt="স্মৃতিবিজড়িত মুহূর্ত ২" loading="lazy">
+                    <img src="IMG_20261101_213922.jpg" alt="Gallery 3" loading="lazy">
                 </article>
                 <article class="gallery-card scroll-item">
                     <video controls preload="metadata">
                         <source src="video_20261028_120801.mp4" type="video/mp4">
-                        আপনার ব্রাউজার ভিডিও ট্যাগ সমর্থন করে না।
+                        Your browser does not support video.
                     </video>
                 </article>
             </div>
@@ -785,89 +723,424 @@
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img id="lightboxImg" src="" alt="Zoomed View">
-    </div>
-
-    <!-- Theme Switcher Floating Widget -->
-    <div class="theme-switch-wrapper">
-        <button class="theme-btn active-theme" id="lightThemeBtn" onclick="setTheme('light')">☀️ লাইট</button>
-        <button class="theme-btn" id="darkThemeBtn" onclick="setTheme('dark')">🌙 ডার্ক</button>
+        <img id="lightboxImg" src="" alt="Zoom">
     </div>
 
     <footer>
-        <p>&copy; ২০২৬ শরণ তাজ | সর্বস্বত্ব সংরক্ষিত</p>
+        <p id="footerText">&copy; ২০২৬ শরণ তাজ | সর্বস্বত্ব সংরক্ষিত</p>
     </footer>
 
     <script>
-        // Tab Switching Logic with Smooth Scroll Reset
+        // Multi-Language Translation Data (10 Languages)
+        const dict = {
+            bn: {
+                dir: "ltr",
+                badge: "✨ অফিশিয়াল পোর্টফোলিও",
+                name: "শরণ তাজ",
+                desc: "শিক্ষার্থী • স্কাউট লিডার • প্রযুক্তিপ্রেমী | মির্জাপুর, টাঙ্গাইল",
+                w1: "🏠 ওয়েলকাম", a1: "👤 পরিচিতি", f1: "🤝 বন্ধুরা", t1: "👨‍🏫 শিক্ষকবৃন্দ", s1: "⚜️ স্কাউটিং", sch1: "🏫 বিদ্যালয়", c1: "🏙️ শহর ও স্থান", g1: "🖼️ গ্যালারি",
+                welcomeTitle: "আমার ওয়েবসাইটে আপনাকে স্বাগতম! ✨",
+                p1: "🎂 বয়স: ১৫ বছর", p2: "📚 নবম শ্রেণী (বিজ্ঞান)", p3: "⚜️ পেট্রোল লিডার", p4: "📍 মির্জাপুর, টাঙ্গাইল",
+                wt1: "আসসালামু আলাইকুম! আমার এই নিজস্ব প্রফেশনাল ওয়েবসাইটে আপনাকে অত্যন্ত আন্তরিকভাবে স্বাগতম জানাই। প্রযুক্তিপ্রেমী একজন শিক্ষার্থী হিসেবে কোডিং ও ওয়েব ডেভেলপমেন্টের প্রতি আমার আজীবন গভীর অনুরাগ রয়েছে, যা আমাকে এই চমৎকার প্ল্যাটফর্মটি তৈরি করতে উদ্বুদ্ধ করেছে।",
+                wt2: "এই ওয়েবসাইটের মূল উদ্দেশ্য হলো আমার ব্যক্তিগত জীবনযাত্রার নানা সুন্দর মুহূর্ত, আমার পাঠশালা ও শিক্ষাজীবনের সাথে জড়িত গুরুত্বপূর্ণ স্মৃতিগুলো এবং আমার সহপাঠী ও শিক্ষকদের প্রতি শ্রদ্ধা ও ভালোবাসার কথাগুলো সুন্দরভাবে তুলে ধরা।",
+                aboutHead: "আমার পরিচিতি", aboutSub: "ব্যক্তিগত তথ্য, পরিবার ও জীবনদর্শন",
+                aboutText1: "আমার নাম শরণ তাজ। আমার বাবার নাম সোহেল মহসিন এবং মায়ের নাম ফাহমিদা তাজ। আমার ছোট ভাইয়ের নাম শয়ণ তাজ। আমার বয়স ১৫ বছর এবং বর্তমানে আমি অত্যন্ত আনন্দের সাথে নবম শ্রেণীতে বিজ্ঞান বিভাগে পড়াশোনা করছি।",
+                aboutText2: "ভবিষ্যতে উচ্চশিক্ষা গ্রহণ করে বিজ্ঞান ও প্রযুক্তির উন্নত শাখায় ক্যারিয়ার গড়ার তীব্র স্বপ্ন আমার রয়েছে। বিশেষ করে কম্পিউটার সায়েন্স কিংবা সফটওয়্যার ইঞ্জিনিয়ারিং নিয়ে পড়াশোনা করে দেশের প্রযুক্তি খাতকে সামনের দিকে এগিয়ে নিতে চাই।",
+                contactHead: "যোগাযোগ করুন", contactSub: "সরাসরি ইমেইল",
+                contactDesc: "যেকোনো প্রয়োজনে বা মতামতের জন্য আমাকে সরাসরি ইমেইল করতে পারেন: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ ইমেইল পাঠান",
+                friendsHead: "আমার সহপাঠী ও বন্ধুরা", friendsSub: "স্কুলের আনন্দময় মুহূর্ত ও বন্ধুত্বের বন্ধন",
+                friendsText1: "মানবজীবনে বন্ধুত্বের গুরুত্ব অপরিসীম, আর স্কুল জীবনের বন্ধুরা তো সারাজীবনের জন্য হৃদয়ে গেঁথে থাকে। আমার এই স্কুল জীবনের প্রতিটি দিন রঙিন হয়ে ওঠে আমাদের কিছু অসাধারণ ও আন্তরিক সহপাঠী বন্ধুদের সান্নিধ্যে।",
+                friendsText2: "আমার এই প্রিয় বন্ধুদের তালিকায় রয়েছে—তাসিন, মহিদুর, মিজান, আরাফাত হোসেন মৃধা, আরাফ, কাইয়ুম, আহনাফ বিন মনওয়ার এবং আরও অনেকে।",
+                teachHead: "আমার শ্রদ্ধেয় শিক্ষকবৃন্দ", teachSub: "শিক্ষক ও শিক্ষা জীবনের আলো",
+                teachText1: "অন্ধকার থেকে আলোর পথে যাত্রার পথপ্রদর্শক হলেন আমাদের শ্রদ্ধেয় শিক্ষকবৃন্দ। পাঠশালার চার দেওয়ালের মাঝে তাঁরা কেবল আমাদের পাঠ্যবইয়ের পড়া বোঝান না, বরং জীবনের আসল পাঠ ও নৈতিকতার শিক্ষা দেন।",
+                scoutHead: "বাংলাদেশ স্কাউটস ও আমার অভিজ্ঞতা", scoutSub: "শৃঙ্খলা, সেবা ও প্রেসিডেন্টস স্কাউট অ্যাওয়ার্ড",
+                scoutText1: "আমি অত্যন্ত গর্ব ও আনন্দের সাথে বাংলাদেশ স্কাউটস-এর একজন সক্রিয় সদস্য। স্কুলের স্কাউট ইউনিটে পেট্রোল লিডার (Patrol Leader) হিসেবে সফলভাবে দায়িত্ব পালন করেছি।",
+                schoolHead: "মির্জাপুর সরকারি এস. কে. পাইলট মডেল উচ্চ বিদ্যালয়", schoolSub: "প্রতিষ্ঠা ও ঐতিহাসিক প্রেক্ষাপট",
+                schoolText1: "আমার শিক্ষাপ্রতিষ্ঠান মির্জাপুর সরকারি এস কে পাইলট মডেল উচ্চ বিদ্যালয় টাঙ্গাইল জেলার মির্জাপুর উপজেলার অন্যতম শতবর্ষী ঐতিহ্যবাহী বিদ্যাপীঠ। ১৯১৫ সালের ১৮ জানুয়ারি এটি প্রতিষ্ঠিত হয়।",
+                cityHead: "আমাদের মির্জাপুর শহর ও ঐতিহাসিক স্থানসমূহ", citySub: "ঐতিহ্য, সংস্কৃতি ও কুমুদিনী কমপ্লেক্স",
+                cityText1: "আমাদের জন্মভূমি মির্জাপুর টাঙ্গাইল জেলার একটি সমৃদ্ধ উপজেলা। দানবীর রণদা প্রসাদ সাহার প্রতিষ্ঠিত কুমুদিনী কমপ্লেক্স ও কুমুদিনী হাসপাতাল এই অঞ্চলকে বিশ্ববাসীর কাছে পরিচিত করেছে।",
+                footerText: "© ২০২৬ শরণ তাজ | সর্বস্বত্ব সংরক্ষিত"
+            },
+            en: {
+                dir: "ltr",
+                badge: "✨ Official Portfolio",
+                name: "Sharan Taj",
+                desc: "Student • Scout Leader • Tech Enthusiast | Mirzapur, Tangail",
+                w1: "🏠 Welcome", a1: "👤 About", f1: "🤝 Friends", t1: "👨‍🏫 Teachers", s1: "⚜️ Scouting", sch1: "🏫 School", c1: "🏙️ City", g1: "🖼️ Gallery",
+                welcomeTitle: "Welcome to My Website! ✨",
+                p1: "🎂 Age: 15 Years", p2: "📚 Class 9 (Science)", p3: "⚜️ Patrol Leader", p4: "📍 Mirzapur, Tangail",
+                wt1: "Assalamu Alaikum! A warm welcome to my official professional website. As a tech-enthusiastic student, I have a deep passion for coding and web development.",
+                wt2: "The main purpose of this website is to share my life moments, school memories, and tribute to my friends and teachers.",
+                aboutHead: "About Me", aboutSub: "Personal Info, Family & Vision",
+                aboutText1: "My name is Sharan Taj. My father's name is Sohel Mohsin and my mother's name is Fahmida Taj. I am 15 years old, studying in Class 9 in the Science stream.",
+                aboutText2: "I dream of pursuing higher education in science and technology, especially computer science or software engineering to contribute to the nation.",
+                contactHead: "Contact Me", contactSub: "Direct Email",
+                contactDesc: "Feel free to reach out to me via email for any inquiries: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ Email Me",
+                friendsHead: "My Friends & Classmates", friendsSub: "School Memories & Bond",
+                friendsText1: "Friendship is invaluable in human life. My school days are brightened by wonderful classmates and friends.",
+                friendsText2: "My dear friends include Tasin, Mohidur, Mizan, Arafat, Araf, Kaiyum, Ahnhaf, and many more.",
+                teachHead: "Respected Teachers", teachSub: "Guiding Lights",
+                teachText1: "Teachers are our guides from darkness to light. They teach us both academic lessons and moral values.",
+                scoutHead: "Bangladesh Scouts & Experience", scoutSub: "Discipline & Leadership",
+                scoutText1: "I am a proud active member of Bangladesh Scouts and have successfully served as a Patrol Leader.",
+                schoolHead: "Mirzapur Govt. S. K. Pilot Model High School", schoolSub: "History & Heritage",
+                schoolText1: "My institution is one of the oldest historical schools in Tangail, established on January 18, 1915.",
+                cityHead: "Mirzapur City & Landmarks", citySub: "Culture & Kumudini Complex",
+                cityText1: "Mirzapur is a prominent upazila known for the Kumudini Complex founded by Danbir R.P. Saha.",
+                footerText: "© 2026 Sharan Taj | All Rights Reserved"
+            },
+            ar: {
+                dir: "rtl",
+                badge: "✨ المحفظة الرسمية",
+                name: "شاران تاج",
+                desc: "طالب • قائد كشفي • محب للتكنولوجيا | ميرزافور، تانجايل",
+                w1: "🏠 الرئيسية", a1: "👤 عني", f1: "🤝 الأصدقاء", t1: "👨‍🏫 المعلمون", s1: "⚜️ الكشافة", sch1: "🏫 المدرسة", c1: "🏙️ المدينة", g1: "🖼️ المعرض",
+                welcomeTitle: "أهلاً بك في موقعي! ✨",
+                p1: "🎂 العمر: 15 سنة", p2: "📚 الصف التاسع", p3: "⚜️ قائد دورية", p4: "📍 ميرزافور",
+                wt1: "السلام عليكم! أرحب بك بحرارة في موقعي المهني. كطالب شغوف بالتكنولوجيا، لدي شغف عميق بالبرمجة وتطوير الويب.",
+                wt2: "الهدف الرئيسي من هذا الموقع هو مشاركة لحظاتي وذكرياتي المدرسية وتقديري لأصدقائي ومعلمي.",
+                aboutHead: "معلومات عني", aboutSub: "المعلومات الشخصية والعائلة",
+                aboutText1: "اسمي شاران تاج. والدي هو سهيل محسن والدتي فهيدة تاج. عمري 15 عاماً وأدرس في الصف التاسع قسم العلوم.",
+                aboutText2: "أحلم بمتابعة التعليم العالي في علوم الكمبيوتر وهندسة البرمجيات.",
+                contactHead: "اتصل بي", contactSub: "البريد الإلكتروني المباشر",
+                contactDesc: "لا تتردد في مراسلتي عبر البريد: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ أرسل بريداً",
+                friendsHead: "أصدقائي وزملائي", friendsSub: "ذكريات المدرسة",
+                friendsText1: "الصداقة ذات قيمة لا تقدر بثمن في حياة الإنسان.",
+                friendsText2: "من أصدقائي الأعزاء: تاسين، موهيدور، ميزان، وغيرهم.",
+                teachHead: "المعلمون الأجلاء", teachSub: "أضواء توجيهية",
+                teachText1: "المعلمون هم مرشدونا من الظلمات إلى النور.",
+                scoutHead: "الكشافة وتجاربي", scoutSub: "الانضباط والقيادة",
+                scoutText1: "أنا عضو فخور في كشافة بنغلاديش وعملت كقائد دورية.",
+                schoolHead: "مدرسة ميرزافور الحكومية", schoolSub: "التاريخ التراثي",
+                schoolText1: "تأسست مدرستي التاريخية في 18 يناير 1915.",
+                cityHead: "مدينة ميرزافور والمعالم", citySub: "الثقافة ومجمع كوموديني",
+                cityText1: "ميرزافور هي منطقة بارزة تشتهر بمجمع كوموديني.",
+                footerText: "© 2026 شاران تاج | جميع الحقوق محفوظة"
+            },
+            zh: {
+                dir: "ltr",
+                badge: "✨ 官方个人作品集",
+                name: "Sharan Taj",
+                desc: "学生 • 童军队长 • 科技爱好者 | 孟加拉国坦盖尔",
+                w1: "🏠 欢迎", a1: "👤 关于我", f1: "🤝 朋友", t1: "👨‍🏫 老师", s1: "⚜️ 童军", sch1: "🏫 学校", c1: "🏙️ 城市", g1: "🖼️ 画廊",
+                welcomeTitle: "欢迎来到我的网站！✨",
+                p1: "🎂 年龄：15岁", p2: "📚 九年级（科学）", p3: "⚜️ 小队长", p4: "📍 坦盖尔",
+                wt1: "萨拉姆·阿ليكم！热烈欢迎来到我的官方专业网站。作为一名科技爱好者，我对编程和网页开发有着深深的热情。",
+                wt2: "本网站的主要目的是分享我的生活点滴、学校记忆以及向我的朋友和老师致敬。",
+                aboutHead: "关于我", aboutSub: "个人信息与愿景",
+                aboutText1: "我叫 Sharan Taj。父亲叫 Sohel Mohsin，母亲叫 Fahmida Taj。我今年 15 岁，就读于九年级科学班。",
+                aboutText2: "我梦想在科学技术领域深造，尤其是计算机科学或软件工程。",
+                contactHead: "联系我", contactSub: "直接邮箱",
+                contactDesc: "如有任何疑问，欢迎发邮件联系我：<strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ 发送邮件",
+                friendsHead: "我的同学和朋友", friendsSub: "学校记忆与羁绊",
+                friendsText1: "友谊在人生中无比珍贵。我的校园生活因优秀的同学而充满色彩。",
+                friendsText2: "我的好朋友包括 Tasin、Mohidur、Mizan 等。",
+                teachHead: "尊敬的老师", teachSub: "引路明灯",
+                teachText1: "老师是我们从黑暗走向光明的引路人，教导我们知识与道德。",
+                scoutHead: "孟加拉国童军经历", scoutSub: "纪律与领导力",
+                scoutText1: "我很自豪能成为孟加拉国童军的活跃成员，并曾担任小队长。",
+                schoolHead: "米尔扎普尔政府实验中学", schoolSub: "历史与传统",
+                schoolText1: "我的学校是坦盖尔历史悠久的百年老校，建于1915年1月18日。",
+                cityHead: "米尔扎普尔城市与地标", citySub: "文化与库穆迪尼综合体",
+                cityText1: "米尔扎普尔是一个以库穆迪尼医疗综合体闻名的大区。",
+                footerText: "© 2026 Sharan Taj | 版权所有"
+            },
+            es: {
+                dir: "ltr",
+                badge: "✨ Portafolio Oficial",
+                name: "Sharan Taj",
+                desc: "Estudiante • Líder Scout • Entusiasta de la Tecnología",
+                w1: "🏠 Inicio", a1: "👤 Sobre mí", f1: "🤝 Amigos", t1: "👨‍🏫 Maestros", s1: "⚜️ Scout", sch1: "🏫 Escuela", c1: "🏙️ Ciudad", g1: "🖼️ Galería",
+                welcomeTitle: "¡Bienvenido a mi sitio web! ✨",
+                p1: "🎂 Edad: 15 años", p2: "📚 9no Grado", p3: "⚜️ Líder de Patrulla", p4: "📍 Mirzapur",
+                wt1: "¡Assalamu Alaikum! Una cálida bienvenida a mi sitio web oficial profesional.",
+                wt2: "El objetivo principal es compartir mis momentos de vida, recuerdos escolares y tributo a mis amigos y maestros.",
+                aboutHead: "Sobre Mí", aboutSub: "Información Personal y Visión",
+                aboutText1: "Mi nombre es Sharan Taj. Tengo 15 años y estudio en el 9no grado de ciencias.",
+                aboutText2: "Sueño con estudiar informática o ingeniería de software.",
+                contactHead: "Contáctame", contactSub: "Correo Directo",
+                contactDesc: "No dudes en escribirme: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ Enviar Correo",
+                friendsHead: "Mis Amigos", friendsSub: "Recuerdos Escolares",
+                friendsText1: "La amistad es invaluable en la vida.",
+                friendsText2: "Mis amigos incluyen a Tasin, Mohidur, Mizan y más.",
+                teachHead: "Maestros Respetados", teachSub: "Guías",
+                teachText1: "Los maestros nos guían de la oscuridad a la luz.",
+                scoutHead: "Escultismo", scoutSub: "Disciplina y Liderazgo",
+                scoutText1: "Soy miembro activo de los Scouts de Bangladesh y líder de patrulla.",
+                schoolHead: "Escuela Modelo Mirzapur", schoolSub: "Historia",
+                schoolText1: "Fundada el 18 de enero de 1915.",
+                cityHead: "Ciudad de Mirzapur", citySub: "Cultura",
+                cityText1: "Mirzapur es un subdistrito destacado por el Complejo Kumudini.",
+                footerText: "© 2026 Sharan Taj | Todos los derechos reservados"
+            },
+            hi: {
+                dir: "ltr",
+                badge: "✨ आधिकारिक पोर्टफोलियो",
+                name: "शरण ताज",
+                desc: "छात्र • स्काउट लीडर • टेक प्रेमी | मिर्ज़ापुर",
+                w1: "🏠 होम", a1: "👤 परिचय", f1: "🤝 मित्र", t1: "👨‍🏫 शिक्षक", s1: "⚜️ स्काउटिंग", sch1: "🏫 स्कूल", c1: "🏙️ शहर", g1: "🖼️ गैलरी",
+                welcomeTitle: "मेरी वेबसाइट पर आपका स्वागत है! ✨",
+                p1: "🎂 आयु: 15 वर्ष", p2: "📚 कक्षा 9 (विज्ञान)", p3: "⚜️ गश्ती नेता", p4: "📍 मिर्ज़ापुर",
+                wt1: "असलामुअलैकुम! मेरी आधिकारिक पेशेवर वेबसाइट पर आपका स्वागत है।",
+                wt2: "इस वेबसाइट का मुख्य उद्देश्य मेरे जीवन के क्षणों और स्कूली यादों को साझा करना है।",
+                aboutHead: "मेरा परिचय", aboutSub: "व्यक्तिगत जानकारी",
+                aboutText1: "मेरा नाम शरण ताज है। मैं 15 वर्ष का हूँ और कक्षा 9 में विज्ञान वर्ग में पढ़ता हूँ।",
+                aboutText2: "भविष्य में कंप्यूटर साइंस या सॉफ्टवेयर इंजीनियरिंग में उच्च शिक्षा प्राप्त करने की इच्छा है।",
+                contactHead: "संपर्क करें", contactSub: "ईमेल",
+                contactDesc: "मुझे सीधे ईमेल करें: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ ईमेल भेजें",
+                friendsHead: "मेरे सहपाठी और मित्र", friendsSub: "स्कूल की यादें",
+                friendsText1: "जीवन में दोस्ती का बहुत महत्व है।",
+                friendsText2: "मेरे प्रिय मित्र तसिन, मोहिदुर, मिजान और अन्य हैं।",
+                teachHead: "आदरणीय शिक्षक", teachSub: "मार्गदर्शक",
+                teachText1: "शिक्षक हमें अंधकार से प्रकाश की ओर ले जाते हैं।",
+                scoutHead: "बांग्लादेश स्काउट्स और अनुभव", scoutSub: "अनुशासन",
+                scoutText1: "मैं बांग्लादेश स्काउट्स का सक्रिय सदस्य हूँ।",
+                schoolHead: "मिर्ज़ापुर सरकारी एस.के. पायलट स्कूल", schoolSub: "इतिहास",
+                schoolText1: "इस ऐतिहासिक स्कूल की स्थापना 18 जनवरी 1915 को हुई थी।",
+                cityHead: "मिर्ज़ापुर शहर और स्थल", citySub: "कुमुदिनी कॉम्प्लेक्स",
+                cityText1: "मिर्ज़ापुर टांगail का एक प्रमुख उपजिला है।",
+                footerText: "© 2026 शरण ताज | सर्वाधिकार सुरक्षित"
+            },
+            fr: {
+                dir: "ltr",
+                badge: "✨ Portfolio Officiel",
+                name: "Sharan Taj",
+                desc: "Étudiant • Chef Scout • Passionné de Tech",
+                w1: "🏠 Accueil", a1: "👤 À propos", f1: "🤝 Amis", t1: "👨‍🏫 Professeurs", s1: "⚜️ Scoutisme", sch1: "🏫 École", c1: "🏙️ Ville", g1: "🖼️ Galerie",
+                welcomeTitle: "Bienvenue sur mon site ! ✨",
+                p1: "🎂 Âge : 15 ans", p2: "📚 9e Année", p3: "⚜️ Chef de Patrouille", p4: "📍 Mirzapur",
+                wt1: "Assalamu Alaikum ! Bienvenue sur mon site web professionnel officiel.",
+                aboutHead: "À Propos de Moi", aboutSub: "Infos personnelles",
+                aboutText1: "Je m'appelle Sharan Taj. J'ai 15 ans et j'étudie en 9e année.",
+                contactHead: "Me Contacter", contactSub: "Email direct",
+                contactDesc: "Contactez-moi par email : <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ Envoyer un Email",
+                friendsHead: "Mes Amis", friendsSub: "Souvenirs",
+                friendsText1: "L'amitié est inestimable.",
+                teachHead: "Professeurs", teachSub: "Guides",
+                teachText1: "Les professeurs nous guident vers la lumière.",
+                scoutHead: "Scoutisme", scoutSub: "Expérience",
+                scoutText1: "Membre actif des Scouts du Bangladesh.",
+                schoolHead: "École de Mirzapur", schoolSub: "Histoire",
+                schoolText1: "Fondée le 18 janvier 1915.",
+                cityHead: "Ville de Mirzapur", citySub: "Culture",
+                cityText1: "Mirzapur est réputé pour le Complexe Kumudini.",
+                footerText: "© 2026 Sharan Taj | Tous droits réservés"
+            },
+            de: {
+                dir: "ltr",
+                badge: "✨ Offizielles Portfolio",
+                name: "Sharan Taj",
+                desc: "Schüler • Pfadfinderführer • Tech-Enthusiast",
+                w1: "🏠 Startseite", a1: "👤 Über mich", f1: "🤝 Freunde", t1: "👨‍🏫 Lehrer", s1: "⚜️ Pfadfinder", sch1: "🏫 Schule", c1: "🏙️ Stadt", g1: "🖼️ Galerie",
+                welcomeTitle: "Willkommen auf meiner Website! ✨",
+                p1: "🎂 Alter: 15 Jahre", p2: "📚 9. Klasse", p3: "⚜️ Patrouillenführer", p4: "📍 Mirzapur",
+                wt1: "Assalamu Alaikum! Herzlich willkommen auf meiner professionellen Website.",
+                aboutHead: "Über Mich", aboutSub: "Persönliche Infos",
+                aboutText1: "Mein Name ist Sharan Taj. Ich bin 15 Jahre alt und besuche die 9. Klasse.",
+                contactHead: "Kontakt", contactSub: "E-Mail",
+                contactDesc: "E-Mail an mich: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ E-Mail senden",
+                friendsHead: "Meine Freunde", friendsSub: "Erinnerungen",
+                friendsText1: "Freundschaft ist unschätzbar.",
+                teachHead: "Respektierte Lehrer", teachSub: "Mentoren",
+                teachText1: "Lehrer führen uns aus der Dunkelheit zum Licht.",
+                scoutHead: "Pfadfinder", scoutSub: "Erfahrung",
+                scoutText1: "Aktives Mitglied der Bangladesh Scouts.",
+                schoolHead: "Schule Mirzapur", schoolSub: "Geschichte",
+                schoolText1: "Gegründet am 18. Januar 1915.",
+                cityHead: "Stadt Mirzapur", citySub: "Kultur",
+                cityText1: "Mirzapur ist bekannt für den Kumudini Complex.",
+                footerText: "© 2026 Sharan Taj | Alle Rechte vorbehalten"
+            },
+            ja: {
+                dir: "ltr",
+                badge: "✨ 公式ポートフォリオ",
+                name: "Sharan Taj",
+                desc: "学生 • スカウトリーダー • テック愛好家",
+                w1: "🏠 ホーム", a1: "👤 自己紹介", f1: "🤝 友達", t1: "👨‍🏫 先生", s1: "⚜️ スカウト", sch1: "🏫 学校", c1: "🏙️ 都市", g1: "🖼️ ギャラリー",
+                welcomeTitle: "ようこそ私のウェブサイトへ！✨",
+                p1: "🎂 年齢：15歳", p2: "📚 中学3年", p3: "⚜️ パトロールリーダー", p4: "📍 ミルザプール",
+                wt1: "アッサラーム・アライクム！公式プロフェッショナルサイトへようこそ。",
+                aboutHead: "自己紹介", aboutSub: "個人情報",
+                aboutText1: "私の名前はSharan Tajです。15歳で、科学コースの9年生に在籍しています。",
+                contactHead: "お問い合わせ", contactSub: "メール",
+                contactDesc: "メールはこちらまで：<strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ メールを送る",
+                friendsHead: "友達とクラスメート", friendsSub: "学校の思い出",
+                friendsText1: "友情は人生において非常に貴重です。",
+                teachHead: "尊敬する先生方", teachSub: "導きの光",
+                teachText1: "先生方は私たちを闇から光へと導いてくれます。",
+                scoutHead: "バングラデシュ・スカウト", scoutSub: "規律とリーダーシップ",
+                scoutText1: "バングラデシュスカウトの誇り高きアクティブメンバーです。",
+                schoolHead: "ミルザプール政府モデル高校", schoolSub: "歴史と伝統",
+                schoolText1: "1915年1月18日に設立された歴史ある学校です。",
+                cityHead: "ミルザプール市と名所", citySub: "文化とクムディニ複合施設",
+                cityText1: "ミルザプールはクムディニ複合施設で有名な地域です。",
+                footerText: "© 2026 Sharan Taj | 無断転載を禁じます"
+            },
+            ru: {
+                dir: "ltr",
+                badge: "✨ Официальное портфолио",
+                name: "Шаран Тадж",
+                desc: "Студент • Скаут-лидер • Энтузиаст технологий",
+                w1: "🏠 Главная", a1: "👤 О себе", f1: "🤝 Друзья", t1: "👨‍🏫 Учителя", s1: "⚜️ Скаутинг", sch1: "🏫 Школа", c1: "🏙️ Город", g1: "🖼️ Галерея",
+                welcomeTitle: "Добро пожаловать на мой сайт! ✨",
+                p1: "🎂 Возраст: 15 лет", p2: "📚 9 класс", p3: "⚜️ Патрульный лидер", p4: "📍 Мирзапур",
+                wt1: "Ассаламу Алейкум! Добро пожаловать на мой официальный профессиональный сайт.",
+                aboutHead: "Обо Мне", aboutSub: "Личная информация",
+                aboutText1: "Меня зовут Шаран Тадж. Мне 15 лет, учусь в 9 классе на естественнонаучном направлении.",
+                contactHead: "Связаться со мной", contactSub: "Прямой email",
+                contactDesc: "Пишите мне на почту: <strong>sharantajst@gmail.com</strong>",
+                emailBtn: "✉️ Написать Email",
+                friendsHead: "Мои друзья", friendsSub: "Школьные воспоминания",
+                friendsText1: "Дружба бесценна в человеческой жизни.",
+                teachHead: "Уважаемые учителя", teachSub: "Наставники",
+                teachText1: "Учителя ведут нас от тьмы к свету.",
+                scoutHead: "Скаутинг и опыт", scoutSub: "Дисциплина",
+                scoutText1: "Я активный член скаутов Бангладеш.",
+                schoolHead: "Школа Мирзапур", schoolSub: "История",
+                schoolText1: "Основана 18 января 1915 года.",
+                cityHead: "Город Мирзапур", citySub: "Культура и комплекс Кумудини",
+                cityText1: "Мирзапур — известный исторический город.",
+                footerText: "© 2026 Шаран Тадж | Все права защищены"
+            }
+        };
+
+        function setLanguage(lang) {
+            const d = dict[lang] || dict['bn'];
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', d.dir);
+
+            document.getElementById('lblBadge').innerText = d.badge;
+            document.getElementById('lblHeroName').innerText = d.name;
+            document.getElementById('lblHeroDesc').innerText = d.desc;
+
+            document.getElementById('navWelcome').innerText = d.w1;
+            document.getElementById('navAbout').innerText = d.a1;
+            document.getElementById('navFriends').innerText = d.f1;
+            document.getElementById('navTeachers').innerText = d.t1;
+            document.getElementById('navScout').innerText = d.s1;
+            document.getElementById('navSchool').innerText = d.sch1;
+            document.getElementById('navCity').innerText = d.c1;
+            document.getElementById('navGallery').innerText = d.g1;
+
+            document.getElementById('wWelcomeTitle').innerText = d.welcomeTitle;
+            document.getElementById('pill1').innerText = d.p1;
+            document.getElementById('pill2').innerText = d.p2;
+            document.getElementById('pill3').innerText = d.p3;
+            document.getElementById('pill4').innerText = d.p4;
+            document.getElementById('wText1').innerText = d.wt1;
+            document.getElementById('wText2').innerText = d.wt2;
+
+            document.getElementById('aboutHead').innerText = d.aboutHead;
+            document.getElementById('aboutSub').innerText = d.aboutSub;
+            document.getElementById('aboutText1').innerText = d.aboutText1;
+            document.getElementById('aboutText2').innerText = d.aboutText2;
+            document.getElementById('contactHead').innerText = d.contactHead;
+            document.getElementById('contactSub').innerText = d.contactSub;
+            document.getElementById('contactDesc').innerHTML = d.contactDesc;
+            document.getElementById('emailBtn').innerText = d.emailBtn;
+
+            document.getElementById('friendsHead').innerText = d.friendsHead;
+            document.getElementById('friendsSub').innerText = d.friendsSub;
+            document.getElementById('friendsText1').innerText = d.friendsText1;
+            document.getElementById('friendsText2').innerText = d.friendsText2;
+
+            document.getElementById('teachHead').innerText = d.teachHead;
+            document.getElementById('teachSub').innerText = d.teachSub;
+            document.getElementById('teachText1').innerText = d.teachText1;
+
+            document.getElementById('scoutHead').innerText = d.scoutHead;
+            document.getElementById('scoutSub').innerText = d.scoutSub;
+            document.getElementById('scoutText1').innerText = d.scoutText1;
+
+            document.getElementById('schoolHead').innerText = d.schoolHead;
+            document.getElementById('schoolSub').innerText = d.schoolSub;
+            document.getElementById('schoolText1').innerText = d.schoolText1;
+
+            document.getElementById('cityHead').innerText = d.cityHead;
+            document.getElementById('citySub').innerText = d.citySub;
+            document.getElementById('cityText1').innerText = d.cityText1;
+
+            document.getElementById('footerText').innerHTML = d.footerText;
+
+            // Hide Modal
+            document.getElementById('langModal').style.display = 'none';
+            localStorage.setItem('portfolio_lang', lang);
+        }
+
+        function openLangModal() {
+            document.getElementById('langModal').style.display = 'flex';
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeToggleBtn');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                btn.innerText = '🌙 Dark';
+                localStorage.setItem('portfolio_theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                btn.innerText = '☀️ Light';
+                localStorage.setItem('portfolio_theme', 'dark');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('portfolio_lang');
+            if (savedLang) {
+                setLanguage(savedLang);
+            }
+            const savedTheme = localStorage.getItem('portfolio_theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('themeToggleBtn').innerText = '☀️ Light';
+            }
+        });
+
+        // Tab Switching Logic
         function openTab(evt, tabName) {
             const contents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < contents.length; i++) {
                 contents[i].classList.remove("active");
             }
-
             const buttons = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove("active");
             }
-
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Bi-directional Scroll Observer (Fade & Scale In/Out)
-        const observerOptions = {
-            threshold: 0.12,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        // Scroll Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.scroll-item').forEach(item => {
             observer.observe(item);
         });
 
-        // Theme Switcher Logic with LocalStorage persistence
-        function setTheme(theme) {
-            const lightBtn = document.getElementById('lightThemeBtn');
-            const darkBtn = document.getElementById('darkThemeBtn');
-
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                darkBtn.classList.add('active-theme');
-                lightBtn.classList.remove('active-theme');
-                localStorage.setItem('portfolio_theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                lightBtn.classList.add('active-theme');
-                darkBtn.classList.remove('active-theme');
-                localStorage.setItem('portfolio_theme', 'light');
-            }
-        }
-
-        // On Page Load - Restore Saved Theme
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('portfolio_theme') || 'light';
-            setTheme(savedTheme);
-        });
-
-        // Lightbox Functions
-        function openLightbox(imgSrc) {
+        // Lightbox
+        function openLightbox(src) {
             const modal = document.getElementById('lightboxModal');
-            const modalImg = document.getElementById('lightboxImg');
-            modalImg.src = imgSrc;
+            document.getElementById('lightboxImg').src = src;
             modal.classList.add('open');
         }
-
         function closeLightbox() {
             document.getElementById('lightboxModal').classList.remove('open');
         }
