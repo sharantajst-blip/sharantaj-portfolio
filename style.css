@@ -1,21 +1,21 @@
 :root {
     --primary: #4f46e5;
     --secondary: #ec4899;
-    --glass-bg: rgba(255, 255, 255, 0.88);
+    --glass-bg: rgba(255, 255, 255, 0.82);
     --glass-border: rgba(255, 255, 255, 0.95);
     --text-dark: #0f172a;
     --text-muted: #475569;
-    --modal-bg: rgba(248, 250, 252, 0.92);
+    --modal-bg: rgba(15, 23, 42, 0.85);
 }
 
 body.dark-mode {
     --primary: #818cf8;
     --secondary: #f472b6;
-    --glass-bg: rgba(15, 23, 42, 0.85);
+    --glass-bg: rgba(15, 23, 42, 0.82);
     --glass-border: rgba(255, 255, 255, 0.12);
     --text-dark: #f8fafc;
     --text-muted: #94a3b8;
-    --modal-bg: rgba(11, 15, 25, 0.92);
+    --modal-bg: rgba(9, 13, 22, 0.90);
     background: linear-gradient(135deg, #090d16 0%, #1e1b4b 50%, #0f172a 100%) !important;
 }
 
@@ -32,7 +32,7 @@ body {
     line-height: 1.9;
     min-height: 100vh;
     overflow-x: hidden;
-    perspective: 1200px;
+    perspective: 1400px; /* Enhanced 3D Perspective */
     background: linear-gradient(135deg, #e0e7ff 0%, #fae8ff 50%, #e0f2fe 100%);
     background-size: 200% 200%;
     animation: bgMove 14s ease infinite alternate;
@@ -49,7 +49,7 @@ body {
     position: fixed;
     inset: 0;
     background: var(--modal-bg);
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,8 +65,8 @@ body {
     max-width: 540px;
     width: 90%;
     text-align: center;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.4), 0 0 30px rgba(79, 70, 229, 0.3);
-    backdrop-filter: blur(20px);
+    box-shadow: 0 35px 80px rgba(0,0,0,0.5), 0 0 40px rgba(79, 70, 229, 0.4);
+    backdrop-filter: blur(25px);
     transform-style: preserve-3d;
     transform: rotateX(45deg) scale(0.5);
     animation: spinEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -116,47 +116,48 @@ body {
     box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
 }
 
-/* Floating 3D Blobs */
+/* Floating 3D Glowing Blobs */
 .blobs span {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0.55;
     pointer-events: none;
     animation: floatBlob 15s infinite ease-in-out alternate;
     will-change: transform;
 }
 
 .blobs span:nth-child(1) {
-    width: 380px; height: 380px;
+    width: 420px; height: 420px;
     background: linear-gradient(135deg, #ff7675, #fab1a0);
-    top: -50px; left: -50px;
+    top: -60px; left: -60px;
 }
 
 .blobs span:nth-child(2) {
-    width: 420px; height: 420px;
+    width: 480px; height: 480px;
     background: linear-gradient(135deg, #a29bfe, #74b9ff);
-    bottom: -50px; right: -50px;
+    bottom: -60px; right: -60px;
     animation-delay: 2.5s;
 }
 
 @keyframes floatBlob {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(50px, -50px) scale(1.2); }
+    100% { transform: translate(60px, -60px) scale(1.25); }
 }
 
-/* Hero Banner */
+/* Hero Banner with 3D Depth */
 .hero-banner {
     background: linear-gradient(125deg, #4f46e5, #9333ea, #ec4899, #06b6d4);
     background-size: 300% 300%;
     animation: gradientFlow 8s ease infinite;
-    padding: 60px 20px 85px;
+    padding: 70px 20px 95px;
     text-align: center;
     color: #ffffff;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
-    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.4);
+    clip-path: polygon(0 0, 100% 0, 100% 86%, 50% 100%, 0 86%);
+    box-shadow: 0 25px 50px rgba(79, 70, 229, 0.45);
+    transform-style: preserve-3d;
 }
 
 @keyframes gradientFlow {
@@ -175,18 +176,21 @@ body {
     font-weight: 600;
     margin-bottom: 14px;
     backdrop-filter: blur(8px);
+    transform: translateZ(20px);
 }
 
 .hero-banner h1 {
-    font-size: 44px;
+    font-size: 46px;
     font-weight: 800;
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    transform: translateZ(35px);
 }
 
 .hero-banner p {
-    font-size: 17.5px;
+    font-size: 18px;
     margin-top: 10px;
     font-weight: 500;
+    transform: translateZ(25px);
 }
 
 /* Top Settings Bar */
@@ -217,13 +221,13 @@ body {
     transform: translateY(-3px) scale(1.05);
 }
 
-/* Floating Navigation */
+/* Floating 3D Navigation */
 .nav-wrapper {
     position: sticky;
     top: 15px;
     z-index: 1000;
     padding: 0 15px;
-    margin-top: -35px;
+    margin-top: -40px;
 }
 
 .tab-container {
@@ -233,12 +237,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(22px);
     padding: 12px;
     gap: 10px;
     border-radius: 26px;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
 }
 
 .tab-btn {
@@ -259,14 +263,14 @@ body {
 .tab-btn:hover {
     background: rgba(99, 102, 241, 0.15);
     color: var(--primary);
-    transform: translateY(-3px);
+    transform: translateY(-4px) translateZ(10px);
 }
 
 .tab-btn.active {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: #ffffff;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.45);
-    transform: scale(1.06);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
+    transform: scale(1.06) translateZ(15px);
 }
 
 /* Main Container */
@@ -284,11 +288,11 @@ body {
     display: block;
 }
 
-/* 3D Tilt & Scroll Animation */
+/* 3D Scroll Entrance Animation */
 .scroll-item {
     opacity: 0;
-    transform: translateY(50px) rotateX(15deg) scale(0.95);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(60px) rotateX(20deg) scale(0.92);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
 }
 
@@ -297,24 +301,24 @@ body {
     transform: translateY(0) rotateX(0deg) scale(1);
 }
 
-/* Glass Content 3D Card */
+/* True 3D Glass Card Effect */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(22px);
     padding: 40px;
     border-radius: 32px;
     margin-bottom: 35px;
     border: 2px solid var(--glass-border);
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.5);
     position: relative;
     overflow: hidden;
     transform-style: preserve-3d;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
 .glass-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 25px 60px rgba(79, 70, 229, 0.22);
+    transform: translateY(-8px) rotateX(3deg) rotateY(-2deg) scale(1.01);
+    box-shadow: 0 35px 80px rgba(79, 70, 229, 0.28), inset 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
 .glass-card::before {
@@ -352,7 +356,8 @@ body {
     justify-content: center;
     font-size: 24px;
     flex-shrink: 0;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    transform: translateZ(20px);
 }
 
 .card-title-group h2 {
@@ -380,7 +385,7 @@ body.dark-mode .post-text {
     color: #cbd5e1;
 }
 
-/* Profile Showcase */
+/* Profile Showcase with 3D Holographic Avatar */
 .profile-showcase {
     display: flex;
     flex-direction: column;
@@ -389,14 +394,15 @@ body.dark-mode .post-text {
 }
 
 .avatar-ring {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     padding: 5px;
     background: linear-gradient(135deg, #4f46e5, #ec4899, #06b6d4);
     margin-bottom: 18px;
-    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
-    animation: spinRing 10s linear infinite;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.45);
+    animation: spinRing 12s linear infinite;
+    transform: translateZ(30px);
 }
 
 .avatar-ring img {
@@ -405,7 +411,7 @@ body.dark-mode .post-text {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #ffffff;
-    animation: counterSpin 10s linear infinite;
+    animation: counterSpin 12s linear infinite;
 }
 
 @keyframes spinRing { 100% { transform: rotate(360deg); } }
@@ -427,6 +433,8 @@ body.dark-mode .post-text {
     font-size: 14px;
     font-weight: 600;
     border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.15);
+    transform: translateZ(10px);
 }
 
 .email-btn {
@@ -437,15 +445,15 @@ body.dark-mode .post-text {
     border-radius: 14px;
     text-decoration: none;
     font-weight: 600;
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
     transition: transform 0.25s;
 }
 
 .email-btn:hover {
-    transform: translateY(-3px) scale(1.03);
+    transform: translateY(-4px) scale(1.04) translateZ(15px);
 }
 
-/* Gallery */
+/* Gallery with 3D Depth */
 .gallery-stream {
     display: flex;
     flex-direction: column;
@@ -457,14 +465,16 @@ body.dark-mode .post-text {
     padding: 16px;
     border-radius: 30px;
     border: 2px solid var(--glass-border);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 25px 50px rgba(15, 23, 42, 0.15);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-card:hover {
-    transform: scale(1.02) rotateX(2deg);
+    transform: scale(1.02) rotateX(4deg) translateZ(15px);
+    box-shadow: 0 35px 70px rgba(79, 70, 229, 0.3);
 }
 
 .gallery-card img, .gallery-card video {
@@ -481,15 +491,16 @@ body.dark-mode .post-text {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.94);
+    background: rgba(15, 23, 42, 0.95);
     z-index: 20000;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    backdrop-filter: blur(10px);
 }
 
 .lightbox.open { display: flex; }
-.lightbox img { max-width: 95%; max-height: 90vh; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
+.lightbox img { max-width: 95%; max-height: 90vh; border-radius: 20px; box-shadow: 0 30px 70px rgba(0,0,0,0.7); }
 .lightbox-close { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; cursor: pointer; }
 
 /* Footer */
