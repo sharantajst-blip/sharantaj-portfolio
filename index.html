@@ -581,8 +581,22 @@
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove("active");
             }
-            document.getElementById(tabName).classList.add("active");
+            
+            const targetTab = document.getElementById(tabName);
+            targetTab.classList.add("active");
             evt.currentTarget.classList.add("active");
+
+            const animatedItems = targetTab.querySelectorAll('.scroll-item');
+            animatedItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+
+            setTimeout(() => {
+                animatedItems.forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 50);
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
